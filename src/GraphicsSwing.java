@@ -16,7 +16,7 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(33, 448, 33, 509, 1);
         UtilityFunction.drawLine(33, 448, 51, 431, 1);
         UtilityFunction.drawLine(51, 431, 24, 431, 1);
-        UtilityFunction.drawLine(51, 431, 51, 485, 1);
+        UtilityFunction.drawLine(51, 431, 51, 486, 1);
         UtilityFunction.drawLine(0, 448, 24, 431, 1);
 
         UtilityFunction.drawLine(33, 508, 66, 469, 1);
