@@ -1,6 +1,7 @@
 package src;
 
 import java.awt.*;
+import java.util.Arrays;
 
 public final class UtilityFunction {
     private static Graphics g;
@@ -66,17 +67,17 @@ public final class UtilityFunction {
         }
     }
     // default color (black) for drawSquare method
-    public static void drawSquare(int x1,int y1,int x2,int y2,int size){
-        drawSquare(x1, y1, x2, y2, size,Color.BLACK);
+    public static void drawSquare(int size,int ...xy){
+        drawSquare(Color.BLACK,size,xy);
     }
     // drawSquare use drawLine Method implementation
-    // Point1 (x1,y1) is upper left corner of the square
-    // Point2 (x2,y2) is lower right corner of the square
-    public static void drawSquare(int x1,int y1,int x2,int y2,int size,Color c){
-        drawLine(x1, y1, x1, y2, size,c);
-        drawLine(x2, y1, x2, y2, size,c);
-        drawLine(x1, y1, x2, y1, size,c);
-        drawLine(x1, y2, x2, y2, size,c);
+    // xy Array of point {(x,y),(x1,y1),(x2,y2),...(xn,yn)}
+    public static void drawSquare(Color c,int size,int ...xy){
+        if(xy.length % 2 == 1) return; // x and y are not equal.
+        for(int i = 0;i < xy.length - 3;i+=2){
+            drawLine(xy[i], xy[i + 1], xy[i + 2], xy[i + 3], size, c);
+        }
+        drawLine(xy[0], xy[1], xy[xy.length - 2], xy[xy.length - 1], size, c);
     }
     
     private static void plot(int x,int y,Color c,int size){
