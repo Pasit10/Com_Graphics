@@ -45,11 +45,15 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(92, 441, 92,469, 1);
         UtilityFunction.drawLine(55, 447, 75, 439, 1);
         UtilityFunction.drawLine(75, 439, 92, 448, 1);
+        UtilityFunction.drawSquare(1, 66,455,74,455,74,462,66,462);
 
         //บ้าน 4
         UtilityFunction.drawLine(82, 435, 102, 428, 1);
-        UtilityFunction.drawLine(102, 428, 120, 445, 1);
+        UtilityFunction.drawLine(102, 428, 120, 435, 1);
+        UtilityFunction.drawLine(120, 435, 120, 471, 1);
         UtilityFunction.drawLine(120, 445, 120, 471, 1);
+        UtilityFunction.drawLine(91, 441, 105, 441, 1);
+        UtilityFunction.drawLine(105, 441, 120, 448, 1);
 
         //บ้าน 5
         UtilityFunction.drawLine(120, 445, 141, 431, 1);
@@ -57,6 +61,11 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(159, 431, 159, 448, 1);
         UtilityFunction.drawLine(120, 450, 137, 450, 1);
         UtilityFunction.drawLine(137, 450, 137, 485, 1);
+
+        //บ้าน 6
+        UtilityFunction.drawLine(166, 459, 177, 446, 1);
+        UtilityFunction.drawLine(177, 446, 213, 452, 1);
+        UtilityFunction.drawLine(213, 452,193,472, 1);
         
         //ต้นไม้
         UtilityFunction.drawLine(154, 486, 154, 494, 1);
