@@ -70,6 +70,34 @@ public class GraphicsSwing extends JPanel {
 
         //บ้าน 7
         UtilityFunction.drawLine(163, 489, 228, 454, 1);
+        UtilityFunction.drawLine(228, 454, 270, 465, 1);
+        UtilityFunction.drawLine( 270, 465,215,503, 1);
+        UtilityFunction.drawLine(215, 503, 163, 489, 1);
+
+        //บ้าน 8
+        UtilityFunction.drawLine(236, 451, 253, 438, 1);
+        UtilityFunction.drawLine(253, 438, 296, 442, 1); // ต้องรอเส้นโค้งก่อน
+
+        UtilityFunction.drawSquare(1,285,455,293,455,293,464,285,464);
+
+
+        //เรือ
+        UtilityFunction.drawLine(447, 356 ,447, 364, 1);
+        UtilityFunction.drawLine(447, 364 ,450, 366, 1);
+        UtilityFunction.drawLine(450, 366 ,487, 366, 1);
+        UtilityFunction.drawLine(487, 366 ,491, 355, 1);
+        UtilityFunction.drawLine(491, 355 ,487, 353, 1);
+        UtilityFunction.drawLine(487, 353 ,486, 355, 1);
+        UtilityFunction.drawLine(486, 355 ,475, 355, 1);
+        UtilityFunction.drawLine(475, 355 ,475, 351, 1);
+        UtilityFunction.drawLine(475, 351 ,463, 351, 1);
+        UtilityFunction.drawLine(463, 351 ,463, 355, 1);
+        UtilityFunction.drawLine(463, 355 ,457, 355, 1);
+        UtilityFunction.drawLine(457, 355 ,457, 351, 1);
+        UtilityFunction.drawLine(457, 351 ,451, 351, 1);
+        UtilityFunction.drawLine(451, 351 ,451, 355, 1);
+        UtilityFunction.drawLine(451, 355 ,447, 356, 1);
+        
         
         //ต้นไม้
         UtilityFunction.drawLine(154, 486, 154, 494, 1);
