@@ -6,10 +6,11 @@ import java.awt.*;
 public class GraphicsSwing extends JPanel {
     public void paintComponent(Graphics g) {
         UtilityFunction.setGraphice(g);
-        drawStructure();
-        drawHouse();
+        // drawStructure();
+        // drawHouse();
         
-        drawHouse2();
+        // drawHouse2();
+        UtilityFunction.drawBezierCircle(null, 250,250,100);
     }
 
     private void drawHouse(){
@@ -100,7 +101,7 @@ public class GraphicsSwing extends JPanel {
 
     private void drawHouse2(){
         UtilityFunction.drawSquare(1, 332,465,370,446,380,454,341,473);
-
+        // หลังแรก
         UtilityFunction.drawLine(352,473, 352, 509,1);
         UtilityFunction.drawSquare(1, 352,473,396,457,403,457,408,462,408,468,402,463,363,480);
         UtilityFunction.drawLine(364,480,364,509,1);
@@ -111,11 +112,25 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawSquare(1, 369,493,410,474,408,461,420,444,432,457,432,479,374,498); // fix (ยังไม่แก้)
         UtilityFunction.drawLine(432,478,454,478,1);
         UtilityFunction.drawLine(454,478,454,509,1);
-
         // window
         for(int i = 1;i <= 16;i+=6){
             UtilityFunction.drawSquare(1,386 + i,496,390 + i,496,390 + i,505,386 + i,505);
         }
+        
+        //หลังสอง
+        UtilityFunction.drawLine(462,509,462,475,1);
+        UtilityFunction.drawLine(462,475,490,457,1);
+        UtilityFunction.drawLine(480,463,480,441,1);
+        UtilityFunction.drawSquare(1, 480,441,517,441,521,433,488,433);
+        UtilityFunction.drawSquare(1, 492,449,500,449,500,458,492,458);
+        UtilityFunction.drawSquare(1, 473,474,481,474,481,483,473,483);
+        UtilityFunction.drawSquare(1,491,465,532,443,562,460,529,487);
+        UtilityFunction.drawLine(517,441,517,451,1);
+        UtilityFunction.drawSquare(1, 518,441,543,430,548,435,522,445);
+        UtilityFunction.drawSquare(1, 537,487,542,487,542,502,537,502);
+        UtilityFunction.drawSquare(1, 543,483,548,483,548,498,543,498);
+        UtilityFunction.drawSquare(1,548,480,553,480,553,496,548,496);
 
+        
     }
 }

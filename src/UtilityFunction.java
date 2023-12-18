@@ -78,9 +78,51 @@ public final class UtilityFunction {
         }
         drawLine(xy[xy.length - 2], xy[xy.length - 1],xy[0],xy[1], size, c);
     }
-    
+    // plot dot(vertex) at (x,y)
     private static void plot(int x,int y,Color c,int size){
         g.setColor(c);
         g.fillRect(x, y, size,size);
+    }
+
+
+
+
+
+
+
+    // ----------------------- test space (prototype) ------------------------------------//
+    public static void drawBezierCircle(Graphics2D g, double centerX, double centerY, double radius) {
+        double controlPointOffset = radius * 4 * (Math.sqrt(2) - 1) / 3;
+
+        // Define control points for each quarter
+        // Point2D p1 = new Point2D.Double(centerX, centerY + radius);
+        // Point2D c11 = new Point2D.Double(centerX + controlPointOffset, centerY);
+        // Point2D c12 = new Point2D.Double(centerX, centerY - controlPointOffset);
+        // Point2D p2 = new Point2D.Double(centerX - radius, centerY);
+
+        // Point2D p3 = new Point2D.Double(centerX - radius, centerY - radius);
+        // Point2D c31 = new Point2D.Double(centerX - controlPointOffset, centerY);
+        // Point2D c32 = new Point2D.Double(centerX, centerY + controlPointOffset);
+        // Point2D p4 = new Point2D.Double(centerX, centerY + radius);
+
+        // Draw each quarter as a Bezier curve
+        // g.moveTo(p1.getX(), p1.getY());
+        // g.curveTo(c11.getX(), c11.getY(), c12.getX(), c12.getY(), p2.getX(), p2.getY());
+        // g.curveTo(c31.getX(), c31.getY(), c32.getX(), c32.getY(), p3.getX(), p3.getY());
+        // g.curveTo(c32.getX(), c32.getY(), c31.getX(), c31.getY(), p4.getX(), p4.getY());
+        // g.curveTo(c12.getX(), c12.getY(), c11.getX(), c11.getY(), p1.getX(), p1.getY());
+        // g.closePath();
+
+        double x1 = centerX;
+        double y1 = centerY + radius;
+        double x2 = centerX + controlPointOffset;
+        double y2 = centerY;
+        double x3 = centerX;
+        double y3 = centerY - controlPointOffset;
+        double x4 = centerX - radius;
+        double y4 = centerY;
+        drawCurve((int)x1,(int)y1,(int)x2,(int)y2,(int)x3,(int)y3,(int)x4,(int)y4, 1);
+
+        // ยากชิบหายเลย
     }
 }
