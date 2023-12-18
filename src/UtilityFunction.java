@@ -1,7 +1,6 @@
 package src;
 
 import java.awt.*;
-import java.util.Arrays;
 
 public final class UtilityFunction {
     private static Graphics g;
@@ -77,7 +76,7 @@ public final class UtilityFunction {
         for(int i = 0;i < xy.length - 3;i+=2){
             drawLine(xy[i], xy[i + 1], xy[i + 2], xy[i + 3], size, c);
         }
-        drawLine(xy[0], xy[1], xy[xy.length - 2], xy[xy.length - 1], size, c);
+        drawLine(xy[xy.length - 2], xy[xy.length - 1],xy[0],xy[1], size, c);
     }
     
     private static void plot(int x,int y,Color c,int size){

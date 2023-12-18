@@ -8,8 +8,9 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.setGraphice(g);
         drawStructure();
         drawHouse();
+        
+        drawHouse2();
     }
-
 
     private void drawHouse(){
         //บ้าน 1
@@ -71,7 +72,6 @@ public class GraphicsSwing extends JPanel {
 
     }
 
-
     private void drawStructure() {
         UtilityFunction.drawLine(0, 98, 600, 98, 1);
         UtilityFunction.drawLine(0, 139, 600, 139, 1);
@@ -83,5 +83,26 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(260, 562, 281, 600, 1);
         UtilityFunction.drawLine(65, 562, 78, 600, 1);
         UtilityFunction.drawLine(441, 562, 470, 600, 1);
+    }
+
+    private void drawHouse2(){
+        UtilityFunction.drawSquare(1, 332,465,370,446,380,454,341,473);
+
+        UtilityFunction.drawLine(352,473, 352, 509,1);
+        UtilityFunction.drawSquare(1, 352,473,396,457,403,457,408,462,408,468,402,463,363,480);
+        UtilityFunction.drawLine(364,480,364,509,1);
+        UtilityFunction.drawLine(368,478,368,509,1);
+        UtilityFunction.drawSquare(1, 370,479,373,479,373,487,370,487);
+        UtilityFunction.drawSquare(1, 375,478,378,478,378,486,375,486);
+        UtilityFunction.drawSquare(1, 380,477,383,477,383,484,380,484);
+        UtilityFunction.drawSquare(1, 369,493,410,474,408,461,420,444,432,457,432,479,374,498); // fix (ยังไม่แก้)
+        UtilityFunction.drawLine(432,478,454,478,1);
+        UtilityFunction.drawLine(454,478,454,509,1);
+
+        // window
+        for(int i = 1;i <= 16;i+=6){
+            UtilityFunction.drawSquare(1,386 + i,496,390 + i,496,390 + i,505,386 + i,505);
+        }
+
     }
 }
