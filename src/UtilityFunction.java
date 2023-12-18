@@ -69,7 +69,33 @@ public final class UtilityFunction {
         }
         drawLine(xy[xy.length - 2], xy[xy.length - 1],xy[0],xy[1], size, c);
     }
-    // FloodFill
+    // draw Cicle
+    public static void drawCircle(int centerX, int centerY, int radius) {
+        int x = radius;
+        int y = 0;
+        int radiusError = 1 - x;
+    
+        while (x >= y) {
+            plot(centerX + x, centerY - y,Color.black,1);
+            plot(centerX - x, centerY - y,Color.black,1);
+            plot(centerX + x, centerY + y,Color.black,1);
+            plot(centerX - x, centerY + y,Color.black,1);
+            plot(centerX + y, centerY - x,Color.black,1);
+            plot(centerX - y, centerY - x,Color.black,1);
+            plot(centerX + y, centerY + x,Color.black,1);
+            plot(centerX - y, centerY + x,Color.black,1);
+    
+            y++;
+    
+            if (radiusError < 0) {
+                radiusError += 2 * y + 1;
+            } else {
+                x--;
+                radiusError += 2 * (y - x) + 1;
+            }
+        }
+    }
+    // FloodFill ยังไม่เสร้จ
     public static void FloodFill(int x,int y,Color targetColor,Color replacement_colour){
         ArrayList<node> q = new ArrayList<>();
 
@@ -83,7 +109,6 @@ public final class UtilityFunction {
         g.setColor(c);
         g.fillRect(x, y, size,size);
     }
-
 
 
     // ----------------------- test space (prototype) ------------------------------------//
@@ -116,32 +141,6 @@ public final class UtilityFunction {
             int y = (int) (Math.pow(1 - t, 3) * y1 + 3 * t * Math.pow(1 - t, 2) * y2
                     + 3 * t * t * (1 - t) * y3 + Math.pow(t, 3) * y4);
             plot(x, y,Color.black,1);
-        }
-    }
-
-    public static void drawCircle(int centerX, int centerY, int radius) {
-        int x = radius;
-        int y = 0;
-        int radiusError = 1 - x;
-    
-        while (x >= y) {
-            plot(centerX + x, centerY - y,Color.black,1);
-            plot(centerX - x, centerY - y,Color.black,1);
-            plot(centerX + x, centerY + y,Color.black,1);
-            plot(centerX - x, centerY + y,Color.black,1);
-            plot(centerX + y, centerY - x,Color.black,1);
-            plot(centerX - y, centerY - x,Color.black,1);
-            plot(centerX + y, centerY + x,Color.black,1);
-            plot(centerX - y, centerY + x,Color.black,1);
-    
-            y++;
-    
-            if (radiusError < 0) {
-                radiusError += 2 * y + 1;
-            } else {
-                x--;
-                radiusError += 2 * (y - x) + 1;
-            }
         }
     }
 }
