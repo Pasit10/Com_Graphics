@@ -82,21 +82,9 @@ public class GraphicsSwing extends JPanel {
 
 
         //เรือ
-        UtilityFunction.drawLine(447, 356 ,447, 364, 1);
-        UtilityFunction.drawLine(447, 364 ,450, 366, 1);
-        UtilityFunction.drawLine(450, 366 ,487, 366, 1);
-        UtilityFunction.drawLine(487, 366 ,491, 355, 1);
-        UtilityFunction.drawLine(491, 355 ,487, 353, 1);
-        UtilityFunction.drawLine(487, 353 ,486, 355, 1);
-        UtilityFunction.drawLine(486, 355 ,475, 355, 1);
-        UtilityFunction.drawLine(475, 355 ,475, 351, 1);
-        UtilityFunction.drawLine(475, 351 ,463, 351, 1);
-        UtilityFunction.drawLine(463, 351 ,463, 355, 1);
-        UtilityFunction.drawLine(463, 355 ,457, 355, 1);
-        UtilityFunction.drawLine(457, 355 ,457, 351, 1);
-        UtilityFunction.drawLine(457, 351 ,451, 351, 1);
-        UtilityFunction.drawLine(451, 351 ,451, 355, 1);
-        UtilityFunction.drawLine(451, 355 ,447, 356, 1);
+        UtilityFunction.drawSquare(1, 447,356,447,364,447,364,450,366,450,366,487,366,487,366,491,355,491,355,487,353,487, 353,
+        486, 355,486, 355 ,475, 355,475, 355 ,475, 351,475, 351 ,463, 351,463, 351 ,463, 355,463, 355 ,457, 355,457, 355 ,457, 351,457, 351,
+        451, 351,451, 351 ,451, 355,451, 355 ,447, 356);
         
         
         //ต้นไม้
