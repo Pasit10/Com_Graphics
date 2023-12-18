@@ -112,6 +112,7 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(260, 562, 281, 600, 1);
         UtilityFunction.drawLine(65, 562, 78, 600, 1);
         UtilityFunction.drawLine(441, 562, 470, 600, 1);
+        UtilityFunction.drawLine(0, 575, 600, 575, 1);
     }
 
     private void drawHouse2(){
