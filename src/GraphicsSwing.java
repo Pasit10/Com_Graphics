@@ -66,6 +66,7 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(166, 459, 177, 446, 1);
         UtilityFunction.drawLine(177, 446, 213, 452, 1);
         UtilityFunction.drawLine(213, 452,193,472, 1);
+        UtilityFunction.drawLine(193, 472, 166, 459, 1);
         
         //ต้นไม้
         UtilityFunction.drawLine(154, 486, 154, 494, 1);
