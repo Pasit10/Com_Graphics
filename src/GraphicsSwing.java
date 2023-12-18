@@ -6,11 +6,10 @@ import java.awt.*;
 public class GraphicsSwing extends JPanel {
     public void paintComponent(Graphics g) {
         UtilityFunction.setGraphice(g);
-        // drawStructure();
-        // drawHouse();
+        drawStructure();
+        drawHouse();
         
-        // drawHouse2();
-        UtilityFunction.drawBezierCircle(null, 250,250,100);
+        drawHouse2();
     }
 
     private void drawHouse(){
@@ -131,6 +130,6 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawSquare(1, 543,483,548,483,548,498,543,498);
         UtilityFunction.drawSquare(1,548,480,553,480,553,496,548,496);
 
-        
+        UtilityFunction.drawSquare(1, 562,438,585,439,579,455,553,449);
     }
 }
