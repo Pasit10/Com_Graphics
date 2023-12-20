@@ -1,6 +1,7 @@
 package src;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public final class UtilityFunction {
@@ -42,7 +43,7 @@ public final class UtilityFunction {
             else x += sx;
 
             D += 2 * dy;
-        }      
+        }
     }
     // default color (black) for drawCurve method
     public static void drawCurve(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int size){
@@ -74,7 +75,7 @@ public final class UtilityFunction {
         int x = radius;
         int y = 0;
         int radiusError = 1 - x;
-    
+
         while (x >= y) {
             plot(centerX + x, centerY - y,Color.black,1);
             plot(centerX - x, centerY - y,Color.black,1);
@@ -84,9 +85,9 @@ public final class UtilityFunction {
             plot(centerX - y, centerY - x,Color.black,1);
             plot(centerX + y, centerY + x,Color.black,1);
             plot(centerX - y, centerY + x,Color.black,1);
-    
+
             y++;
-    
+
             if (radiusError < 0) {
                 radiusError += 2 * y + 1;
             } else {
@@ -96,14 +97,36 @@ public final class UtilityFunction {
         }
     }
     // FloodFill ยังไม่เสร้จ
-    public static void FloodFill(int x,int y,Color targetColor,Color replacement_colour){
+    public BufferedImage floodfill(BufferedImage m,int x,int y,Color target_color,Color replacement_color){
         ArrayList<node> q = new ArrayList<>();
-
+        q.add(new node(x, y));
+        m.setRGB(x, y, replacement_color.getRGB());
+        while(!q.isEmpty()){
+            node current = q.remove(0);
+            if(m.getRGB(current.x , current.y - 1) == target_color.getRGB()){
+                m.setRGB(current.x, current.y - 1, replacement_color.getRGB());
+                q.add(new node(current.x, current.y - 1));
+            }
+            if(m.getRGB(current.x , current.y + 1) == target_color.getRGB()){
+                m.setRGB(current.x, current.y + 1, replacement_color.getRGB());
+                q.add(new node(current.x, current.y + 1));
+            }
+            if(m.getRGB(current.x - 1, current.y) == target_color.getRGB()){
+                m.setRGB(current.x - 1,current.y, replacement_color.getRGB());
+                q.add(new node(current.x - 1, current.y));
+            }
+            if(m.getRGB(current.x + 1, current.y) == target_color.getRGB()){
+                m.setRGB(current.x + 1,current.y, replacement_color.getRGB());
+                q.add(new node(current.x + 1, current.y));
+            }
+        }
+        return m;
     }
     class node{
         int x,y;
         node(int x,int y){this.x = x;this.y = y;}
     }
+
     // plot dot(vertex) at (x,y)
     private static void plot(int x,int y,Color c,int size){
         g.setColor(c);
@@ -116,24 +139,24 @@ public final class UtilityFunction {
         int radius = 100; // Adjust the radius as needed
         int centerX = 200; // Adjust the center X-coordinate
         int centerY = 200; // Adjust the center Y-coordinate
-    
+
         // Calculate control points based on the circle equation
         int x1 = centerX + radius;
         int y1 = centerY;
-    
+
         int x2 = (int)(centerX + radius * Math.cos(Math.PI / 4));
         int y2 = (int)(centerY + radius * Math.sin(Math.PI / 4));
-    
+
         int x3 = (int)(centerX + radius * Math.cos(2 * Math.PI / 4));
         int y3 = (int)(centerY + radius * Math.sin(2 * Math.PI / 4));
-    
+
         int x4 = centerX;
         int y4 = centerY + radius;
-    
+
         // Call the BezierCurve method with the new control points
         BezierCurve(x1, y1, x2, y2, x3, y3, x4, y4);
     }
-    
+
     public static void BezierCurve(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
         for (double t = 0; t <= 1; t += 0.001) {
             int x = (int) (Math.pow(1 - t, 3) * x1 + 3 * t * Math.pow(1 - t, 2) * x2

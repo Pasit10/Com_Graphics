@@ -8,7 +8,7 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.setGraphice(g);
         drawStructure();
         drawHouse();
-        
+
         drawHouse2();
     }
 
