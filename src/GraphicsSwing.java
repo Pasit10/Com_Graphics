@@ -10,6 +10,7 @@ public class GraphicsSwing extends JPanel {
         drawHouse();
 
         drawHouse2();
+        drawBackLine();
     }
 
     private void drawHouse(){
@@ -148,5 +149,38 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawSquare(1,548,480,553,480,553,496,548,496);
 
         UtilityFunction.drawSquare(1, 562,438,585,439,579,455,553,449);
+    }
+
+    private void drawBackLine(){
+        int setx = 18;
+        UtilityFunction.drawCurve(600 - setx,425,589 - setx,435,588 - setx,425,588 - setx,411,1);
+        // tree 1
+            UtilityFunction.drawLine(596 -setx,427,596 -setx,413,1);
+            UtilityFunction.drawLine(596 - setx,413,592 -setx,401,1);
+            UtilityFunction.drawCurve(596 - setx,419 ,597 - setx,414 ,598 -setx,414,600 -setx ,415,1);
+            UtilityFunction.drawCurve(594 - setx,412,596 - setx,405,598 - setx,402,600 - setx,404,1);
+            UtilityFunction.drawCurve(596 - setx,419,592 - setx,421,594 - setx,419,593 - setx,415,1);
+        //
+        UtilityFunction.drawLine(588 - setx,411,585-setx,403,1);
+        UtilityFunction.drawLine(585-setx,403,582-setx,403,1);
+        UtilityFunction.drawLine(582-setx,403,581-setx,410,1);
+        UtilityFunction.drawLine(581-setx,410,578 - setx,410,1);
+        UtilityFunction.drawCurve(578-setx,410,574 - setx,408,577 - setx,407,575 - setx,403,1);
+        UtilityFunction.drawLine(575 - setx,403,571 - setx,403,1);
+        UtilityFunction.drawCurve(571-setx,403,572 - setx,408,569 - setx,417 ,570 - setx,421,1);
+        UtilityFunction.drawCurve(570 - setx, 421,566-setx , 423, 564 - setx, 423, 563 - setx, 420, 1);
+        UtilityFunction.drawLine(563 - setx,420,540 - setx,420,1);
+
+        // tree 2
+            UtilityFunction.drawSquare(1, 561 -setx,420,561 - setx,416,563 - setx,416,563 - setx,401,556 - setx,401,555 -setx,402,555-setx,416,558 -setx,416,558 - setx,420);
+        //
+
+        UtilityFunction.drawLine(540 - setx,420 , 540 - setx ,414,1);
+        UtilityFunction.drawLine(540 - setx ,414,516 - setx,413,1);
+        UtilityFunction.drawLine(516- setx,413,516 - setx,420,1);
+        UtilityFunction.drawLine(516 - setx,420,500 - setx,420,1);
+        UtilityFunction.drawCurve(500 - setx,420 ,496 - setx, 409,480 - setx,410,477 - setx,415,1);
+        UtilityFunction.drawLine(477 - setx,415,477 - setx,422,1);
+        UtilityFunction.drawLine(477 - setx,422,466 - setx,421,1);
     }
 }
