@@ -99,25 +99,25 @@ public final class UtilityFunction {
         }
     }
     // FloodFill ยังไม่เสร้จ
-    public BufferedImage floodfill(BufferedImage m,int x,int y,Color target_color,Color replacement_color){
+    public BufferedImage Floodfill(BufferedImage m,int x,int y,Color target_color,Color replacement_color){
         ArrayList<node> q = new ArrayList<>();
         q.add(new node(x, y));
         m.setRGB(x, y, replacement_color.getRGB());
         while(!q.isEmpty()){
             node current = q.remove(0);
-            if(m.getRGB(current.x , current.y - 1) == target_color.getRGB()){
+            if(y - 1 >= 0 && m.getRGB(current.x , current.y - 1) == target_color.getRGB()){
                 m.setRGB(current.x, current.y - 1, replacement_color.getRGB());
                 q.add(new node(current.x, current.y - 1));
             }
-            if(m.getRGB(current.x , current.y + 1) == target_color.getRGB()){
+            if(y + 1 <= 600 && m.getRGB(current.x , current.y + 1) == target_color.getRGB()){
                 m.setRGB(current.x, current.y + 1, replacement_color.getRGB());
                 q.add(new node(current.x, current.y + 1));
             }
-            if(m.getRGB(current.x - 1, current.y) == target_color.getRGB()){
+            if(x - 1 >= 0 && m.getRGB(current.x - 1, current.y) == target_color.getRGB()){
                 m.setRGB(current.x - 1,current.y, replacement_color.getRGB());
                 q.add(new node(current.x - 1, current.y));
             }
-            if(m.getRGB(current.x + 1, current.y) == target_color.getRGB()){
+            if(x + 1 <= 600 && m.getRGB(current.x + 1, current.y) == target_color.getRGB()){
                 m.setRGB(current.x + 1,current.y, replacement_color.getRGB());
                 q.add(new node(current.x + 1, current.y));
             }
@@ -137,7 +137,7 @@ public final class UtilityFunction {
 
 
     // ----------------------- test space (prototype) ------------------------------------//
-    public static void drawCircleUsingBezierCurve() {
+    private static void drawCircleUsingBezierCurve() {
         int radius = 100; // Adjust the radius as needed
         int centerX = 200; // Adjust the center X-coordinate
         int centerY = 200; // Adjust the center Y-coordinate
@@ -159,7 +159,7 @@ public final class UtilityFunction {
         BezierCurve(x1, y1, x2, y2, x3, y3, x4, y4);
     }
 
-    public static void BezierCurve(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
+    private static void BezierCurve(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
         for (double t = 0; t <= 1; t += 0.001) {
             int x = (int) (Math.pow(1 - t, 3) * x1 + 3 * t * Math.pow(1 - t, 2) * x2
                     + 3 * t * t * (1 - t) * x3 + Math.pow(t, 3) * x4);
@@ -167,5 +167,6 @@ public final class UtilityFunction {
                     + 3 * t * t * (1 - t) * y3 + Math.pow(t, 3) * y4);
             plot(x, y,Color.black,1);
         }
+        drawCircleUsingBezierCurve();
     }
 }

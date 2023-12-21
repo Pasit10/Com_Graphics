@@ -47,7 +47,7 @@ public class BezierCircle extends JFrame {
         g2d.draw(path);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new BezierCircle());
-    }
+    // public static void main(String[] args) {
+    //     SwingUtilities.invokeLater(() -> new BezierCircle());
+    // }
 }
