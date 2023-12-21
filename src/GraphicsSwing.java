@@ -11,6 +11,7 @@ public class GraphicsSwing extends JPanel {
 
         drawHouse2();
         drawBackLine();
+        drawMoonAndCircle();
     }
 
     private void drawHouse(){
@@ -62,6 +63,7 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(159, 431, 159, 448, 1);
         UtilityFunction.drawLine(120, 450, 137, 450, 1);
         UtilityFunction.drawLine(137, 450, 137, 485, 1);
+        UtilityFunction.drawLine(137, 450, 159, 431, 1);
 
         //บ้าน 6
         UtilityFunction.drawLine(166, 459, 177, 446, 1);
@@ -71,6 +73,23 @@ public class GraphicsSwing extends JPanel {
 
         //บ้าน 7
         UtilityFunction.drawLine(163, 489, 228, 454, 1);
+        UtilityFunction.drawLine(228, 454, 270, 465, 1);
+        UtilityFunction.drawLine( 270, 465,215,503, 1);
+        UtilityFunction.drawLine(215, 503, 163, 489, 1);
+
+        //บ้าน 8
+        UtilityFunction.drawLine(236, 451, 253, 438, 1);
+        UtilityFunction.drawLine(253, 438, 296, 442, 1); // ต้องรอเส้นโค้งก่อน
+        UtilityFunction.drawLine(236, 451, 280, 460, 1);
+
+        UtilityFunction.drawSquare(1,285,455,293,455,293,464,285,464); // ต้องแก้ square
+
+
+        //เรือ
+        UtilityFunction.drawSquare(1, 447,356,447,364,447,364,450,366,450,366,487,366,487,366,491,355,491,355,487,353,487, 353,
+        486, 355,486, 355 ,475, 355,475, 355 ,475, 351,475, 351 ,463, 351,463, 351 ,463, 355,463, 355 ,457, 355,457, 355 ,457, 351,457, 351,
+        451, 351,451, 351 ,451, 355,451, 355 ,447, 356);
+        
         
         //ต้นไม้
         UtilityFunction.drawLine(154, 486, 154, 494, 1);
@@ -86,6 +105,20 @@ public class GraphicsSwing extends JPanel {
 
     }
 
+    private void drawMoonAndCircle(){
+        UtilityFunction.drawCircle(286, 230, 43);
+        UtilityFunction.drawCircle(105, 446, 6);
+        UtilityFunction.drawCircle(126, 418, 7);
+        UtilityFunction.drawCircle(176, 428, 5);
+        UtilityFunction.drawCircle(214, 430, 6);
+        UtilityFunction.drawCircle(250, 484, 8);
+        UtilityFunction.drawCircle(303, 440, 5);
+        UtilityFunction.drawCircle(422, 422, 7);
+        UtilityFunction.drawCircle(478, 423, 6);
+        UtilityFunction.drawCircle(543, 433, 3);
+        UtilityFunction.drawCircle(561, 445, 3);
+    }
+
     private void drawStructure() {
         UtilityFunction.drawLine(0, 98, 600, 98, 1);
         UtilityFunction.drawLine(0, 139, 600, 139, 1);
@@ -97,6 +130,7 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(260, 562, 281, 600, 1);
         UtilityFunction.drawLine(65, 562, 78, 600, 1);
         UtilityFunction.drawLine(441, 562, 470, 600, 1);
+        UtilityFunction.drawLine(0, 575, 600, 575, 1);
     }
 
     private void drawHouse2(){
