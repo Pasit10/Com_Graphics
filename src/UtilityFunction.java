@@ -75,6 +75,7 @@ public final class UtilityFunction {
     public static void drawCircle(int centerX, int centerY, int radius) {
         int x = radius;
         int y = 0;
+        centerY-=30;
         int radiusError = 1 - x;
 
         while (x >= y) {
