@@ -260,5 +260,44 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(197 - setx,414,192 - setx,413,1);
         UtilityFunction.drawLine(192 - setx,413,191 - setx,405,1);
         UtilityFunction.drawLine(191 - setx,405, 188 - setx,405,1);
+
+        //Man
+        UtilityFunction.drawLine(188-setx, 405, 188-setx, 412, 1);
+        UtilityFunction.drawLine(188-setx, 412, 185-setx, 412, 1);
+        UtilityFunction.drawLine(185-setx, 412, 185-setx, 425, 1);
+        UtilityFunction.drawLine(185-setx, 425, 182-setx, 425, 1);
+        UtilityFunction.drawLine(182-setx, 425, 181-setx, 421, 1);
+        UtilityFunction.drawLine(181-setx, 421, 174-setx, 421, 1);
+        UtilityFunction.drawLine(175-setx, 421, 175-setx, 417, 1);
+        UtilityFunction.drawLine(175-setx, 417, 182-setx, 417, 1);
+        UtilityFunction.drawLine(182-setx, 417, 182-setx, 407, 1);
+        UtilityFunction.drawLine(182-setx, 407, 176-setx, 404, 1);
+        UtilityFunction.drawLine(176-setx, 404, 176-setx, 399, 1);
+        UtilityFunction.drawLine(176-setx, 399, 170-setx, 397, 1);
+        UtilityFunction.drawLine(170-setx, 397, 165-setx, 399, 1);
+        UtilityFunction.drawLine(165-setx, 399, 165-setx, 408, 1);
+        UtilityFunction.drawLine(165-setx, 408, 161-setx, 408, 1);
+        UtilityFunction.drawLine(161-setx, 408, 161-setx, 418, 1);
+        UtilityFunction.drawLine(161-setx, 418, 97-setx, 419, 1);
+        //tree
+        UtilityFunction.drawLine(97-setx, 424, 97-setx, 414, 1);
+        UtilityFunction.drawLine(97-setx, 414, 88-setx, 413, 1);
+        UtilityFunction.drawLine(88-setx, 413, 87-setx, 424, 1);
+        UtilityFunction.drawLine(87-setx, 424, 78-setx, 423, 1);
+        UtilityFunction.drawLine(78-setx, 423, 78-setx, 411, 1);
+        UtilityFunction.drawCurve(78-setx, 411, 74-setx, 404, 66-setx, 404, 61-setx, 411, 1);
+        UtilityFunction.drawLine(61-setx, 404, 62-setx, 425, 1);
+        UtilityFunction.drawLine(62-setx, 425, 58-setx, 425, 1);
+        UtilityFunction.drawLine(58-setx, 425, 58-setx, 413, 1);
+        UtilityFunction.drawLine(58-setx, 413, 49-setx, 411, 1);
+        UtilityFunction.drawLine(49-setx, 411, 47-setx, 420, 1);
+        UtilityFunction.drawLine(47-setx, 420, 27-setx, 418, 1);
+        UtilityFunction.drawLine(27-setx, 418, 27-setx, 411, 1);
+        UtilityFunction.drawLine(27-setx, 411, 26-setx, 409, 1);
+        UtilityFunction.drawLine(26-setx, 409, 11-setx, 410, 1);
+        UtilityFunction.drawLine(11-setx, 410, 12-setx, 398, 1);
+        UtilityFunction.drawLine(12-setx, 398, 7-setx, 395, 1);
+        UtilityFunction.drawLine(7-setx, 395, 1-setx, 395, 1);
+        UtilityFunction.drawLine(1-setx, 395, 1-setx, 412, 1);
     }
 }
