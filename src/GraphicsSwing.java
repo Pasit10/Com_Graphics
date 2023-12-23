@@ -285,8 +285,8 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(88-setx, 413, 87-setx, 424, 1);
         UtilityFunction.drawLine(87-setx, 424, 78-setx, 423, 1);
         UtilityFunction.drawLine(78-setx, 423, 78-setx, 411, 1);
-        UtilityFunction.drawCurve(78-setx, 411, 74-setx, 404, 66-setx, 404, 61-setx, 411, 1);
-        UtilityFunction.drawLine(61-setx, 404, 62-setx, 425, 1);
+        UtilityFunction.drawCurve(78-setx, 411, 70-setx, 404, 66-setx, 404, 61-setx, 411, 1);
+        UtilityFunction.drawLine(61-setx, 411, 62-setx, 425, 1);
         UtilityFunction.drawLine(62-setx, 425, 58-setx, 425, 1);
         UtilityFunction.drawLine(58-setx, 425, 58-setx, 413, 1);
         UtilityFunction.drawLine(58-setx, 413, 49-setx, 411, 1);
