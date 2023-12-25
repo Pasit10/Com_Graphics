@@ -2,23 +2,18 @@ package src;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class GraphicsSwing extends JPanel {
-    BufferedImage buffer = new BufferedImage(600, 600, BufferedImage.TYPE_INT_ARGB);
-    Graphics2D g2 = buffer.createGraphics();
-
     public void paintComponent(Graphics g) {
         UtilityFunction.setGraphice(g);
         Structure();
         House();
-        House2();
+        // House2();
         BackLine();
         Light();
-        MoonAndCircle();
+        Moon();
         Lake();
         Boat();
-        g.drawImage(buffer, 0, 0, null);
     }
 
     private void House() {
@@ -26,14 +21,13 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(0, 448, 33, 448, 1);
         UtilityFunction.drawLine(33, 448, 33, 509, 1);
         UtilityFunction.drawLine(33, 448, 51, 431, 1);
-        UtilityFunction.drawLine(51, 431, 24, 431, 1);
         UtilityFunction.drawLine(51, 431, 51, 486, 1);
         UtilityFunction.drawLine(0, 448, 24, 431, 1);
+        UtilityFunction.drawLine(24, 431, 51, 431,1);
 
         // บ้าน 2
         UtilityFunction.drawLine(33, 508, 66, 469, 1);
         UtilityFunction.drawLine(66, 469, 117, 469, 1);
-        UtilityFunction.drawLine(0, 448, 24, 431, 1);
         UtilityFunction.drawLine(117, 469, 147, 491, 1);
         UtilityFunction.drawLine(147, 491, 83, 491, 1);
         UtilityFunction.drawLine(83, 491, 68, 476, 1);
@@ -88,14 +82,14 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(236, 451, 253, 438, 1);
         UtilityFunction.drawLine(253, 438, 296, 442, 1); // ต้องรอเส้นโค้งก่อน
         UtilityFunction.drawLine(236, 451, 280, 460, 1);
-        UtilityFunction.drawCurve(281, 460, 283, 454, 290, 447, 296, 443, 1);
+        UtilityFunction.drawCurve(280, 460, 283, 454, 290, 447, 296, 443, 1);
 
         // UtilityFunction.drawSquare(1,285,455,293,455,293,464,285,464); // ต้องแก้
         // square
         UtilityFunction.drawSquare(1, 286, 457, 291, 450, 291, 458, 286, 464);
 
         // ต้นไม้
-        UtilityFunction.drawLine(154, 486, 154, 494, 1);
+        UtilityFunction.drawLine(154, 484, 154, 494, 1);
         UtilityFunction.drawLine(154, 494, 157, 494, 1);
         UtilityFunction.drawLine(157, 494, 157, 485, 1);
         UtilityFunction.drawLine(157, 485, 167, 485, 1);
@@ -106,72 +100,6 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(144, 479, 147, 484, 1);
         UtilityFunction.drawLine(147, 484, 154, 484, 1);
 
-    }
-
-    private void MoonAndCircle() {
-        UtilityFunction.drawCircle(286, 230, 43);
-    }
-
-    private void Light() {
-        UtilityFunction.drawCircle(105, 446, 6);
-        UtilityFunction.drawCircle(126, 418, 7);
-        UtilityFunction.drawCircle(176, 428, 5);
-        UtilityFunction.drawCircle(214, 430, 6);
-        UtilityFunction.drawCircle(250, 484, 8);
-        UtilityFunction.drawCircle(303, 440, 5);
-        UtilityFunction.drawCircle(422, 422, 7);
-        UtilityFunction.drawCircle(478, 423, 6);
-        UtilityFunction.drawCircle(543, 433, 3);
-        UtilityFunction.drawCircle(561, 445, 3);
-    }
-
-    private void Structure() {
-        UtilityFunction.drawLine(0, 98, 600, 98, 1);
-        UtilityFunction.drawLine(0, 139, 600, 139, 1);
-        UtilityFunction.drawLine(0, 148, 600, 148, 1);
-        UtilityFunction.drawLine(0, 347, 600, 347, 1);
-        UtilityFunction.drawLine(0, 509, 600, 509, 1);
-        UtilityFunction.drawLine(0, 519, 600, 519, 1);
-        UtilityFunction.drawLine(0, 561, 600, 561, 1);
-        UtilityFunction.drawLine(260, 562, 281, 600, 1);
-        UtilityFunction.drawLine(65, 562, 78, 600, 1);
-        UtilityFunction.drawLine(441, 562, 470, 600, 1);
-        UtilityFunction.drawLine(0, 575, 600, 575, 1);
-
-        GradientPaint GP1 = new GradientPaint(300, 0, new Color(0x102131), 300, 300,new Color(0x071829)); //เปลี่ยนสีให้สว่างหรือให้เสมือนขึ้น
-        GradientPaint GP2 = new GradientPaint(300, 0, new Color(0x162c41), 300, 300,new Color(0x102d4a)); //เปลี่ยนสีให้สว่างหรือให้เสมือนขึ้น
-        GradientPaint GP3 = new GradientPaint(300, 0, new Color(0x305b7e), 300, 300,new Color(0x305b7e));
-        GradientPaint GP4 = new GradientPaint(300, 0, new Color(0x0a1522), 300, 300,new Color(0x061727));
-        GradientPaint GP5 = new GradientPaint(0, 0, new Color(0x423535), 600, 300,new Color(0x806f6f));
-        int y = 40;
-        g2.setPaint(GP1);
-        g2.fillRect(0,0, 600, 58);
-
-        g2.setPaint(GP2);
-        g2.fillRect(0, 58, 600, 41);
-
-        g2.setPaint(GP3);
-        g2.fillRect(0, 139-y, 600, 9);
-
-        g2.setPaint(GP3);
-        g2.fillRect(0, 509-y,600, 10);
-
-        g2.setPaint(GP2);
-        g2.fillRect(0, 519-y, 600, 43);
-
-        g2.setPaint(GP4);
-        g2.fillRect(0, 561-y, 600, 16);
-        
-        g2.setPaint(GP5);
-        g2.fillRect(0, 577-y, 600, 25);
-
-
-        //Moon
-        buffer = UtilityFunction.Floodfill(buffer, 293, 131-y, Color.WHITE, new Color(0x1e406b));
-        
-    }
-
-    private void House2() {
         UtilityFunction.drawSquare(1, 332, 465, 370, 446, 380, 454, 341, 473);
         // หลังแรก
         UtilityFunction.drawLine(352, 473, 352, 509, 1);
@@ -239,10 +167,98 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(586, 509, 586, 501, 1);
         UtilityFunction.drawLine(587, 501, 576, 501, 1);
         UtilityFunction.drawLine(576, 500, 576, 509, 1);
+
+        //Color
+        Color c1 = new Color(95,126,171);
+        UtilityFunction.Floodfill(33,439, Color.WHITE, c1);
+        UtilityFunction.Floodfill(143,440, Color.WHITE, c1);
+        Color c2 = new Color(35,53,89);
+        UtilityFunction.Floodfill(103,473, Color.WHITE, c2);
+        UtilityFunction.Floodfill(79,440, Color.WHITE, c2);
+        UtilityFunction.Floodfill(98,438, Color.WHITE, c2);
+        UtilityFunction.Floodfill(190,458, Color.WHITE, c2);
+        UtilityFunction.Floodfill(268,449, Color.WHITE, c2);
+        UtilityFunction.Floodfill(215,473, Color.WHITE, c2);
+
+        UtilityFunction.Floodfill(350,460, Color.WHITE, c2);
+        UtilityFunction.Floodfill(389,465, Color.WHITE, c2);
+        UtilityFunction.Floodfill(423,470, Color.WHITE, c2);
+        UtilityFunction.Floodfill(473,451, Color.WHITE, c2);
+        UtilityFunction.Floodfill(505,437, Color.WHITE, c2);
+        UtilityFunction.Floodfill(518,458, Color.WHITE, c2);
+        UtilityFunction.Floodfill(539,436, Color.WHITE, c2);
+        UtilityFunction.Floodfill(575,447, Color.WHITE, c2);
+
+
+    }
+
+    private void Moon() {
+        UtilityFunction.drawCircle(286, 230, 43);
+
+        //UtilityFunction.Floodfill(286, 230, Color.WHITE, Color.GRAY);
+    }
+
+    private void Light() {
+        UtilityFunction.drawCircle(105, 446, 6);
+        UtilityFunction.drawCircle(126, 418, 7);
+        UtilityFunction.drawCircle(176, 428, 5);
+        UtilityFunction.drawCircle(214, 430, 6);
+        UtilityFunction.drawCircle(250, 484, 8);
+        UtilityFunction.drawCircle(303, 440, 5);
+        UtilityFunction.drawCircle(422, 422, 7);
+        UtilityFunction.drawCircle(478, 423, 6);
+        UtilityFunction.drawCircle(543, 433, 3);
+        UtilityFunction.drawCircle(561, 445, 3);
+    }
+
+    private void Structure() {
+        UtilityFunction.drawLine(0, 98, 600, 98, 1);
+        UtilityFunction.drawLine(0, 139, 600, 139, 1);
+        UtilityFunction.drawLine(0, 148, 600, 148, 1);
+        UtilityFunction.drawLine(0, 347, 600, 347, 1);
+        UtilityFunction.drawLine(0, 509, 600, 509, 1);
+        UtilityFunction.drawLine(0, 519, 600, 519, 1);
+        UtilityFunction.drawLine(0, 561, 600, 561, 1);
+        UtilityFunction.drawLine(260, 562, 281, 600, 1);
+        UtilityFunction.drawLine(65, 562, 78, 600, 1);
+        UtilityFunction.drawLine(441, 562, 470, 600, 1);
+        UtilityFunction.drawLine(0, 575, 600, 575, 1);
+
+        // GradientPaint GP1 = new GradientPaint(300, 0, new Color(0x102131), 300, 300,new Color(0x071829)); //เปลี่ยนสีให้สว่างหรือให้เสมือนขึ้น
+        // GradientPaint GP2 = new GradientPaint(300, 0, new Color(0x162c41), 300, 300,new Color(0x102d4a)); //เปลี่ยนสีให้สว่างหรือให้เสมือนขึ้น
+        // GradientPaint GP3 = new GradientPaint(300, 0, new Color(0x305b7e), 300, 300,new Color(0x305b7e));
+        // GradientPaint GP4 = new GradientPaint(300, 0, new Color(0x0a1522), 300, 300,new Color(0x061727));
+        // GradientPaint GP5 = new GradientPaint(0, 0, new Color(0x423535), 600, 300,new Color(0x806f6f));
+        // int y = 40;
+        // g2.setPaint(GP1);
+        // g2.fillRect(0,0, 600, 58);
+
+        // g2.setPaint(GP2);
+        // g2.fillRect(0, 58, 600, 41);
+
+        // g2.setPaint(GP3);
+        // g2.fillRect(0, 139-y, 600, 9);
+
+        // g2.setPaint(GP3);
+        // g2.fillRect(0, 509-y,600, 10);
+
+        // g2.setPaint(GP2);
+        // g2.fillRect(0, 519-y, 600, 43);
+
+        // g2.setPaint(GP4);
+        // g2.fillRect(0, 561-y, 600, 16);
+        
+        // g2.setPaint(GP5);
+        // g2.fillRect(0, 577-y, 600, 25);
+
+
+        //Moon
+        
     }
 
     private void BackLine() {
         int setx = 18;
+        UtilityFunction.drawLine(600 - setx,425,600,425,1);
         UtilityFunction.drawCurve(600 - setx, 425, 589 - setx, 435, 588 - setx, 425, 588 - setx, 411, 1);
         // tree 1
         UtilityFunction.drawLine(596 - setx, 427, 596 - setx, 413, 1);
@@ -387,6 +403,10 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(12 - setx, 398, 7 - setx, 395, 1);
         UtilityFunction.drawLine(7 - setx, 395, 1 - setx, 395, 1);
         UtilityFunction.drawLine(1 - setx, 395, 1 - setx, 412, 1);
+
+        Color background = new Color(32,41,59);
+        UtilityFunction.Floodfill(326,440, Color.WHITE, background);
+        UtilityFunction.Floodfill(180,471,Color.WHITE,background);
     }
 
     private void Lake() {
@@ -399,11 +419,12 @@ public class GraphicsSwing extends JPanel {
 
     private void Boat() {
         // เรือ
-        UtilityFunction.drawSquare(1, 447, 356, 447, 364, 447, 364, 450, 366, 450, 366, 487, 366, 487, 366, 491, 355,
-                491, 355, 487, 353, 487, 353,
-                486, 355, 486, 355, 475, 355, 475, 355, 475, 351, 475, 351, 463, 351, 463, 351, 463, 355, 463, 355, 457,
-                355, 457, 355, 457, 351, 457, 351,
-                451, 351, 451, 351, 451, 355, 451, 355, 447, 356);
+        UtilityFunction.drawSquare(1, 447, 356, 447, 364, 447, 364, 450, 366, 450, 366,
+                                                487, 366, 487, 366, 491, 355,491, 355, 487, 353, 
+                                                487, 353,486, 355, 486, 355, 475, 355, 475, 355,
+                                                475, 351, 475, 351, 463, 351, 463, 351, 463, 355,
+                                                463, 355, 457,355, 457, 355, 457, 351, 457, 351,451,
+                                                351, 451, 351, 451, 355, 451, 355, 447, 356);
 
         // smoke
         UtilityFunction.drawLine(457, 346, 464, 346, 1);
