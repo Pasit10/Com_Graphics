@@ -99,7 +99,7 @@ public final class UtilityFunction {
         }
     }
     // FloodFill ยังไม่เสร้จ
-    public BufferedImage Floodfill(BufferedImage m,int x,int y,Color target_color,Color replacement_color){
+    public static BufferedImage Floodfill(BufferedImage m,int x,int y,Color target_color,Color replacement_color){
         ArrayList<node> q = new ArrayList<>();
         q.add(new node(x, y));
         m.setRGB(x, y, replacement_color.getRGB());
@@ -124,7 +124,7 @@ public final class UtilityFunction {
         }
         return m;
     }
-    class node{
+    static class node{
         int x,y;
         node(int x,int y){this.x = x;this.y = y;}
     }
