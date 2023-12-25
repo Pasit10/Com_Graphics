@@ -6,15 +6,17 @@ import java.awt.*;
 public class GraphicsSwing extends JPanel {
     public void paintComponent(Graphics g) {
         UtilityFunction.setGraphice(g);
-        drawStructure();
-        drawHouse();
-
-        drawHouse2();
-        drawBackLine();
-        drawMoonAndCircle();
+        Structure();
+        House();
+        House2();
+        BackLine();
+        Light();
+        MoonAndCircle();
+        Lake();
+        Boat();
     }
 
-    private void drawHouse(){
+    private void House(){
         //บ้าน 1
         UtilityFunction.drawLine(0, 448, 33, 448, 1);
         UtilityFunction.drawLine(33, 448, 33, 509, 1);
@@ -85,13 +87,6 @@ public class GraphicsSwing extends JPanel {
 
         //UtilityFunction.drawSquare(1,285,455,293,455,293,464,285,464); // ต้องแก้ square
         UtilityFunction.drawSquare(1, 286,457,291,450,291,458,286,464);
-
-
-        //เรือ
-        UtilityFunction.drawSquare(1, 447,356,447,364,447,364,450,366,450,366,487,366,487,366,491,355,491,355,487,353,487, 353,
-        486, 355,486, 355 ,475, 355,475, 355 ,475, 351,475, 351 ,463, 351,463, 351 ,463, 355,463, 355 ,457, 355,457, 355 ,457, 351,457, 351,
-        451, 351,451, 351 ,451, 355,451, 355 ,447, 356);
-        
         
         //ต้นไม้
         UtilityFunction.drawLine(154, 486, 154, 494, 1);
@@ -107,8 +102,11 @@ public class GraphicsSwing extends JPanel {
 
     }
 
-    private void drawMoonAndCircle(){
+    private void MoonAndCircle(){
         UtilityFunction.drawCircle(286, 230, 43);
+    }
+
+    private void Light(){
         UtilityFunction.drawCircle(105, 446, 6);
         UtilityFunction.drawCircle(126, 418, 7);
         UtilityFunction.drawCircle(176, 428, 5);
@@ -121,7 +119,7 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawCircle(561, 445, 3);
     }
 
-    private void drawStructure() {
+    private void Structure() {
         UtilityFunction.drawLine(0, 98, 600, 98, 1);
         UtilityFunction.drawLine(0, 139, 600, 139, 1);
         UtilityFunction.drawLine(0, 148, 600, 148, 1);
@@ -135,7 +133,7 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(0, 575, 600, 575, 1);
     }
 
-    private void drawHouse2(){
+    private void House2(){
         UtilityFunction.drawSquare(1, 332,465,370,446,380,454,341,473);
         // หลังแรก
         UtilityFunction.drawLine(352,473, 352, 509,1);
@@ -168,9 +166,43 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawSquare(1,548,480,553,480,553,496,548,496);
 
         UtilityFunction.drawSquare(1, 562,438,585,439,579,455,553,449);
+
+        //tree component 
+        UtilityFunction.drawLine(432,477,452,468,1);
+        UtilityFunction.drawLine(452,468,452,458,1);
+        UtilityFunction.drawCurve(452,458,455,447,462,438,475,439,1);
+        UtilityFunction.drawCurve(475,439,474,442,475,447,480,447,1);
+        UtilityFunction.drawCurve(453,455,448,452,447,445,454,441,1);
+        UtilityFunction.drawLine(454,441,455,431,1);
+        UtilityFunction.drawLine(456,430,463,431,1);
+        UtilityFunction.drawLine(464,432,463,442,1);
+
+        // tree 2
+        UtilityFunction.drawLine(571,509,571,500,1);
+        UtilityFunction.drawCurve(572,500,568,501,568,500,569,489,1);
+        UtilityFunction.drawCurve(569,490,566,487,566,482,568,480,1);
+        UtilityFunction.drawCurve(568,479,567,479,567,474,568,473,1);
+        UtilityFunction.drawCurve(568,473,565,471,565,467,568,464,1);
+        UtilityFunction.drawLine(568,466,567,456,1);
+        UtilityFunction.drawLine(567,456,569,456,1);
+        UtilityFunction.drawCurve(569,456,571,452,572,453,575,456,1);
+        UtilityFunction.drawLine(575,456,575,462,1);
+        UtilityFunction.drawLine(575,462,578,463,1);
+        UtilityFunction.drawLine(578,463,580,476,1);
+        UtilityFunction.drawLine(580,476,583,476,1);
+        UtilityFunction.drawLine(583,476,584,465,1);
+        UtilityFunction.drawLine(584,465,588,465,1);
+        UtilityFunction.drawLine(588,465,593,474,1);
+        UtilityFunction.drawLine(593,474,598,474,1);
+        UtilityFunction.drawLine(598,474,598,502,1);
+        UtilityFunction.drawLine(598,502,591,502,1);
+        UtilityFunction.drawLine(591,502,591,509,1);
+        UtilityFunction.drawLine(586,509,586,501,1);
+        UtilityFunction.drawLine(587,501,576,501,1);
+        UtilityFunction.drawLine(576,500,576,509,1);
     }
 
-    private void drawBackLine(){
+    private void BackLine(){
         int setx = 18;
         UtilityFunction.drawCurve(600 - setx,425,589 - setx,435,588 - setx,425,588 - setx,411,1);
         // tree 1
@@ -207,6 +239,7 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawCurve(449 - setx,416,447 - setx,417,445 - setx,419,446 - setx,425,1);
         UtilityFunction.drawLine(446 - setx,425,428 - setx,425,1);
         // tree 3
+            UtilityFunction.drawSquare(1, 440 - setx, 425 ,440 - setx,418,441 - setx,418,440 - setx,406,436 - setx,405,434 - setx,416,435 - setx,418,437 - setx,418,437 - setx,425);
 
         UtilityFunction.drawLine(428 - setx,427,428 - setx,413,1);
         UtilityFunction.drawCurve(428 - setx,413,423 - setx,406,423 - setx,408,422 - setx,417, 1);
@@ -227,6 +260,11 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(381 - setx,426,359 - setx,426,1);
 
         // tree 4
+            UtilityFunction.drawLine(370 - setx,425,370 - setx,409,1);
+            UtilityFunction.drawLine(370 - setx,409,376 - setx,402,1);
+            UtilityFunction.drawCurve(370 - setx, 414, 370 - setx, 407,367 - setx,403, 364- setx,403,1);
+            UtilityFunction.drawCurve(370 - setx, 421 ,369 - setx, 417,368 -  setx, 416, 366 - setx, 416, 1);
+            UtilityFunction.drawLine(370 - setx,419,374 - setx,414,1);
 
         UtilityFunction.drawLine(359- setx,426,360 - setx,417,1);
         UtilityFunction.drawLine(360 - setx,417,344 -setx,414,1);
@@ -246,7 +284,11 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(245 - setx ,417 ,245 - setx,425,1);
         UtilityFunction.drawLine(246 - setx,425,218 - setx,425,1);
         // tree
-
+            UtilityFunction.drawLine(227 - setx,425,227 - setx,400,1);
+            UtilityFunction.drawLine(227 - setx,410,219 - setx,401,1);
+            UtilityFunction.drawLine(227 - setx,408,234 - setx,401,1);
+            UtilityFunction.drawLine(227 - setx,418,218 - setx,411,1);
+            UtilityFunction.drawLine(227 - setx,418,233 - setx,413,1);
 
         UtilityFunction.drawLine(218 - setx,425,219 - setx,421,1);
         UtilityFunction.drawLine(219 - setx,421,213 - setx,419,1);
@@ -280,6 +322,11 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(161-setx, 408, 161-setx, 418, 1);
         UtilityFunction.drawLine(161-setx, 418, 97-setx, 419, 1);
         //tree
+            UtilityFunction.drawLine(98 - setx,414,98 - setx,411,1);
+            UtilityFunction.drawCurve(98 - setx , 411,89 - setx,409,97 - setx,398,99 - setx,398,1);
+            UtilityFunction.drawCurve(99 - setx,398 ,101 - setx,402,106 - setx,408,101 - setx,411,1);
+            UtilityFunction.drawLine(101 - setx,411,101 - setx,419,1);
+
         UtilityFunction.drawLine(97-setx, 424, 97-setx, 414, 1);
         UtilityFunction.drawLine(97-setx, 414, 88-setx, 413, 1);
         UtilityFunction.drawLine(88-setx, 413, 87-setx, 424, 1);
@@ -299,5 +346,41 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(12-setx, 398, 7-setx, 395, 1);
         UtilityFunction.drawLine(7-setx, 395, 1-setx, 395, 1);
         UtilityFunction.drawLine(1-setx, 395, 1-setx, 412, 1);
+    }
+
+    private void Lake(){
+        UtilityFunction.drawCurve(337,347,351,363,337,397,316,411,1);
+        UtilityFunction.drawLine(316,411,270,410,1);
+        UtilityFunction.drawCurve(270,410,260,408,257,406,257,401,1);
+        UtilityFunction.drawCurve(257,401,253,393,242,387,231,385,1);
+        UtilityFunction.drawCurve(231,385,211,372,209,355,239,347,1);
+    }
+
+    private void Boat(){
+        //เรือ
+        UtilityFunction.drawSquare(1, 447,356,447,364,447,364,450,366,450,366,487,366,487,366,491,355,491,355,487,353,487, 353,
+        486, 355,486, 355 ,475, 355,475, 355 ,475, 351,475, 351 ,463, 351,463, 351 ,463, 355,463, 355 ,457, 355,457, 355 ,457, 351,457, 351,
+        451, 351,451, 351 ,451, 355,451, 355 ,447, 356);
+
+        //smoke
+        UtilityFunction.drawLine(457,346,464,346,1);
+        UtilityFunction.drawCurve(464,346,464,342,465,341,469,341,1);
+        UtilityFunction.drawLine(469,341,469,333,1);
+        UtilityFunction.drawLine(469,333,466,330,1);
+        UtilityFunction.drawLine(466,330,466,322,1);
+        UtilityFunction.drawCurve(466,322,465,318,463,314,459,314,1);
+        UtilityFunction.drawLine(459,314,445,314,1);
+        UtilityFunction.drawCurve(445,314,435,319,434,309,445,309,1);
+        UtilityFunction.drawCurve(445,309,449,307,449,304,443,303,1);
+        UtilityFunction.drawLine(443,303,430,303,1);
+        UtilityFunction.drawCurve(430,303,425,302,428,292,425,290,1);
+        UtilityFunction.drawLine(425,290,393,290,1);
+        UtilityFunction.drawCurve(393,290,389,294,389,301,399,303,1);
+        UtilityFunction.drawCurve(399,303,394,308,395,310,408,311,1);
+        UtilityFunction.drawCurve(408,311,409,319,416,322,429,323,1);
+        UtilityFunction.drawCurve(429,323,431,332,442,331,444,337,1);
+        UtilityFunction.drawLine(444,337,455,339,1);
+        UtilityFunction.drawLine(455,339,457,341,1);
+        UtilityFunction.drawLine(457,341,457,346,1);
     }
 }
