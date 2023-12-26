@@ -6,8 +6,12 @@ import java.util.ArrayList;
 
 public final class UtilityFunction {
     private static Graphics g;
+    private static BufferedImage buffer = new BufferedImage(601, 601, BufferedImage.TYPE_INT_ARGB);
+    private static Graphics2D g2 = buffer.createGraphics();
     // set Graphics in this class not null
     public static void setGraphice(Graphics graphics){
+        g2.setColor(Color.WHITE);
+        g2.fillRect(0, 0, 600,600);
         g = graphics;
     }
     // default coler (black) for drawLine method
@@ -72,21 +76,25 @@ public final class UtilityFunction {
         drawLine(xy[xy.length - 2], xy[xy.length - 1],xy[0],xy[1], size, c);
     }
     // draw Cicle
-    public static void drawCircle(int centerX, int centerY, int radius) {
+    public static void drawCircle(int centerX,int centerY,int radius,int size){
+        drawCircle(centerX, centerY, radius,size,Color.black);
+    }
+
+    public static void drawCircle(int centerX, int centerY, int radius,int size,Color c) {
         int x = radius;
         int y = 0;
         centerY-=30;
         int radiusError = 1 - x;
 
         while (x >= y) {
-            plot(centerX + x, centerY - y,Color.black,1);
-            plot(centerX - x, centerY - y,Color.black,1);
-            plot(centerX + x, centerY + y,Color.black,1);
-            plot(centerX - x, centerY + y,Color.black,1);
-            plot(centerX + y, centerY - x,Color.black,1);
-            plot(centerX - y, centerY - x,Color.black,1);
-            plot(centerX + y, centerY + x,Color.black,1);
-            plot(centerX - y, centerY + x,Color.black,1);
+            plot(centerX + x, centerY - y,c,size);
+            plot(centerX - x, centerY - y,c,size);
+            plot(centerX + x, centerY + y,c,size);
+            plot(centerX - x, centerY + y,c,size);
+            plot(centerX + y, centerY - x,c,size);
+            plot(centerX - y, centerY - x,c,size);
+            plot(centerX + y, centerY + x,c,size);
+            plot(centerX - y, centerY + x,c,size);
 
             y++;
 
@@ -99,74 +107,40 @@ public final class UtilityFunction {
         }
     }
     // FloodFill ยังไม่เสร้จ
-    public static BufferedImage Floodfill(BufferedImage m,int x,int y,Color target_color,Color replacement_color){
+    public static void Floodfill(int x,int y,Color target_color,Color replacement_color){
+        y-= 40;
         ArrayList<node> q = new ArrayList<>();
         q.add(new node(x, y));
-        m.setRGB(x, y, replacement_color.getRGB());
+        buffer.setRGB(x, y, replacement_color.getRGB());
         while(!q.isEmpty()){
             node current = q.remove(0);
-            if(y - 1 >= 0 && m.getRGB(current.x , current.y - 1) == target_color.getRGB()){
-                m.setRGB(current.x, current.y - 1, replacement_color.getRGB());
+            if(current.y - 1 >= 0 && buffer.getRGB(current.x , current.y - 1) == target_color.getRGB()){
+                buffer.setRGB(current.x, current.y - 1, replacement_color.getRGB());
                 q.add(new node(current.x, current.y - 1));
             }
-            if(y + 1 <= 600 && m.getRGB(current.x , current.y + 1) == target_color.getRGB()){
-                m.setRGB(current.x, current.y + 1, replacement_color.getRGB());
+            if(current.y + 1 <= 600 && buffer.getRGB(current.x , current.y + 1) == target_color.getRGB()){
+                buffer.setRGB(current.x, current.y + 1, replacement_color.getRGB());
                 q.add(new node(current.x, current.y + 1));
             }
-            if(x - 1 >= 0 && m.getRGB(current.x - 1, current.y) == target_color.getRGB()){
-                m.setRGB(current.x - 1,current.y, replacement_color.getRGB());
+            if(current.x - 1 >= 0 && buffer.getRGB(current.x - 1, current.y) == target_color.getRGB()){
+                buffer.setRGB(current.x - 1,current.y, replacement_color.getRGB());
                 q.add(new node(current.x - 1, current.y));
             }
-            if(x + 1 <= 600 && m.getRGB(current.x + 1, current.y) == target_color.getRGB()){
-                m.setRGB(current.x + 1,current.y, replacement_color.getRGB());
+            if(current.x + 1 <= 600 && buffer.getRGB(current.x + 1, current.y) == target_color.getRGB()){
+                buffer.setRGB(current.x + 1,current.y, replacement_color.getRGB());
                 q.add(new node(current.x + 1, current.y));
             }
         }
-        return m;
+        g.drawImage(buffer, 0,0,null);
     }
-    static class node{
+    private static class node{
         int x,y;
         node(int x,int y){this.x = x;this.y = y;}
     }
 
     // plot dot(vertex) at (x,y)
     private static void plot(int x,int y,Color c,int size){
-        g.setColor(c);
-        g.fillRect(x, y, size,size);
-    }
-
-
-    // ----------------------- test space (prototype) ------------------------------------//
-    private static void drawCircleUsingBezierCurve() {
-        int radius = 100; // Adjust the radius as needed
-        int centerX = 200; // Adjust the center X-coordinate
-        int centerY = 200; // Adjust the center Y-coordinate
-
-        // Calculate control points based on the circle equation
-        int x1 = centerX + radius;
-        int y1 = centerY;
-
-        int x2 = (int)(centerX + radius * Math.cos(Math.PI / 4));
-        int y2 = (int)(centerY + radius * Math.sin(Math.PI / 4));
-
-        int x3 = (int)(centerX + radius * Math.cos(2 * Math.PI / 4));
-        int y3 = (int)(centerY + radius * Math.sin(2 * Math.PI / 4));
-
-        int x4 = centerX;
-        int y4 = centerY + radius;
-
-        // Call the BezierCurve method with the new control points
-        BezierCurve(x1, y1, x2, y2, x3, y3, x4, y4);
-    }
-
-    private static void BezierCurve(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
-        for (double t = 0; t <= 1; t += 0.001) {
-            int x = (int) (Math.pow(1 - t, 3) * x1 + 3 * t * Math.pow(1 - t, 2) * x2
-                    + 3 * t * t * (1 - t) * x3 + Math.pow(t, 3) * x4);
-            int y = (int) (Math.pow(1 - t, 3) * y1 + 3 * t * Math.pow(1 - t, 2) * y2
-                    + 3 * t * t * (1 - t) * y3 + Math.pow(t, 3) * y4);
-            plot(x, y,Color.black,1);
-        }
-        drawCircleUsingBezierCurve();
+        g2.setColor(c);
+        g2.fillRect(x, y, size,size);
     }
 }
