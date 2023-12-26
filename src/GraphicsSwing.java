@@ -193,22 +193,22 @@ public class GraphicsSwing extends JPanel {
     }
 
     private void Moon() {
-        UtilityFunction.drawCircle(286, 230, 43);
+        UtilityFunction.drawCircle(286, 230, 43,1);
 
         //UtilityFunction.Floodfill(286, 230, Color.WHITE, Color.GRAY);
     }
 
     private void Light() {
-        UtilityFunction.drawCircle(105, 446, 6);
-        UtilityFunction.drawCircle(126, 418, 7);
-        UtilityFunction.drawCircle(176, 428, 5);
-        UtilityFunction.drawCircle(214, 430, 6);
-        UtilityFunction.drawCircle(250, 484, 8);
-        UtilityFunction.drawCircle(303, 440, 5);
-        UtilityFunction.drawCircle(422, 422, 7);
-        UtilityFunction.drawCircle(478, 423, 6);
-        UtilityFunction.drawCircle(543, 433, 3);
-        UtilityFunction.drawCircle(561, 445, 3);
+        UtilityFunction.drawCircle(105, 446, 6,1);
+        UtilityFunction.drawCircle(126, 418, 7,1);
+        UtilityFunction.drawCircle(176, 428, 5,1);
+        UtilityFunction.drawCircle(214, 430, 6,1);
+        UtilityFunction.drawCircle(250, 484, 8,1);
+        UtilityFunction.drawCircle(303, 440, 5,1);
+        UtilityFunction.drawCircle(422, 422, 7,1);
+        UtilityFunction.drawCircle(478, 423, 6,1);
+        UtilityFunction.drawCircle(543, 433, 3,1);
+        UtilityFunction.drawCircle(561, 445, 3,1);
     }
 
     private void Structure() {

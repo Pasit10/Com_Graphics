@@ -76,25 +76,25 @@ public final class UtilityFunction {
         drawLine(xy[xy.length - 2], xy[xy.length - 1],xy[0],xy[1], size, c);
     }
     // draw Cicle
-    public static void drawCircle(int centerX,int centerY,int radius){
-        drawCircle(centerX, centerY, radius,Color.black);
+    public static void drawCircle(int centerX,int centerY,int radius,int size){
+        drawCircle(centerX, centerY, radius,size,Color.black);
     }
-    
-    public static void drawCircle(int centerX, int centerY, int radius,Color c) {
+
+    public static void drawCircle(int centerX, int centerY, int radius,int size,Color c) {
         int x = radius;
         int y = 0;
         centerY-=30;
         int radiusError = 1 - x;
 
         while (x >= y) {
-            plot(centerX + x, centerY - y,Color.black,1);
-            plot(centerX - x, centerY - y,Color.black,1);
-            plot(centerX + x, centerY + y,Color.black,1);
-            plot(centerX - x, centerY + y,Color.black,1);
-            plot(centerX + y, centerY - x,Color.black,1);
-            plot(centerX - y, centerY - x,Color.black,1);
-            plot(centerX + y, centerY + x,Color.black,1);
-            plot(centerX - y, centerY + x,Color.black,1);
+            plot(centerX + x, centerY - y,c,size);
+            plot(centerX - x, centerY - y,c,size);
+            plot(centerX + x, centerY + y,c,size);
+            plot(centerX - x, centerY + y,c,size);
+            plot(centerX + y, centerY - x,c,size);
+            plot(centerX - y, centerY - x,c,size);
+            plot(centerX + y, centerY + x,c,size);
+            plot(centerX - y, centerY + x,c,size);
 
             y++;
 
