@@ -6,14 +6,16 @@ import java.awt.*;
 public class GraphicsSwing extends JPanel {
     public void paintComponent(Graphics g) {
         UtilityFunction.setGraphice(g);
-        Structure();
-        House();
+        //Structure();
+        // House();
         // House2();
-        BackLine();
-        Light();
-        Moon();
-        Lake();
-        Boat();
+        // BackLine();
+        // Light();
+        // Moon();
+        // Lake();
+        // Boat();
+        //UtilityFunction.drawCircle(300,300,50,1);
+        UtilityFunction.floodFillGradient(0,0,600,0,Color.GREEN,Color.RED,Color.BLACK);
     }
 
     private void House() {

@@ -135,6 +135,32 @@ public final class UtilityFunction {
         }
         g.drawImage(buffer, 0,0,null);
     }
+    public static void FloodfillUpgrade(int x,int y,Color border_color,Color replacement_color){
+        y-= 40;
+        ArrayList<node> q = new ArrayList<>();
+        q.add(new node(x, y));
+        buffer.setRGB(x, y, replacement_color.getRGB());
+        while(!q.isEmpty()){
+            node current = q.remove(0);
+            if(current.y - 1 >= 0 && buffer.getRGB(current.x , current.y - 1) != border_color.getRGB()){
+                buffer.setRGB(current.x, current.y - 1, replacement_color.getRGB());
+                q.add(new node(current.x, current.y - 1));
+            }
+            if(current.y + 1 <= 600 && buffer.getRGB(current.x , current.y + 1) != border_color.getRGB()){
+                buffer.setRGB(current.x, current.y + 1, replacement_color.getRGB());
+                q.add(new node(current.x, current.y + 1));
+            }
+            if(current.x - 1 >= 0 && buffer.getRGB(current.x - 1, current.y) != border_color.getRGB()){
+                buffer.setRGB(current.x - 1,current.y, replacement_color.getRGB());
+                q.add(new node(current.x - 1, current.y));
+            }
+            if(current.x + 1 <= 600 && buffer.getRGB(current.x + 1, current.y) != border_color.getRGB()){
+                buffer.setRGB(current.x + 1,current.y, replacement_color.getRGB());
+                q.add(new node(current.x + 1, current.y));
+            }
+        }
+        g.drawImage(buffer, 0,0,null);
+    }
     private static class node{
         int x,y;
         node(int x,int y){this.x = x;this.y = y;}
