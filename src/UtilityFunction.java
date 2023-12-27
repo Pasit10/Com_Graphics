@@ -3,6 +3,8 @@ package src;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public final class UtilityFunction {
     private static Graphics g;
@@ -137,6 +139,79 @@ public final class UtilityFunction {
         int x,y;
         node(int x,int y){this.x = x;this.y = y;}
     }
+
+    private BufferedImage floodFillGradient(BufferedImage m, int xStart, int yStart, int xEnd, int yEnd,Color startColor, Color endColor, Color target) {
+                Graphics2D g2 = m.createGraphics();
+                Queue<Point> q = new LinkedList<>();
+
+                float ratio = (float) (yStart - yStart) / (yEnd - yStart - 1);
+
+                Color lineColor = interpolateColor(startColor, endColor, ratio);
+                Color lineColor1 = interpolateColor(startColor, endColor, ratio);
+                Color lineColor2 = interpolateColor(startColor, endColor, ratio);
+
+                if (m.getRGB(xStart, yStart) != target.getRGB()) {
+                        plot(xStart, yStart,lineColor, 1);
+                        q.add(new Point(xStart, yStart));
+                }
+
+                while (!q.isEmpty()) {
+                        Point p = q.poll();
+
+                        ratio = (float) (p.y - yStart) / (yEnd - yStart - 1);
+                        lineColor = interpolateColor(startColor, endColor, ratio);
+
+                        // y-1
+                        ratio = (float) (p.y - yStart - 1) / (yEnd - yStart - 1);
+                        lineColor1 = interpolateColor(startColor, endColor, ratio);
+
+                        // y+1
+                        ratio = (float) (p.y - yStart + 1) / (yEnd - yStart - 1);
+                        lineColor2 = interpolateColor(startColor, endColor, ratio);
+
+                        // s
+                        if (p.y + 1 < 600 && (m.getRGB(p.x, p.y + 1) != target.getRGB())) {
+                                if (m.getRGB(p.x, p.y + 1) != lineColor2.getRGB()) {
+                                        plot(p.x, p.y + 1,lineColor2, 1);
+                                        q.add(new Point(p.x, p.y + 1));
+                                }
+                        }
+                        // n
+                        if (p.y - 1 > 0 && (m.getRGB(p.x, p.y - 1) != target.getRGB())) {
+                                if (m.getRGB(p.x, p.y - 1) != lineColor1.getRGB()) {
+                                        plot(p.x, p.y - 1,lineColor1, 1);
+                                        q.add(new Point(p.x, p.y - 1));
+                                }
+                        }
+                        // e
+                        if (p.x + 1 < 600 && (m.getRGB(p.x + 1, p.y) != target.getRGB())) {
+                                if (m.getRGB(p.x + 1, p.y) != lineColor.getRGB()) {
+                                        plot(p.x + 1, p.y,lineColor,1);
+                                        q.add(new Point(p.x + 1, p.y));
+                                }
+                        }
+                        // w
+                        if (p.x - 1 > 0 && (m.getRGB(p.x - 1, p.y) != target.getRGB())) {
+                                if (m.getRGB(p.x - 1, p.y) != lineColor.getRGB()) {
+                                        plot(p.x - 1, p.y, lineColor,1);
+                                        q.add(new Point(p.x - 1, p.y));
+                                }
+                        }
+
+                }
+                return m;
+        }
+
+        private Color interpolateColor(Color startColor, Color endColor, float ratio) {
+                int red = Math.max(0, Math.min(255, (int) (startColor.getRed() * (1 - ratio) +
+                                endColor.getRed() * ratio)));
+                int green = Math.max(0, Math.min(255, (int) (startColor.getGreen() * (1 - ratio) +
+                                endColor.getGreen() * ratio)));
+                int blue = Math.max(0, Math.min(255, (int) (startColor.getBlue() * (1 - ratio) +
+                                endColor.getBlue() * ratio)));
+
+                return new Color(red, green, blue);
+        }
 
     // plot dot(vertex) at (x,y)
     private static void plot(int x,int y,Color c,int size){

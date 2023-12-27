@@ -407,6 +407,23 @@ public class GraphicsSwing extends JPanel {
         Color background = new Color(32,41,59);
         UtilityFunction.Floodfill(326,440, Color.WHITE, background);
         UtilityFunction.Floodfill(180,471,Color.WHITE,background);
+        UtilityFunction.Floodfill(99-setx, 407, Color.WHITE, background);
+        UtilityFunction.Floodfill(438-setx, 414, Color.WHITE, background);
+        UtilityFunction.Floodfill(559-setx, 411, Color.WHITE, background);
+        UtilityFunction.Floodfill(41, 465, Color.WHITE, background);
+        UtilityFunction.Floodfill(15, 482, Color.WHITE, new Color(0x1d3851));
+        UtilityFunction.Floodfill(129, 461, Color.WHITE, new Color(0x1d3851));
+        UtilityFunction.Floodfill(82, 457, Color.WHITE, background);
+        UtilityFunction.Floodfill(53, 460, Color.WHITE, background);
+        UtilityFunction.Floodfill(101, 462, Color.WHITE, background);
+        UtilityFunction.Floodfill(156, 471, Color.WHITE, new Color(0x1d3851));
+        UtilityFunction.Floodfill(360, 492, Color.WHITE, background);
+        UtilityFunction.Floodfill(366, 491, Color.WHITE, background);
+        UtilityFunction.Floodfill(392, 476, Color.WHITE, background);
+        UtilityFunction.Floodfill(426, 498, Color.WHITE, background);
+        UtilityFunction.Floodfill(520, 446, Color.WHITE, background);
+        UtilityFunction.Floodfill(573, 484, Color.WHITE, new Color(0x1d3851));
+        UtilityFunction.Floodfill(581, 504, Color.WHITE, background);
     }
 
     private void Lake() {
