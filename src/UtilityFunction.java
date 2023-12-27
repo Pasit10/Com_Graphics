@@ -108,6 +108,32 @@ public final class UtilityFunction {
             }
         }
     }
+
+    public static void drawHalfCircle(int centerX, int centerY, int radius,int size,Color c) {
+        int x = radius;
+        int y = 0;
+        centerY-=30;
+        int radiusError = 1 - x;
+
+        while (x >= y) {
+            plot(centerX + x, centerY - y,c,size);
+            plot(centerX - x, centerY - y,c,size);
+            plot(centerX + x, centerY + y,c,size);
+            plot(centerX - x, centerY + y,c,size);
+            plot(centerX + y, centerY + x,c,size);
+            plot(centerX - y, centerY + x,c,size);
+
+            y++;
+
+            if (radiusError < 0) {
+                radiusError += 2 * y + 1;
+            } else {
+                x--;
+                radiusError += 2 * (y - x) + 1;
+            }
+        }
+    }
+
     // FloodFill ยังไม่เสร้จ
     public static void Floodfill(int x,int y,Color target_color,Color replacement_color){
         y-= 40;

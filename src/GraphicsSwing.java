@@ -194,7 +194,7 @@ public class GraphicsSwing extends JPanel {
 
     private void Moon() {
         UtilityFunction.drawCircle(286, 230, 43,1);
-
+        UtilityFunction.floodFillGradient(283, 237, 286, 315, new Color(0xf8cabd), new Color(0xf9c7b9), Color.BLACK);
         //UtilityFunction.Floodfill(286, 230, Color.WHITE, Color.GRAY);
     }
 
@@ -229,7 +229,7 @@ public class GraphicsSwing extends JPanel {
         // GradientPaint GP3 = new GradientPaint(300, 0, new Color(0x305b7e), 300, 300,new Color(0x305b7e));
         // GradientPaint GP4 = new GradientPaint(300, 0, new Color(0x0a1522), 300, 300,new Color(0x061727));
         // GradientPaint GP5 = new GradientPaint(0, 0, new Color(0x423535), 600, 300,new Color(0x806f6f));
-        // int y = 40;
+        int y = 40;
         // g2.setPaint(GP1);
         // g2.fillRect(0,0, 600, 58);
 
@@ -251,7 +251,17 @@ public class GraphicsSwing extends JPanel {
         // g2.setPaint(GP5);
         // g2.fillRect(0, 577-y, 600, 25);
 
-
+        UtilityFunction.floodFillGradient(0, 0, 600, 97, new Color(0x102131), new Color(0x0b1c2c), Color.BLACK);
+        UtilityFunction.floodFillGradient(0,99-y, 600, 139-y, new Color(0x182f41), new Color(0x0c2d47), Color.BLACK);
+        UtilityFunction.floodFillGradient(0,140-y, 600, 147-y, new Color(0x294d6d), new Color(0x244e74), Color.BLACK);
+        UtilityFunction.floodFillGradient(0,510-y, 600, 517-y, new Color(0x294d6d), new Color(0x244e74), Color.BLACK);
+        // UtilityFunction.floodFillGradient(0,520-y, 600, 560-y, new Color(0x0a2a41), new Color(0x122333), Color.BLACK);
+        UtilityFunction.floodFillGradient(0,520-y, 600, 560-y, new Color(0x182f41), new Color(0x0c2d47), Color.BLACK);
+        UtilityFunction.floodFillGradient(0,562-y, 600, 575-y, new Color(0x091723), new Color(0x06131c), Color.BLACK);
+        UtilityFunction.floodFillGradient(123,562-y, 600, 575-y, new Color(0x091723), new Color(0x06131c), Color.BLACK);
+        UtilityFunction.floodFillGradient(316,562-y, 600, 575-y, new Color(0x091723), new Color(0x06131c), Color.BLACK);
+        UtilityFunction.floodFillGradient(500,562-y, 600, 575-y, new Color(0x091723), new Color(0x06131c), Color.BLACK);
+        
         //Moon
         
     }
@@ -424,14 +434,24 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.Floodfill(520, 446, Color.WHITE, background);
         UtilityFunction.Floodfill(573, 484, Color.WHITE, new Color(0x1d3851));
         UtilityFunction.Floodfill(581, 504, Color.WHITE, background);
+
+
+
+        //Sky
+        UtilityFunction.floodFillGradient(0, 149, 65, 346, new Color(0x0c3759), new Color(0x164674), Color.BLACK);
+        //Ocean
+        UtilityFunction.floodFillGradient(0, 348, 65, 426, new Color(0x37699a), new Color(0x50759a), Color.BLACK);
     }
 
     private void Lake() {
-        UtilityFunction.drawCurve(337, 347, 351, 363, 337, 397, 316, 411, 1);
-        UtilityFunction.drawLine(316, 411, 270, 410, 1);
-        UtilityFunction.drawCurve(270, 410, 260, 408, 257, 406, 257, 401, 1);
-        UtilityFunction.drawCurve(257, 401, 253, 393, 242, 387, 231, 385, 1);
-        UtilityFunction.drawCurve(231, 385, 211, 372, 209, 355, 239, 347, 1);
+        // UtilityFunction.drawCurve(337, 347, 351, 363, 337, 397, 316, 411, 1);
+        // UtilityFunction.drawLine(316, 411, 270, 410, 1);
+        // UtilityFunction.drawCurve(270, 410, 260, 408, 257, 406, 257, 401, 1);
+        // UtilityFunction.drawCurve(257, 401, 253, 393, 242, 387, 231, 385, 1);
+        // UtilityFunction.drawCurve(231, 385, 211, 372, 209, 355, 239, 347, 1);
+        UtilityFunction.drawHalfCircle(286, 363, 37,1,Color.BLACK);
+        UtilityFunction.floodFillGradient(268, 348, 307, 410, new Color(0xf8c8bc), new Color(0x879fbb), Color.BLACK);
+
     }
 
     private void Boat() {
@@ -441,7 +461,9 @@ public class GraphicsSwing extends JPanel {
                                                 487, 353,486, 355, 486, 355, 475, 355, 475, 355,
                                                 475, 351, 475, 351, 463, 351, 463, 351, 463, 355,
                                                 463, 355, 457,355, 457, 355, 457, 351, 457, 351,451,
-                                                351, 451, 351, 451, 355, 451, 355, 447, 356);
+                                                351, 451, 351, 451, 355, 451, 355, 447, 356); 
+        
+        UtilityFunction.FloodfillUpgrade(467, 358, Color.BLACK, new Color(0x011f43));
 
         // smoke
         UtilityFunction.drawLine(457, 346, 464, 346, 1);
@@ -463,5 +485,8 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawLine(444, 337, 455, 339, 1);
         UtilityFunction.drawLine(455, 339, 457, 341, 1);
         UtilityFunction.drawLine(457, 341, 457, 346, 1);
+
+        UtilityFunction.floodFillGradient(407, 293, 462, 345, new Color(0x5380ad), new Color(0xabc2d3),Color.BLACK);
+        UtilityFunction.floodFillGradient(407, 291-40, 462, 345-40, new Color(0x5380ad), new Color(0xabc2d3),Color.BLACK);
     }
 }
