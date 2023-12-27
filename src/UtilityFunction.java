@@ -142,23 +142,24 @@ public final class UtilityFunction {
         buffer.setRGB(x, y, replacement_color.getRGB());
         while(!q.isEmpty()){
             node current = q.remove(0);
-            if(current.y - 1 >= 0 && buffer.getRGB(current.x , current.y - 1) != border_color.getRGB()){
+            if(current.y - 1 >= 0 && buffer.getRGB(current.x , current.y - 1) != border_color.getRGB() && buffer.getRGB(current.x , current.y - 1) != replacement_color.getRGB()){
                 buffer.setRGB(current.x, current.y - 1, replacement_color.getRGB());
                 q.add(new node(current.x, current.y - 1));
             }
-            if(current.y + 1 <= 600 && buffer.getRGB(current.x , current.y + 1) != border_color.getRGB()){
+            if(current.y + 1 <= 600 && buffer.getRGB(current.x , current.y + 1) != border_color.getRGB() && buffer.getRGB(current.x , current.y + 1) != replacement_color.getRGB()){
                 buffer.setRGB(current.x, current.y + 1, replacement_color.getRGB());
                 q.add(new node(current.x, current.y + 1));
             }
-            if(current.x - 1 >= 0 && buffer.getRGB(current.x - 1, current.y) != border_color.getRGB()){
+            if(current.x - 1 >= 0 && buffer.getRGB(current.x - 1, current.y) != border_color.getRGB() && buffer.getRGB(current.x - 1 , current.y) != replacement_color.getRGB()){
                 buffer.setRGB(current.x - 1,current.y, replacement_color.getRGB());
                 q.add(new node(current.x - 1, current.y));
             }
-            if(current.x + 1 <= 600 && buffer.getRGB(current.x + 1, current.y) != border_color.getRGB()){
+            if(current.x + 1 <= 600 && buffer.getRGB(current.x + 1, current.y) != border_color.getRGB() && buffer.getRGB(current.x + 1 , current.y) != replacement_color.getRGB()){
                 buffer.setRGB(current.x + 1,current.y, replacement_color.getRGB());
                 q.add(new node(current.x + 1, current.y));
             }
         }
+        System.out.println("End");
         g.drawImage(buffer, 0,0,null);
     }
     private static class node{
