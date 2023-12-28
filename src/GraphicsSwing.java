@@ -8,7 +8,6 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.setGraphice(g);
         Structure();
         House();
-        // House2();
         BackLine();
         Light();
         Moon();
@@ -261,7 +260,9 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.floodFillGradient(123,562-y, 600, 575-y, new Color(0x091723), new Color(0x06131c), Color.BLACK);
         UtilityFunction.floodFillGradient(316,562-y, 600, 575-y, new Color(0x091723), new Color(0x06131c), Color.BLACK);
         UtilityFunction.floodFillGradient(500,562-y, 600, 575-y, new Color(0x091723), new Color(0x06131c), Color.BLACK);
-        
+        Color start = new Color(15,25,38);
+        Color end = new Color(82,70,61);
+        UtilityFunction.floodFillGradienthorizontal(0,580 - y,600,580 - y,start,end,Color.BLACK);
         //Moon
         
     }
