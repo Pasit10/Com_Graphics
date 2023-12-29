@@ -8,7 +8,6 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.setGraphice(g);
         Structure();
         House();
-        // House2();
         BackLine();
         Light();
         Moon();
@@ -209,6 +208,19 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawCircle(478, 423, 6,1);
         UtilityFunction.drawCircle(543, 433, 3,1);
         UtilityFunction.drawCircle(561, 445, 3,1);
+        int y = 5;
+        Color light = new Color(181,192,193);
+        //Color light = Color.WHITE;
+        UtilityFunction.FloodfillUpgrade(105, 446 + y, Color.BLACK,light);
+        UtilityFunction.FloodfillUpgrade(126, 418 + y, Color.BLACK,light);
+        UtilityFunction.FloodfillUpgrade(176, 428 + 6, Color.BLACK,light);
+        UtilityFunction.FloodfillUpgrade(214, 430 + y, Color.BLACK,light);
+        UtilityFunction.FloodfillUpgrade(250, 484 + y, Color.BLACK,light);
+        UtilityFunction.FloodfillUpgrade(303, 440 + y + 1, Color.BLACK,light);
+        UtilityFunction.FloodfillUpgrade(422, 422 + y, Color.BLACK,light);
+        UtilityFunction.FloodfillUpgrade(478, 423 + y, Color.BLACK,light);
+        UtilityFunction.FloodfillUpgrade(543, 433 + y + 3, Color.BLACK,light);
+        UtilityFunction.FloodfillUpgrade(561, 445 + y + 3, Color.BLACK,light);
     }
 
     private void Structure() {
@@ -230,27 +242,6 @@ public class GraphicsSwing extends JPanel {
         // GradientPaint GP4 = new GradientPaint(300, 0, new Color(0x0a1522), 300, 300,new Color(0x061727));
         // GradientPaint GP5 = new GradientPaint(0, 0, new Color(0x423535), 600, 300,new Color(0x806f6f));
         int y = 40;
-        // g2.setPaint(GP1);
-        // g2.fillRect(0,0, 600, 58);
-
-        // g2.setPaint(GP2);
-        // g2.fillRect(0, 58, 600, 41);
-
-        // g2.setPaint(GP3);
-        // g2.fillRect(0, 139-y, 600, 9);
-
-        // g2.setPaint(GP3);
-        // g2.fillRect(0, 509-y,600, 10);
-
-        // g2.setPaint(GP2);
-        // g2.fillRect(0, 519-y, 600, 43);
-
-        // g2.setPaint(GP4);
-        // g2.fillRect(0, 561-y, 600, 16);
-        
-        // g2.setPaint(GP5);
-        // g2.fillRect(0, 577-y, 600, 25);
-
         UtilityFunction.floodFillGradient(0, 0, 600, 97, new Color(0x102131), new Color(0x0b1c2c), Color.BLACK);
         UtilityFunction.floodFillGradient(0,99-y, 600, 139-y, new Color(0x182f41), new Color(0x0c2d47), Color.BLACK);
         UtilityFunction.floodFillGradient(0,140-y, 600, 147-y, new Color(0x294d6d), new Color(0x244e74), Color.BLACK);
@@ -261,9 +252,9 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.floodFillGradient(123,562-y, 600, 575-y, new Color(0x091723), new Color(0x06131c), Color.BLACK);
         UtilityFunction.floodFillGradient(316,562-y, 600, 575-y, new Color(0x091723), new Color(0x06131c), Color.BLACK);
         UtilityFunction.floodFillGradient(500,562-y, 600, 575-y, new Color(0x091723), new Color(0x06131c), Color.BLACK);
-        
-        //Moon
-        
+        Color start = new Color(15,25,38);
+        Color end = new Color(82,70,61);
+        UtilityFunction.floodFillGradienthorizontal(0,580 - y,600,580 - y,start,end,Color.BLACK);
     }
 
     private void BackLine() {
@@ -457,12 +448,12 @@ public class GraphicsSwing extends JPanel {
     private void Boat() {
         // เรือ
         UtilityFunction.drawSquare(1, 447, 356, 447, 364, 447, 364, 450, 366, 450, 366,
-                                                487, 366, 487, 366, 491, 355,491, 355, 487, 353, 
+                                                487, 366, 487, 366, 491, 355,491, 355, 487, 353,
                                                 487, 353,486, 355, 486, 355, 475, 355, 475, 355,
                                                 475, 351, 475, 351, 463, 351, 463, 351, 463, 355,
                                                 463, 355, 457,355, 457, 355, 457, 351, 457, 351,451,
-                                                351, 451, 351, 451, 355, 451, 355, 447, 356); 
-        
+                                                351, 451, 351, 451, 355, 451, 355, 447, 356);
+
         UtilityFunction.FloodfillUpgrade(467, 358, Color.BLACK, new Color(0x011f43));
 
         // smoke
