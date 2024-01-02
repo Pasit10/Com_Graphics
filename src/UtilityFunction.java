@@ -81,7 +81,7 @@ public final class UtilityFunction {
     public static void drawCircle(int centerX,int centerY,int radius,int size){
         drawCircle(centerX, centerY, radius,size,Color.black);
     }
-
+    // draw Cicle (use Chat-Gpt)
     public static void drawCircle(int centerX, int centerY, int radius,int size,Color c) {
         int x = radius;
         int y = 0;
@@ -108,7 +108,7 @@ public final class UtilityFunction {
             }
         }
     }
-
+    // draw Cicle only 6 Octants
     public static void drawHalfCircle(int centerX, int centerY, int radius,int size,Color c) {
         int x = radius;
         int y = 0;
@@ -134,7 +134,7 @@ public final class UtilityFunction {
         }
     }
 
-    // FloodFill ยังไม่เสร้จ
+    // FloodFill
     public static void Floodfill(int x,int y,Color target_color,Color replacement_color){
         y-= 40;
         ArrayList<node> q = new ArrayList<>();
@@ -161,6 +161,7 @@ public final class UtilityFunction {
         }
         g.drawImage(buffer, 0,0,null);
     }
+    // Floodfill use only unknow background color
     public static void FloodfillUpgrade(int x,int y,Color border_color,Color replacement_color){
         y-= 40;
         ArrayList<node> q = new ArrayList<>();
@@ -191,7 +192,7 @@ public final class UtilityFunction {
         int x,y;
         node(int x,int y){this.x = x;this.y = y;}
     }
-
+    // floodfill แต่ไล่สีในแนวตั้ง
     public static void floodFillGradient(int xStart, int yStart, int xEnd, int yEnd,Color startColor, Color endColor, Color target) {
         Queue<Point> q = new LinkedList<>();
 
@@ -255,7 +256,7 @@ public final class UtilityFunction {
         }
         g.drawImage(buffer, 0,0,null);
     }
-
+     // floodfill แต่ไล่สีในแนวนอน
     public static void floodFillGradienthorizontal(int xStart, int yStart, int xEnd, int yEnd, Color startColor, Color endColor, Color target) {
         Queue<Point> q = new LinkedList<>();
 
