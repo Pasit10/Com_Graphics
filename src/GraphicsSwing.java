@@ -6,6 +6,10 @@ import java.awt.*;
 public class GraphicsSwing extends JPanel {
     public void paintComponent(Graphics g) {
         UtilityFunction.setGraphice(g);
+
+        Firework(100,240);
+        Firework(500,220);
+
         Structure();
         House();
         BackLine();
@@ -13,6 +17,41 @@ public class GraphicsSwing extends JPanel {
         Moon();
         Lake();
         Boat();
+    }
+
+    private void Firework(int x,int y){
+        Color[] useColor = {Color.GREEN,Color.RED,Color.YELLOW};
+        UtilityFunction.setFireWorkRGBColor(useColor);
+        
+        UtilityFunction.drawCircle(x - 1, y - 10, 2,2,Color.YELLOW);
+        // use random by getRandomIndexUseColor
+        UtilityFunction.drawCurve(x + 5,y - 2,x + 10,y - 5,x + 20,y - 7,x + 38,y - 8,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x + 5,y - 3,x + 15,y - 15,x + 30,y - 17,x + 37,y - 18,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x + 3,y - 4,x + 10,y - 18,x + 25,y - 27,x + 30,y - 28,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x + 2, y - 5,x + 6,y - 30,x + 15,y - 34,x + 20,y - 37,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawLine(x,y-6,x,y - 42,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x - 2, y - 5,x - 6,y - 30,x - 15,y - 34,x - 20,y - 37,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x - 3,y - 5,x - 10,y - 18,x - 25,y - 27,x - 30,y - 28,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x - 5,y - 3,x - 15,y - 15,x - 30,y - 17,x - 37,y - 18,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x - 5,y - 2,x - 10,y - 5,x - 20,y - 7,x - 38,y - 8,1,getRandomColorinUseColor(useColor));
+
+        UtilityFunction.drawCurve(x + 7,y + 1,x + 10,y + 2,x + 30,y + 4,x + 40,y + 15,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x - 7,y + 1,x - 10,y + 2,x - 30,y + 4,x - 40,y + 15,1,getRandomColorinUseColor(useColor));
+
+        UtilityFunction.drawCurve(x + 6,y - 1,x + 10,y - 3,x + 40,y - 3,x + 39,y + 2,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x - 7,y - 1,x - 10,y - 3,x - 40,y - 3,x - 39,y + 2,1,getRandomColorinUseColor(useColor));
+
+        UtilityFunction.drawCurve(x + 6,y + 4,x + 10,y + 4,x + 25,y + 6,x + 34,y + 32,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x + 5,y + 5,x + 10,y + 6,x + 20,y + 12,x + 25,y + 39,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x + 4,y + 6,x + 8,y + 12,x + 11,y + 20,x + 12,y + 41,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawLine(x,y+6,x,y + 42,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x - 6,y + 4,x - 10,y + 4,x - 25,y + 6,x - 34,y + 32,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x - 5,y + 5,x - 10,y + 6,x - 20,y + 12,x - 25,y + 39,1,getRandomColorinUseColor(useColor));
+        UtilityFunction.drawCurve(x - 4,y + 6,x - 8,y + 12,x - 11,y + 20,x - 12,y + 41,1,getRandomColorinUseColor(useColor));
+    }
+
+    private Color getRandomColorinUseColor(Color[] useColors){
+        return useColors[(int)((Math.random() * 30) % useColors.length)];
     }
 
     private void House() {
@@ -209,7 +248,8 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawCircle(543, 433, 3,1);
         UtilityFunction.drawCircle(561, 445, 3,1);
         int y = 5;
-        Color light = new Color(181,192,193);
+        //Color light = new Color(181,192,193);
+        Color light = new Color(233,227,195);
         //Color light = Color.WHITE;
         UtilityFunction.FloodfillUpgrade(105, 446 + y, Color.BLACK,light);
         UtilityFunction.FloodfillUpgrade(126, 418 + y, Color.BLACK,light);

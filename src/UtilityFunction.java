@@ -10,11 +10,18 @@ public final class UtilityFunction {
     private static Graphics g;
     private static BufferedImage buffer = new BufferedImage(601, 601, BufferedImage.TYPE_INT_ARGB);
     private static Graphics2D g2 = buffer.createGraphics();
+    private static ArrayList<Integer> fireworkRGBColor = new ArrayList<>();
     // set Graphics in this class not null
     public static void setGraphice(Graphics graphics){
         g2.setColor(Color.WHITE);
         g2.fillRect(0, 0, 600,600);
         g = graphics;
+    }
+    // set FireWork Color use in FloodFill
+    public static void setFireWorkRGBColor(Color[] allColors){
+        for(Color color : allColors){
+            fireworkRGBColor.add(color.getRGB());
+        }
     }
     // default coler (black) for drawLine method
     public static void drawLine(int x1,int y1,int x2,int y2,int size){
@@ -222,7 +229,7 @@ public final class UtilityFunction {
             lineColor2 = interpolateColor(startColor, endColor, ratio);
 
             // s
-            if (p.y + 1 < 600 && (buffer.getRGB(p.x, p.y + 1) != target.getRGB())) {
+            if (p.y + 1 < 600 && (buffer.getRGB(p.x, p.y + 1) != target.getRGB()) &&  (!fireworkRGBColor.contains(buffer.getRGB(p.x, p.y + 1)))) {
                 if (buffer.getRGB(p.x, p.y + 1) != lineColor2.getRGB()) {
                     //plot(p.x, p.y + 1,lineColor2, 1);
                     buffer.setRGB(p.x,p.y + 1,lineColor2.getRGB());
@@ -230,7 +237,7 @@ public final class UtilityFunction {
                 }
             }
             // n
-            if (p.y - 1 > 0 && (buffer.getRGB(p.x, p.y - 1) != target.getRGB())) {
+            if (p.y - 1 > 0 && (buffer.getRGB(p.x, p.y - 1) != target.getRGB()) && (!fireworkRGBColor.contains(buffer.getRGB(p.x, p.y - 1)))) {
                 if (buffer.getRGB(p.x, p.y - 1) != lineColor1.getRGB()) {
                     //plot(p.x, p.y - 1,lineColor1, 1);
                     buffer.setRGB(p.x,p.y - 1,lineColor1.getRGB());
@@ -238,7 +245,7 @@ public final class UtilityFunction {
                 }
             }
             // e
-            if (p.x + 1 < 600 && (buffer.getRGB(p.x + 1, p.y) != target.getRGB())) {
+            if (p.x + 1 < 600 && (buffer.getRGB(p.x + 1, p.y) != target.getRGB()) && (!fireworkRGBColor.contains(buffer.getRGB(p.x + 1, p.y)))) {
                 if (buffer.getRGB(p.x + 1, p.y) != lineColor.getRGB()) {
                     //plot(p.x + 1, p.y,lineColor,1);
                     buffer.setRGB(p.x + 1,p.y,lineColor.getRGB());
@@ -246,7 +253,7 @@ public final class UtilityFunction {
                 }
             }
             // w
-            if (p.x - 1 > 0 && (buffer.getRGB(p.x - 1, p.y) != target.getRGB())) {
+            if (p.x - 1 > 0 && (buffer.getRGB(p.x - 1, p.y) != target.getRGB()) && (!fireworkRGBColor.contains(buffer.getRGB(p.x - 1, p.y)))) {
                 if (buffer.getRGB(p.x - 1, p.y) != lineColor.getRGB()) {
                     //plot(p.x - 1, p.y, lineColor,1);
                     buffer.setRGB(p.x - 1,p.y,lineColor.getRGB());
