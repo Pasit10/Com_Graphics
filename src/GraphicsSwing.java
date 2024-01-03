@@ -10,6 +10,7 @@ public class GraphicsSwing extends JPanel {
         Firework(100,240);
         Firework(500,220);
 
+        Star();
         Structure();
         House();
         BackLine();
@@ -20,10 +21,15 @@ public class GraphicsSwing extends JPanel {
     }
 
     private void Firework(int x,int y){
-        Color[] useColor = {Color.GREEN,Color.RED,Color.YELLOW};
+        Color midcircle = new Color(233,227,195);
+        Color colorfirework1 = new Color(0xb1c97a);
+        Color colorfirework2 = new Color(0xb48d59);
+        Color colorfirework3 = new Color(0xf1d09b);
+        Color colorfirework4 = new Color(0xff8c00);
+        Color[] useColor = {colorfirework1,colorfirework2,colorfirework3,colorfirework4,midcircle};
         UtilityFunction.setFireWorkRGBColor(useColor);
-        
-        UtilityFunction.drawCircle(x - 1, y - 10, 2,2,Color.YELLOW);
+
+        UtilityFunction.drawCircle(x - 1, y - 10, 2,2,midcircle);
         // use random by getRandomIndexUseColor
         UtilityFunction.drawCurve(x + 5,y - 2,x + 10,y - 5,x + 20,y - 7,x + 38,y - 8,1,getRandomColorinUseColor(useColor));
         UtilityFunction.drawCurve(x + 5,y - 3,x + 15,y - 15,x + 30,y - 17,x + 37,y - 18,1,getRandomColorinUseColor(useColor));
@@ -50,8 +56,21 @@ public class GraphicsSwing extends JPanel {
         UtilityFunction.drawCurve(x - 4,y + 6,x - 8,y + 12,x - 11,y + 20,x - 12,y + 41,1,getRandomColorinUseColor(useColor));
     }
 
+    private void Star(){
+        Color colorStar1 = new Color(0xe2e3f4);
+        Color[] color = {colorStar1};
+        UtilityFunction.setFireWorkRGBColor(color);
+        int randomX = 0;
+        int randomY = 0;
+        for(int i = 0; i<35; i++){
+            randomX = (int)(Math.random()*600);
+            randomY = ((int)(Math.random()*205)%(15))+149;
+            UtilityFunction.drawCircle(randomX, randomY, 1, 1,colorStar1);
+        }
+    }
+
     private Color getRandomColorinUseColor(Color[] useColors){
-        return useColors[(int)((Math.random() * 30) % useColors.length)];
+        return useColors[(int)((Math.random() * 30) % useColors.length-1)];
     }
 
     private void House() {
