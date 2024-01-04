@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
 
-public class Assignment1_65050976_65050607{
+public class Assignment1_65050607_65050976{
     public static void main(String[] args){
         JFrame mainframe = new JFrame();
         mainframe.add(new GraphicsSwing());
