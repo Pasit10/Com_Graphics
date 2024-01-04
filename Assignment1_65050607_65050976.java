@@ -873,7 +873,7 @@ final class UtilityFunction {
         g.drawImage(buffer, 0,0,null);
     }
 
-
+    // เลือกสีที่จะอยู่ระหว่่าง startColor กับ endColors
     private static Color interpolateColor(Color startColor, Color endColor, float ratio) {
         int red = Math.max(0, Math.min(255, (int) (startColor.getRed() * (1 - ratio) +
                         endColor.getRed() * ratio)));
