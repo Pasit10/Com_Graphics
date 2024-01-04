@@ -2,19 +2,24 @@ package src;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public final class UtilityFunction {
     private static Graphics g;
     private static BufferedImage buffer = new BufferedImage(601, 601, BufferedImage.TYPE_INT_ARGB);
     private static Graphics2D g2 = buffer.createGraphics();
+    private static ArrayList<Integer> fireworkRGBColor = new ArrayList<>();
     // set Graphics in this class not null
-    public static void setGraphice(Graphics graphics){
+    public static void setupUtilityFunction(Graphics graphics){
         g2.setColor(Color.WHITE);
         g2.fillRect(0, 0, 600,600);
         g = graphics;
+    }
+    // set FireWork Color use in FloodFill
+    public static void setFireWorkRGBColor(Color[] allColors){
+        for(Color color : allColors){
+            fireworkRGBColor.add(color.getRGB());
+        }
     }
     // default coler (black) for drawLine method
     public static void drawLine(int x1,int y1,int x2,int y2,int size){
@@ -77,11 +82,11 @@ public final class UtilityFunction {
         }
         drawLine(xy[xy.length - 2], xy[xy.length - 1],xy[0],xy[1], size, c);
     }
-    // draw Cicle
+    // draw Cicle use default colot (black)
     public static void drawCircle(int centerX,int centerY,int radius,int size){
         drawCircle(centerX, centerY, radius,size,Color.black);
     }
-
+    // draw Cicle (use Chat-Gpt version)
     public static void drawCircle(int centerX, int centerY, int radius,int size,Color c) {
         int x = radius;
         int y = 0;
@@ -108,7 +113,7 @@ public final class UtilityFunction {
             }
         }
     }
-
+    // draw Cicle only 6 Octants use in moon shadow
     public static void drawHalfCircle(int centerX, int centerY, int radius,int size,Color c) {
         int x = radius;
         int y = 0;
@@ -134,64 +139,70 @@ public final class UtilityFunction {
         }
     }
 
-    // FloodFill ยังไม่เสร้จ
+    // FloodFill
     public static void Floodfill(int x,int y,Color target_color,Color replacement_color){
         y-= 40;
-        ArrayList<node> q = new ArrayList<>();
-        q.add(new node(x, y));
+        Queue<Point> q = new LinkedList<>();
+        q.add(new Point(x, y));
         buffer.setRGB(x, y, replacement_color.getRGB());
         while(!q.isEmpty()){
-            node current = q.remove(0);
-            if(current.y - 1 >= 0 && buffer.getRGB(current.x , current.y - 1) == target_color.getRGB()){
-                buffer.setRGB(current.x, current.y - 1, replacement_color.getRGB());
-                q.add(new node(current.x, current.y - 1));
+            Point p = q.poll();
+            // w
+            if(p.y - 1 >= 0 && buffer.getRGB(p.x , p.y - 1) == target_color.getRGB()){
+                buffer.setRGB(p.x, p.y - 1, replacement_color.getRGB());
+                q.add(new Point(p.x, p.y - 1));
             }
-            if(current.y + 1 <= 600 && buffer.getRGB(current.x , current.y + 1) == target_color.getRGB()){
-                buffer.setRGB(current.x, current.y + 1, replacement_color.getRGB());
-                q.add(new node(current.x, current.y + 1));
+            // e
+            if(p.y + 1 <= 600 && buffer.getRGB(p.x , p.y + 1) == target_color.getRGB()){
+                buffer.setRGB(p.x, p.y + 1, replacement_color.getRGB());
+                q.add(new Point(p.x, p.y + 1));
             }
-            if(current.x - 1 >= 0 && buffer.getRGB(current.x - 1, current.y) == target_color.getRGB()){
-                buffer.setRGB(current.x - 1,current.y, replacement_color.getRGB());
-                q.add(new node(current.x - 1, current.y));
+            // n
+            if(p.x - 1 >= 0 && buffer.getRGB(p.x - 1, p.y) == target_color.getRGB()){
+                buffer.setRGB(p.x - 1,p.y, replacement_color.getRGB());
+                q.add(new Point(p.x - 1, p.y));
             }
-            if(current.x + 1 <= 600 && buffer.getRGB(current.x + 1, current.y) == target_color.getRGB()){
-                buffer.setRGB(current.x + 1,current.y, replacement_color.getRGB());
-                q.add(new node(current.x + 1, current.y));
+            // s
+            if(p.x + 1 <= 600 && buffer.getRGB(p.x + 1, p.y) == target_color.getRGB()){
+                buffer.setRGB(p.x + 1,p.y, replacement_color.getRGB());
+                q.add(new Point(p.x + 1, p.y));
             }
         }
         g.drawImage(buffer, 0,0,null);
     }
+    // Floodfill use only unknown background color
+    // use border_color to exit loop
     public static void FloodfillUpgrade(int x,int y,Color border_color,Color replacement_color){
         y-= 40;
-        ArrayList<node> q = new ArrayList<>();
-        q.add(new node(x, y));
+        Queue<Point> q = new LinkedList<>();
+        q.add(new Point(x, y));
         buffer.setRGB(x, y, replacement_color.getRGB());
         while(!q.isEmpty()){
-            node current = q.remove(0);
+            Point current = q.poll();
+            // w
             if(current.y - 1 >= 0 && buffer.getRGB(current.x , current.y - 1) != border_color.getRGB() && buffer.getRGB(current.x , current.y - 1) != replacement_color.getRGB()){
                 buffer.setRGB(current.x, current.y - 1, replacement_color.getRGB());
-                q.add(new node(current.x, current.y - 1));
+                q.add(new Point(current.x, current.y - 1));
             }
+            // e
             if(current.y + 1 <= 600 && buffer.getRGB(current.x , current.y + 1) != border_color.getRGB() && buffer.getRGB(current.x , current.y + 1) != replacement_color.getRGB()){
                 buffer.setRGB(current.x, current.y + 1, replacement_color.getRGB());
-                q.add(new node(current.x, current.y + 1));
+                q.add(new Point(current.x, current.y + 1));
             }
+            // n
             if(current.x - 1 >= 0 && buffer.getRGB(current.x - 1, current.y) != border_color.getRGB() && buffer.getRGB(current.x - 1 , current.y) != replacement_color.getRGB()){
                 buffer.setRGB(current.x - 1,current.y, replacement_color.getRGB());
-                q.add(new node(current.x - 1, current.y));
+                q.add(new Point(current.x - 1, current.y));
             }
+            // s
             if(current.x + 1 <= 600 && buffer.getRGB(current.x + 1, current.y) != border_color.getRGB() && buffer.getRGB(current.x + 1 , current.y) != replacement_color.getRGB()){
                 buffer.setRGB(current.x + 1,current.y, replacement_color.getRGB());
-                q.add(new node(current.x + 1, current.y));
+                q.add(new Point(current.x + 1, current.y));
             }
         }
         g.drawImage(buffer, 0,0,null);
     }
-    private static class node{
-        int x,y;
-        node(int x,int y){this.x = x;this.y = y;}
-    }
-
+    // floodfill แต่ไล่สีในแนวตั้ง
     public static void floodFillGradient(int xStart, int yStart, int xEnd, int yEnd,Color startColor, Color endColor, Color target) {
         Queue<Point> q = new LinkedList<>();
 
@@ -221,7 +232,7 @@ public final class UtilityFunction {
             lineColor2 = interpolateColor(startColor, endColor, ratio);
 
             // s
-            if (p.y + 1 < 600 && (buffer.getRGB(p.x, p.y + 1) != target.getRGB())) {
+            if (p.y + 1 < 600 && (buffer.getRGB(p.x, p.y + 1) != target.getRGB()) &&  (!fireworkRGBColor.contains(buffer.getRGB(p.x, p.y + 1)))) {
                 if (buffer.getRGB(p.x, p.y + 1) != lineColor2.getRGB()) {
                     //plot(p.x, p.y + 1,lineColor2, 1);
                     buffer.setRGB(p.x,p.y + 1,lineColor2.getRGB());
@@ -229,7 +240,7 @@ public final class UtilityFunction {
                 }
             }
             // n
-            if (p.y - 1 > 0 && (buffer.getRGB(p.x, p.y - 1) != target.getRGB())) {
+            if (p.y - 1 > 0 && (buffer.getRGB(p.x, p.y - 1) != target.getRGB()) && (!fireworkRGBColor.contains(buffer.getRGB(p.x, p.y - 1)))) {
                 if (buffer.getRGB(p.x, p.y - 1) != lineColor1.getRGB()) {
                     //plot(p.x, p.y - 1,lineColor1, 1);
                     buffer.setRGB(p.x,p.y - 1,lineColor1.getRGB());
@@ -237,7 +248,7 @@ public final class UtilityFunction {
                 }
             }
             // e
-            if (p.x + 1 < 600 && (buffer.getRGB(p.x + 1, p.y) != target.getRGB())) {
+            if (p.x + 1 < 600 && (buffer.getRGB(p.x + 1, p.y) != target.getRGB()) && (!fireworkRGBColor.contains(buffer.getRGB(p.x + 1, p.y)))) {
                 if (buffer.getRGB(p.x + 1, p.y) != lineColor.getRGB()) {
                     //plot(p.x + 1, p.y,lineColor,1);
                     buffer.setRGB(p.x + 1,p.y,lineColor.getRGB());
@@ -245,7 +256,7 @@ public final class UtilityFunction {
                 }
             }
             // w
-            if (p.x - 1 > 0 && (buffer.getRGB(p.x - 1, p.y) != target.getRGB())) {
+            if (p.x - 1 > 0 && (buffer.getRGB(p.x - 1, p.y) != target.getRGB()) && (!fireworkRGBColor.contains(buffer.getRGB(p.x - 1, p.y)))) {
                 if (buffer.getRGB(p.x - 1, p.y) != lineColor.getRGB()) {
                     //plot(p.x - 1, p.y, lineColor,1);
                     buffer.setRGB(p.x - 1,p.y,lineColor.getRGB());
@@ -255,7 +266,7 @@ public final class UtilityFunction {
         }
         g.drawImage(buffer, 0,0,null);
     }
-
+     // floodfill แต่ไล่สีในแนวนอน
     public static void floodFillGradienthorizontal(int xStart, int yStart, int xEnd, int yEnd, Color startColor, Color endColor, Color target) {
         Queue<Point> q = new LinkedList<>();
 
@@ -329,6 +340,11 @@ public final class UtilityFunction {
         int blue = Math.max(0, Math.min(255, (int) (startColor.getBlue() * (1 - ratio) +
                         endColor.getBlue() * ratio)));
         return new Color(red, green, blue);
+    }
+
+    private static class Point{
+        int x,y;
+        Point(int x,int y){this.x = x;this.y = y;}
     }
 
     // plot dot(vertex) at (x,y)

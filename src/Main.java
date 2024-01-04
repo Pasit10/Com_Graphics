@@ -1,9 +1,8 @@
+package src;
 import javax.swing.*;
 
-import src.GraphicsSwing;
-
 public class Main{
-        public static void main(String[] args){
+    public static void main(String[] args){
         JFrame mainframe = new JFrame();
         mainframe.add(new GraphicsSwing());
         mainframe.setSize(600,600);
