@@ -14,6 +14,7 @@ public class Assignment1_65050607_65050976{
         JFrame mainframe = new JFrame();
         mainframe.add(new GraphicsSwing());
         mainframe.setSize(600,600);
+        mainframe.setTitle("Assignment1_65050607_65050976");
         mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainframe.setVisible(true);
     }
