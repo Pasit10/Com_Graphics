@@ -1,8 +1,7 @@
 package assignment2;
 
 import javax.swing.*;
-import src.GraphicsSwing;
-import java.awt.*;
+import assignment2.src.GraphicsSwing;
 
 public class Main{
     public static void main(String[] args){
