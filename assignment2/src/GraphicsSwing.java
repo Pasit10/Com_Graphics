@@ -6,20 +6,31 @@ import src.UtilityFunction;
 import java.awt.geom.AffineTransform;
 
 public class GraphicsSwing extends JPanel implements Runnable{
+    //double MineMove1 = 
+
+    long lastTime = System.currentTimeMillis();
     @Override public void run(){
         while(true){
+            long currentTime = System.currentTimeMillis();
+            long elapsedTime = currentTime - lastTime;
 
+            //Update
+
+            //Display
+            repaint();
+
+            lastTime = currentTime;
         }
     }
 
     public void paintComponent(Graphics g) {
+        Graphics2D g2 = (Graphics2D)g;
         UtilityFunction.setupUtilityFunction(g);
-        drawBaby(g,0,0);
+        drawBaby(g2,5,270);
+        drawMine(g2, 170,20);
     }
 
-    public void drawBaby(Graphics g,int x,int y){
-        Graphics2D g2 = (Graphics2D)g;
-
+    public void drawBaby(Graphics2D g2,int x,int y){
         //head
         g2.drawOval(x,y,171,167);
 
@@ -53,11 +64,13 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.drawCurve(x + 95, y + 124 + 40, x + 105, y + 126 + 40, x + 107, y + 122 + 40, x + 106, y + 119 + 40, 1);
 
         //หู
-        // g2.fillRect(x + 7,y + 116,2,2);
-        // g2.fillRect(x + 15,y + 131,2,2);
         UtilityFunction.drawCurve(x + 7,y + 116 + 40,x ,y + 122 + 40, x + 4,y + 130 + 40,x + 15,y + 131 + 40,1);
-        // g2.fillRect(x + 170,y + 78,2,2);
-        // g2.fillRect(x + 169,y + 94,2,2);
         UtilityFunction.drawCurve(x + 170,y + 78 + 40,x + 180,y + 80 + 40,x + 178,y + 90 + 40,x + 171,y + 94 + 40,1);
+    }
+
+    public void drawMine(Graphics2D g2,int x,int y){
+        g2.drawOval(x,y,350,220);
+        g2.drawOval(x-20,y + 240,20,10);
+        g2.drawOval(x,y + 200,40,20);
     }
 }
