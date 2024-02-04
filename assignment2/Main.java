@@ -7,7 +7,7 @@ public class Main{
     public static void main(String[] args){
         JFrame f = new JFrame();
         GraphicsSwing gs = new GraphicsSwing();
-        f.setSize(600, 600);
+        f.setSize(1000, 1000);
         f.setTitle("Assignment2");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);

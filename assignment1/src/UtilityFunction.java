@@ -349,7 +349,7 @@ public final class UtilityFunction {
 
     // plot dot(vertex) at (x,y)
     private static void plot(int x,int y,Color c,int size){
-        g2.setColor(c);
-        g2.fillRect(x, y, size,size);
+        g.setColor(c);
+        g.fillRect(x, y, size,size);
     }
 }
