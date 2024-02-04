@@ -8,11 +8,23 @@ import java.awt.geom.AffineTransform;
 public class GraphicsSwing extends JPanel implements Runnable{
     //double MineMove1 = 
 
-    long lastTime = System.currentTimeMillis();
+    boolean status1 = false;
+    boolean status2 = false;
+    boolean status3 = false;
     @Override public void run(){
+        long lastTime = System.currentTimeMillis();
+        long startTime = lastTime;
         while(true){
             long currentTime = System.currentTimeMillis();
             long elapsedTime = currentTime - lastTime;
+
+            if (currentTime>=500+startTime) {
+                status1 = true;
+            }if (currentTime>=1000+startTime) {
+                status2 = true;
+            }if (currentTime>=1500+startTime) {
+                status3 = true;
+            }
 
             //Update
 
@@ -27,7 +39,14 @@ public class GraphicsSwing extends JPanel implements Runnable{
         Graphics2D g2 = (Graphics2D)g;
         UtilityFunction.setupUtilityFunction(g);
         drawBaby(g2,5,270);
-        drawMine(g2, 170,20);
+        // drawMine(g2, 170,20);
+        if (status1) {
+            drawsmallcircle(g2, 170, 20);
+        }if (status2) {
+            drawmidcircle(g2, 170, 20);
+        }if (status3) {
+            drawlargecircle(g2, 170, 20);
+        }
     }
 
     public void drawBaby(Graphics2D g2,int x,int y){
@@ -68,9 +87,15 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.drawCurve(x + 170,y + 78 + 40,x + 180,y + 80 + 40,x + 178,y + 90 + 40,x + 171,y + 94 + 40,1);
     }
 
-    public void drawMine(Graphics2D g2,int x,int y){
-        g2.drawOval(x,y,350,220);
+    public void drawsmallcircle(Graphics2D g2,int x,int y){
         g2.drawOval(x-20,y + 240,20,10);
+    }
+
+    public void drawmidcircle(Graphics2D g2,int x,int y){
         g2.drawOval(x,y + 200,40,20);
+    }
+
+    public void drawlargecircle(Graphics2D g2,int x,int y){
+        g2.drawOval(x,y,350,220);
     }
 }
