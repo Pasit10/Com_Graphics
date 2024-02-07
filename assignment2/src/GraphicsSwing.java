@@ -9,6 +9,7 @@ public class GraphicsSwing extends JPanel implements Runnable{
     boolean status1 = false;
     boolean status2 = false;
     boolean status3 = false;
+    boolean statusEye = false;
 
     double babyX = 5,babyY = 270;
 
@@ -24,60 +25,68 @@ public class GraphicsSwing extends JPanel implements Runnable{
     @Override public void run(){
         long lastTime = System.currentTimeMillis();
         long startTime = lastTime;
-        // while(true){
-        //     long currentTime = System.currentTimeMillis();
-        //     long elapsedTime = currentTime - lastTime;
+        while(true){
+            long currentTime = System.currentTimeMillis();
+            long currentTimeEye = System.currentTimeMillis();
+            long elapsedTime = currentTime - lastTime;
 
-        //     //Update
-        //     if (currentTime>=500+startTime) {
-        //         status1 = true;
-        //     }if (currentTime>=1000+startTime) {
-        //         status2 = true;
-        //     }if (currentTime>=1500+startTime) {
-        //         status3 = true;
-        //     }
-        //     // ขยายฝัน
-        //     double speed = elapsedTime / 1000.0;
-        //     if((circleX > -200 || circleY > -100) && status3){
-        //         circleWidth += 300 * speed;
-        //         circleHeight += 300 * speed;
-        //         circleX -= 180 * speed;
-        //         circleY -= 100 * speed;
-        //         System.out.println(circleX + " " + circleY + " this circle");
-        //     }
-        //     //ขยับเด็ก
-        //     if(status3 && midcircleY < getHeight()){
-        //         babyY += 230 * speed;
-        //         smallcircleY += 230 * speed;
-        //         midcircleY += 230 * speed;
-        //         System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
-        //     }
-        //     //ความฝันที่อยากเป็น
-        //     //Display
-        //     repaint();
+            //Update
+            if (currentTime>=500+startTime) {
+                status1 = true;
+            }if (currentTime>=1000+startTime) {
+                status2 = true;
+            }if (currentTime>=1500+startTime) {
+                status3 = true;
+            }if ((currentTime-startTime)%300 == 0 ) {
+                statusEye = (statusEye) ? false : true;
+            }
+            // ขยายฝัน
+            double speed = elapsedTime / 1000.0;
+            if((circleX > -200 || circleY > -100) && status3){
+                circleWidth += 300 * speed;
+                circleHeight += 300 * speed;
+                circleX -= 180 * speed;
+                circleY -= 100 * speed;
+                System.out.println(circleX + " " + circleY + " this circle");
+            }
+            //ขยับเด็ก
+            if(status3 && midcircleY < getHeight()){
+                babyY += 230 * speed;
+                smallcircleY += 230 * speed;
+                midcircleY += 230 * speed;
+                System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
+            }
+            // ความฝันที่อยากเป็น
+            // Display
+            repaint();
 
-        //     lastTime = currentTime;
-        // }
+            lastTime = currentTime;
+        }
     }
 
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
         //clear background
-        // g2.setColor(Color.WHITE);
-        // g2.fillRect(0,0,getWidth(),getHeight());
+        g2.setColor(Color.WHITE);
+        g2.fillRect(0,0,getWidth(),getHeight());
 
         UtilityFunction.setupUtilityFunction(g);
-        // drawBaby(g2,(int)babyX,(int)babyY);
-        // // drawMine(g2, 170,20);
-        // if (status1) {
-        //     drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
-        // }if (status2) {
-        //     drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
-        // }if (status3) {
-        //     drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth, (int)circleHeight);
-        // }
+        drawBaby(g2,(int)babyX,(int)babyY);
+        // drawMine(g2, 170,20);
+        if (status1) {
+            drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
+        }if (status2) {
+            drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
+        }if (status3) {
+            drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth, (int)circleHeight);
+        }if(statusEye){
+            drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
+        }if (!statusEye) {
+            drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
+        }
+        
 
-        drawDreamDoctor(g2, 10,100);
+        // drawDreamDoctor(g2, 10,100);
     }
 
     public void drawBaby(Graphics2D g2,int x,int y){
@@ -88,10 +97,6 @@ public class GraphicsSwing extends JPanel implements Runnable{
         g2.drawLine(x + 61,y + 243,x + 160,y + 160);
         g2.drawLine(x + 83,y + 225,x + 186,y + 250);
         g2.drawLine(x + 132,y + 237,x + 95,y + 277);
-        g2.drawOval(x + 60,y + 94,20,20);
-        g2.drawOval(x + 70,y + 98,4,4);
-        g2.drawOval(x + 110,y + 82,20,20);
-        g2.drawOval(x + 120,y + 86,4,4);
 
         //head
         g2.drawOval(x,y,171,167);
@@ -116,6 +121,18 @@ public class GraphicsSwing extends JPanel implements Runnable{
         //หู
         UtilityFunction.drawCurve(x + 7,y + 116 + 40,x ,y + 122 + 40, x + 4,y + 130 + 40,x + 15,y + 131 + 40,1);
         UtilityFunction.drawCurve(x + 170,y + 78 + 40,x + 180,y + 80 + 40,x + 178,y + 90 + 40,x + 171,y + 94 + 40,1);
+    }
+
+    public void drawOpenEyeBaby(Graphics2D g2,int x,int y){
+        g2.drawOval(x + 60,y + 94,20,20);
+        g2.drawOval(x + 70,y + 98,4,4);
+        g2.drawOval(x + 110,y + 82,20,20);
+        g2.drawOval(x + 120,y + 86,4,4);
+    }
+
+    public void drawCloseEyeBaby(Graphics2D g2,int x,int y){
+        UtilityFunction.drawCurve(x + 135, y + 120, x + 145, y + 124, x + 115, y + 134, x + 105, y + 130, 1);
+        UtilityFunction.drawCurve(x + 85, y + 135, x + 95, y + 139, x + 65, y + 149, x + 55, y + 145, 1);
     }
 
     public void drawsmallcircle(Graphics2D g2,int x,int y){
