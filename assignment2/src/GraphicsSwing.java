@@ -155,11 +155,11 @@ public class GraphicsSwing extends JPanel implements Runnable{
         // left eye
         UtilityFunction.drawCurve(x + 132,y + 33 + 40,x + 139,y + 28 + 40,x + 144,y + 28 + 40,x + 149,y + 32 + 40,1);
         UtilityFunction.drawCurve(x + 133,y + 41 + 40,x + 140,y + 35 + 40,x + 144,y + 35 + 40,x + 150,y + 39 + 40,1);
-        UtilityFunction.drawCurve(x + 141,y + 37 + 40,x + 139,y + 49 + 40,x + 146,y + 57 + 40,x + 146,y + 37 + 40,1);
+        UtilityFunction.drawCurve(x + 141,y + 37 + 40,x + 137,y + 49 + 40,x + 149,y + 57 + 40,x + 146,y + 37 + 40,1);
         // right eye
         UtilityFunction.drawCurve(x + 171,y + 32 + 40,x + 176,y + 27 + 40,x + 180,y + 27 + 40,x + 188,y + 32 + 40,1);
         UtilityFunction.drawCurve(x + 173,y + 39 + 40,x + 178,y + 34 + 40,x + 184,y + 34 + 40,x + 189,y + 39 + 40,1);
-        UtilityFunction.drawCurve(x + 177,y + 36 + 40,x + 179,y + 53 + 40,x + 183,y + 53 + 40,x + 184,y + 36 + 40,1);
+        UtilityFunction.drawCurve(x + 177,y + 36 + 40,x + 177,y + 53 + 40,x + 184,y + 53 + 40,x + 184,y + 36 + 40,1);
 
         // mouse
         UtilityFunction.drawCurve(x + 149,y + 76 + 40,x + 156,y + 81 + 40,x + 161,y + 81 + 40,x + 174,y + 73 + 40,1);
@@ -167,5 +167,91 @@ public class GraphicsSwing extends JPanel implements Runnable{
         // nose 
         g2.drawLine(x + 158,y + 40,x + 158,y + 51);
         UtilityFunction.drawCurve(x + 158,y + 51 + 40,x + 154,y + 56 + 40,x + 154,y + 59 + 40,x + 159,y + 62 + 40,1);
+
+        // neck
+        g2.drawLine(x + 140,y + 88,x + 140,y + 107);
+        g2.drawLine(x + 197,y + 69,x + 197,y + 100);
+
+        //body part1
+        g2.drawLine(x + 140,y + 107,x + 157,y + 125);
+        g2.drawLine(x + 159,y + 126,x + 197,y + 100);
+
+        UtilityFunction.drawCurve(x + 140,y + 102 + 40,x + 131,y + 117 + 40,x + 131,y + 133 + 40,x + 145,y + 189 + 40,1);
+        UtilityFunction.drawCurve(x + 197,y + 94 + 40,x + 214,y + 97 + 40,x + 214,y + 112 + 40,x + 145,y + 189 + 40,1);
+        g2.drawLine(x + 157,y + 125,x + 136,y + 143);
+        g2.drawLine(x + 159,y + 126,x + 177,y + 151);
+
+        // necktie
+        g2.drawLine(x + 142,y + 138,x + 147,y + 154);
+        g2.drawLine(x + 147,y + 154,x + 161,y + 156);
+        g2.drawLine(x + 161,y + 156,x + 172,y + 145);
+
+        g2.drawLine(x + 164,y + 132,x + 145,y + 142);
+        g2.drawLine(x + 145,y + 145,x + 166,y + 135);
+        g2.drawLine(x + 167,y + 138,x + 147,y + 149);
+        g2.drawLine(x + 147,y + 152,x + 170,y + 141);
+
+        g2.drawLine(x + 149,y + 154,x + 139,y + 165);
+        g2.drawLine(x + 160,y + 156,x + 162,y + 168);
+
+        g2.drawLine(x + 158,y + 156,x + 140,y + 167);
+        g2.drawLine(x + 161,y + 160,x + 141,y + 170);
+        g2.drawLine(x + 162,y + 164,x + 143,y + 177);
+        g2.drawLine(x + 162,y + 168,x + 144,y + 179);
+
+        //body part2
+        g2.drawLine(x + 145,y + 189,x + 140,y + 202);
+        g2.drawLine(x + 140,y + 202,x + 140,y + 223);
+        g2.drawOval(x + 134,y + 190,6,6);
+
+        // Unknonw
+        UtilityFunction.drawCurve(x + 197,y + 90 + 40,x + 223,y + 90 + 40,x + 223,y + 115 + 40,x + 206,y + 138 + 40,1);
+        UtilityFunction.drawCurve(x + 197,y + 86 + 40,x + 230,y + 90 + 40,x + 221,y + 117 + 40,x + 211,y + 137 + 40,1);
+        UtilityFunction.drawCurve(x + 211,y + 137 + 40,x + 219,y + 150 + 40,x + 220,y + 163 + 40,x + 212,y + 197 + 40,1);
+        UtilityFunction.drawCurve(x + 212,y + 197 + 40,x + 210,y + 211 + 40,x + 205,y + 215 + 40,x + 196,y + 217 + 40,1);
+        UtilityFunction.drawCurve(x + 196,y + 217 + 40,x + 189,y + 223 + 40,x + 189,y + 206 + 40,x + 195,y + 214 + 40,1);
+        UtilityFunction.drawCurve(x + 195,y + 214 + 40,x + 208,y + 208 + 40,x + 205,y + 204 + 40,x + 209,y + 196 + 40,1);
+        UtilityFunction.drawCurve(x + 209,y + 196 + 40,x + 214,y + 156 + 40,x + 214,y + 148 + 40,x + 210,y + 143 + 40,1);
+        UtilityFunction.drawCurve(x + 210,y + 143 + 40,x + 191,y + 156 + 40,x + 186,y + 176 + 40,x + 184,y + 203 + 40,1);
+        g2.drawLine(x + 184,y + 203,x + 184,y + 220);
+        UtilityFunction.drawCurve(x + 206,y + 138 + 40,x + 191,y + 153 + 40,x + 182,y + 178 + 40,x + 181,y + 218 + 40,1);
+        UtilityFunction.drawCurve(x + 181,y + 218 + 40,x + 183,y + 227 + 40,x + 190,y + 227 + 40,x + 191,y + 221 + 40,1);
+        UtilityFunction.drawCurve(x + 191,y + 221 + 40,x + 189,y + 217 + 40,x + 187,y + 217 + 40,x + 184,y + 220 + 40,1);
+
+        UtilityFunction.drawCurve(x + 140,y + 97 + 40,x + 124,y + 104 + 40,x + 114,y + 110 + 40,x + 115,y + 169 + 40,1);
+        UtilityFunction.drawCurve(x + 140,y + 94 + 40,x + 119,y + 98 + 40,x + 113,y + 113 + 40,x + 108,y + 169 + 40,1);
+        g2.drawOval(x + 106,y + 168, 10, 10);
+        g2.drawOval(x + 109,y + 171,4,4);
+
+        //body part3
+        g2.drawLine(x + 148,y + 187,x + 191,y + 164);
+        g2.drawLine(x + 205,y + 96,x + 216,y + 100);
+        UtilityFunction.drawCurve(x + 140,y + 101 + 40,x + 136,y + 102 + 40,x + 135,y + 104 + 40,x + 133,y + 108 + 40,1);
+        g2.drawLine(x + 118,y + 142,x + 133,y + 108);
+        g2.drawLine(x + 118,y + 142,x + 123,y + 142);
+        g2.drawLine(x + 123,y + 142,x + 119,y + 154);
+        g2.drawLine(x + 119,y + 154,x + 145,y + 189);
+        UtilityFunction.drawCurve(x + 219,y + 103 + 40,x + 290,y + 172 + 40,x + 280,y + 200 + 40,x + 243,y + 285 + 40 ,1);
+        UtilityFunction.drawCurve(x + 218,y + 195 + 40,x + 215,y + 221 + 40,x + 207,y + 230 + 40,x + 195,y + 236 + 40,1);
+        UtilityFunction.drawCurve(x + 206,y + 248 + 40,x + 203,y + 234 + 40,x + 193,y + 231 + 40,x + 98,y + 223 + 40,1);
+        UtilityFunction.drawCurve(x + 98,y + 223 + 40,x + 90,y + 225 + 40,x + 77,y + 236 + 40,x + 74,y + 249 + 40,1);
+        UtilityFunction.drawCurve(x + 74,y + 249 + 40,x + 80,y + 278 + 40,x + 85,y + 283 + 40,x + 91,y + 281 + 40,1);
+        UtilityFunction.drawCurve(x + 91,y + 281 + 40,x + 131,y + 288 + 40,x + 110,y + 282 + 40,x + 144,y + 300 + 40,1);
+        g2.drawLine(x + 144,y + 300,x + 225,y + 300);
+        g2.drawLine(x + 225,y + 300,x + 243,y + 285);
+        g2.drawLine(x + 243,y + 285,x + 243,y + 300);
+        UtilityFunction.drawCurve(x + 140,y + 101 + 40,x + 131,y + 103 + 40,x + 127,y + 112 + 40,x + 123,y + 113 + 40,1);
+        UtilityFunction.drawCurve(x + 114,y + 118 + 40,x + 108,y + 123 + 40,x + 98,y + 128 + 40,x + 85,y + 129 + 40,1);
+        UtilityFunction.drawCurve(x + 85,y + 129 + 40,x + 65,y + 133 + 40,x + 55,y + 150 + 40,x + 49,y + 181 + 40,1);
+        UtilityFunction.drawCurve(x + 49,y + 181 + 40,x + 39,y + 208 + 40,x + 30,y + 215 + 40,x + 27,y + 235 + 40,1);
+        g2.drawLine(x + 27,y + 236,x + 27,y + 268);
+        UtilityFunction.drawCurve(x + 27,y + 268 + 40,x + 30,y + 283 + 40,x + 35,y + 285 + 40,x + 94,y + 293 + 40,1);
+        g2.drawLine(x + 94,y + 293,x + 132,y + 293);
+        g2.drawLine(x + 76,y + 139,x + 83,y + 199);
+        g2.drawLine(x + 65,y + 161,x + 83,y + 199);
+        g2.drawLine(x + 83,y + 199,x + 83,y + 231);
+        UtilityFunction.drawCurve(x + 85,y + 231 + 40,x + 65,y + 238 + 40,x + 65,y + 244 + 40,x + 74,y + 249 + 40,1);
+        UtilityFunction.drawCurve(x + 138,y + 242 + 40,x + 137,y + 258 + 40,x + 143,y + 271 + 40,x + 152,y + 279 + 40,1);
+        UtilityFunction.drawCurve(x + 145,y + 254 + 40,x + 146,y + 259 + 40,x + 149,y + 263 + 40,x + 153,y + 264 + 40,1);
     }
 }
