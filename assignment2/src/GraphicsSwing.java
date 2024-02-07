@@ -71,22 +71,22 @@ public class GraphicsSwing extends JPanel implements Runnable{
         g2.fillRect(0,0,getWidth(),getHeight());
 
         UtilityFunction.setupUtilityFunction(g);
-        drawBaby(g2,(int)babyX,(int)babyY);
-        // drawMine(g2, 170,20);
-        if (status1) {
-            drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
-        }if (status2) {
-            drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
-        }if (status3) {
-            drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth, (int)circleHeight);
-        }if(statusEye){
-            drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
-        }if (!statusEye) {
-            drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
-        }
+        // drawBaby(g2,(int)babyX,(int)babyY);
+        // // drawMine(g2, 170,20);
+        // if (status1) {
+        //     drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
+        // }if (status2) {
+        //     drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
+        // }if (status3) {
+        //     drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth, (int)circleHeight);
+        // }if(statusEye){
+        //     drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
+        // }if (!statusEye) {
+        //     drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
+        // }
         
 
-        // drawDreamDoctor(g2, 10,100);
+        drawDreamDoctor(g2, 10,100);
     }
 
     public void drawBaby(Graphics2D g2,int x,int y){
@@ -256,7 +256,7 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.drawCurve(x + 91,y + 281 + 40,x + 131,y + 288 + 40,x + 110,y + 282 + 40,x + 144,y + 300 + 40,1);
         g2.drawLine(x + 144,y + 300,x + 225,y + 300);
         g2.drawLine(x + 225,y + 300,x + 243,y + 285);
-        g2.drawLine(x + 243,y + 285,x + 243,y + 300);
+        // g2.drawLine(x + 243,y + 285,x + 243,y + 300);
         UtilityFunction.drawCurve(x + 140,y + 101 + 40,x + 131,y + 103 + 40,x + 127,y + 112 + 40,x + 123,y + 113 + 40,1);
         UtilityFunction.drawCurve(x + 114,y + 118 + 40,x + 108,y + 123 + 40,x + 98,y + 128 + 40,x + 85,y + 129 + 40,1);
         UtilityFunction.drawCurve(x + 85,y + 129 + 40,x + 65,y + 133 + 40,x + 55,y + 150 + 40,x + 49,y + 181 + 40,1);
