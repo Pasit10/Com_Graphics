@@ -99,6 +99,7 @@ public class GraphicsSwing extends JPanel implements Runnable{
 
         //head
         g2.drawOval(x,y,171,167);
+        UtilityFunction.Floodfill(x, y, Color.WHITE, Color.GRAY);
 
         //แก้ม
         // Rotate ovals by -20 degrees
