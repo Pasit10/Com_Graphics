@@ -72,23 +72,24 @@ public class GraphicsSwing extends JPanel implements Runnable{
         g2.fillRect(0,0,getWidth(),getHeight());
 
         UtilityFunction.setupUtilityFunction(g2);
-        drawBaby(g2,(int)babyX,(int)babyY);
+        // drawBaby(g2,(int)babyX,(int)babyY);
 
         // drawMine(g2, 170,20);
-        if (status1) {
-            drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
-        }if (status2) {
-            drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
-        }if (status3) {
-            drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth, (int)circleHeight);
-        }if(statusEye){
-            drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
-        }if (!statusEye) {
-            drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
-        }
+        // if (status1) {
+        //     drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
+        // }if (status2) {
+        //     drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
+        // }if (status3) {
+        //     drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth, (int)circleHeight);
+        // }if(statusEye){
+        //     drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
+        // }if (!statusEye) {
+        //     drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
+        // }
     
-        // drawDreamDoctor(g2, 100,100);
+        drawDreamDoctor(g2, 100,100);
         // drawWin(g2,100,100);
+        // drawScaledDreamDoctor(g2, 100, 100, 2, 2);
 
         g.drawImage(buffer, 0,0,null);
     }
@@ -209,7 +210,7 @@ public class GraphicsSwing extends JPanel implements Runnable{
 
         // neck
         UtilityFunction.drawLine(x + 140,y + 88,x + 140,y + 107);
-        UtilityFunction.drawLine(x + 197,y + 69,x + 197,y + 100);
+        UtilityFunction.drawLine(x + 197,y + 69,x + 197,y + 102);
 
         //body part1
         UtilityFunction.drawLine(x + 140,y + 107,x + 157,y + 125);
@@ -292,6 +293,28 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.drawCurve(x + 85,y + 231,x + 65,y + 238,x + 65,y + 244,x + 74,y + 249,1);
         UtilityFunction.drawCurve(x + 138,y + 242,x + 137,y + 258,x + 143,y + 271,x + 152,y + 279,1);
         UtilityFunction.drawCurve(x + 145,y + 254,x + 146,y + 259,x + 149,y + 263,x + 153,y + 264,1);
+
+
+
+
+
+    }
+
+    public void drawScaledDreamDoctor(Graphics2D g2, int x, int y, double scaleX, double scaleY) {
+        // กำหนดขนาดและตำแหน่งเริ่มต้น
+        AffineTransform transform = new AffineTransform();
+        transform.translate(x, y); // ย้ายไปที่ตำแหน่ง x, y
+        transform.scale(scaleX, scaleY); // ขยายตามขนาด scaleX, scaleY
+    
+        // ใช้การเข้ารหัสที่กำหนดไว้
+        g2.transform(transform);
+    
+        // เรียกใช้ฟังก์ชันเดิมที่วาด Doctor
+        drawDreamDoctor(g2, 0, 0); // วาดที่ตำแหน่ง (0, 0) เนื่องจากมีการเคลื่อนที่จากการย้ายและขยาย
+    
+        // เรียกใช้การตั้งค่าการเข้ารหัสเพื่อยกเลิกการเปลี่ยนแปลงขนาดและตำแหน่ง
+        g2.setTransform(new AffineTransform());
+
     }
 
     public void drawWin(Graphics2D g2,int x,int y){
