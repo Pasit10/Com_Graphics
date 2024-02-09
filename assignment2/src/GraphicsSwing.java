@@ -6,7 +6,11 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 public class GraphicsSwing extends JPanel implements Runnable{
-    BufferedImage buffer = new BufferedImage(601,601,BufferedImage.TYPE_INT_ARGB);
+    BufferedImage buffer = new BufferedImage(2000,2000,BufferedImage.TYPE_INT_ARGB);
+
+    boolean statusSing = false;
+    boolean statusTee = false;
+    boolean statusKid = false;
 
     boolean status1 = false;
     boolean status2 = false;
@@ -25,44 +29,55 @@ public class GraphicsSwing extends JPanel implements Runnable{
     double circleWidth = 350;
 
     @Override public void run(){
-        // long lastTime = System.currentTimeMillis();
-        // long startTime = lastTime;
-        // while(true){
-        //     long currentTime = System.currentTimeMillis();
-        //     long elapsedTime = currentTime - lastTime;
+        long lastTime = System.currentTimeMillis();
+        long startTime = lastTime;
+        while(true){
+            long currentTime = System.currentTimeMillis();
+            long elapsedTime = currentTime - lastTime;
 
-        //     //Update
-        //     if (currentTime>=500+startTime) {
-        //         status1 = true;
-        //     }if (currentTime>=1000+startTime) {
-        //         status2 = true;
-        //     }if (currentTime>=1500+startTime) {
-        //         status3 = true;
-        //     }if ((currentTime-startTime)%300 == 0 ) {
-        //         statusEye = (statusEye) ? false : true;
-        //     }
-        //     // ขยายฝัน
-        //     double speed = elapsedTime / 1000.0;
-        //     if((circleX > -200 || circleY > -100) && status3){
-        //         circleWidth += 300 * speed;
-        //         circleHeight += 300 * speed;
-        //         circleX -= 180 * speed;
-        //         circleY -= 100 * speed;
-        //         System.out.println(circleX + " " + circleY + " this circle");
-        //     }
-        //     //ขยับเด็ก
-        //     if(status3 && midcircleY < getHeight()){
-        //         babyY += 230 * speed;
-        //         smallcircleY += 230 * speed;
-        //         midcircleY += 230 * speed;
-        //         System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
-        //     }
-        //     // ความฝันที่อยากเป็น
-        //     // Display
-        //     repaint();
+            // //Update
+            if (currentTime >= 500 + startTime && currentTime <= 2000 + startTime) {
+                statusSing = true;
+            }if (currentTime >= 1000 + startTime && currentTime <= 2000 + startTime) {
+                statusTee = true;
+            }if (currentTime >= 1500 + startTime && currentTime <= 2000 + startTime) {
+                statusKid = true;
+            }if (currentTime >= 2000 + startTime) {
+                statusSing = false;
+                statusTee = false;
+                statusKid = false;
+            }
+            // if (currentTime>=500+startTime) {
+            //     status1 = true;
+            // }if (currentTime>=1000+startTime) {
+            //     status2 = true;
+            // }if (currentTime>=1500+startTime) {
+            //     status3 = true;
+            // }if ((currentTime-startTime)%300 == 0 ) {
+            //     statusEye = (statusEye) ? false : true;
+            // }
+            // // ขยายฝัน
+            // double speed = elapsedTime / 1000.0;
+            // if((circleX > -200 || circleY > -100) && status3){
+            //     circleWidth += 300 * speed;
+            //     circleHeight += 300 * speed;
+            //     circleX -= 180 * speed;
+            //     circleY -= 100 * speed;
+            //     System.out.println(circleX + " " + circleY + " this circle");
+            // }
+            // //ขยับเด็ก
+            // if(status3 && midcircleY < getHeight()){
+            //     babyY += 230 * speed;
+            //     smallcircleY += 230 * speed;
+            //     midcircleY += 230 * speed;
+            //     System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
+            // }
+            // ความฝันที่อยากเป็น
+            // Display
+            repaint();
 
-        //     lastTime = currentTime;
-        // }
+            lastTime = currentTime;
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -74,7 +89,6 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.setupUtilityFunction(g2);
         // drawBaby(g2,(int)babyX,(int)babyY);
 
-        // drawMine(g2, 170,20);
         // if (status1) {
         //     drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
         // }if (status2) {
@@ -87,25 +101,28 @@ public class GraphicsSwing extends JPanel implements Runnable{
         //     drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
         // }
     
-        drawDreamDoctor(g2, 100,100);
+        // drawDreamDoctor(g2, 100,100);
         // drawWin(g2,100,100);
         // drawScaledDreamDoctor(g2, 100, 100, 2, 2);
-        drawSingTeeKid(g2, 200,200,0);
+        drawSingTeeKid(g2, 255,100);
         g.drawImage(buffer, 0,0,null);
     }
 
-    public void drawSingTeeKid(Graphics2D g2,int x,int y,int status){
-        Font font = new Font("Arial", Font.BOLD, 24); // Font name, style, size
-        //UtilityFunction.dr
+    public void drawSingTeeKid(Graphics2D g2,int x,int y){
+        Font font = new Font("Arial", Font.BOLD, 48); // Font name, style, size
+        UtilityFunction.drawLine(0,0,1,0,1,Color.BLACK);
         // Set the font
         g2.setFont(font);
-
-        // Draw a string with the specified font
-        switch (status) {
-            case 0:
-            g2.drawString("สิ่ง", x, y);
-                break;
+        if(statusSing){
+            g2.drawString("Sing", x, y);
         }
+        if(statusTee){
+            g2.drawString("Tee", x, y + 200);
+        }
+        if(statusKid){
+            g2.drawString("Kid", x, y + 400);
+        }
+
     }
 
     public void drawBaby(Graphics2D g2,int x,int y){
