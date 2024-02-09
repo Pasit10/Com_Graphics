@@ -23,45 +23,44 @@ public class GraphicsSwing extends JPanel implements Runnable{
     double circleWidth = 350;
 
     @Override public void run(){
-        long lastTime = System.currentTimeMillis();
-        long startTime = lastTime;
-        while(true){
-            long currentTime = System.currentTimeMillis();
-            long currentTimeEye = System.currentTimeMillis();
-            long elapsedTime = currentTime - lastTime;
+        // long lastTime = System.currentTimeMillis();
+        // long startTime = lastTime;
+        // while(true){
+        //     long currentTime = System.currentTimeMillis();
+        //     long elapsedTime = currentTime - lastTime;
 
-            //Update
-            if (currentTime>=500+startTime) {
-                status1 = true;
-            }if (currentTime>=1000+startTime) {
-                status2 = true;
-            }if (currentTime>=1500+startTime) {
-                status3 = true;
-            }if ((currentTime-startTime)%300 == 0 ) {
-                statusEye = (statusEye) ? false : true;
-            }
-            // ขยายฝัน
-            double speed = elapsedTime / 1000.0;
-            if((circleX > -200 || circleY > -100) && status3){
-                circleWidth += 300 * speed;
-                circleHeight += 300 * speed;
-                circleX -= 180 * speed;
-                circleY -= 100 * speed;
-                System.out.println(circleX + " " + circleY + " this circle");
-            }
-            //ขยับเด็ก
-            if(status3 && midcircleY < getHeight()){
-                babyY += 230 * speed;
-                smallcircleY += 230 * speed;
-                midcircleY += 230 * speed;
-                System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
-            }
-            // ความฝันที่อยากเป็น
-            // Display
-            repaint();
+        //     //Update
+        //     if (currentTime>=500+startTime) {
+        //         status1 = true;
+        //     }if (currentTime>=1000+startTime) {
+        //         status2 = true;
+        //     }if (currentTime>=1500+startTime) {
+        //         status3 = true;
+        //     }if ((currentTime-startTime)%300 == 0 ) {
+        //         statusEye = (statusEye) ? false : true;
+        //     }
+        //     // ขยายฝัน
+        //     double speed = elapsedTime / 1000.0;
+        //     if((circleX > -200 || circleY > -100) && status3){
+        //         circleWidth += 300 * speed;
+        //         circleHeight += 300 * speed;
+        //         circleX -= 180 * speed;
+        //         circleY -= 100 * speed;
+        //         System.out.println(circleX + " " + circleY + " this circle");
+        //     }
+        //     //ขยับเด็ก
+        //     if(status3 && midcircleY < getHeight()){
+        //         babyY += 230 * speed;
+        //         smallcircleY += 230 * speed;
+        //         midcircleY += 230 * speed;
+        //         System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
+        //     }
+        //     // ความฝันที่อยากเป็น
+        //     // Display
+        //     repaint();
 
-            lastTime = currentTime;
-        }
+        //     lastTime = currentTime;
+        // }
     }
 
     public void paintComponent(Graphics g) {
@@ -71,7 +70,7 @@ public class GraphicsSwing extends JPanel implements Runnable{
         g2.fillRect(0,0,getWidth(),getHeight());
 
         UtilityFunction.setupUtilityFunction(g);
-        // drawBaby(g2,(int)babyX,(int)babyY);
+        //drawBaby(g2,(int)babyX,(int)babyY);
         // // drawMine(g2, 170,20);
         // if (status1) {
         //     drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
@@ -84,9 +83,9 @@ public class GraphicsSwing extends JPanel implements Runnable{
         // }if (!statusEye) {
         //     drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
         // }
-        
-
-        drawDreamDoctor(g2, 10,100);
+    
+        //drawDreamDoctor(g2, 100,100);
+        drawWin(g2,100,100);
     }
 
     public void drawBaby(Graphics2D g2,int x,int y){
@@ -270,5 +269,37 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.drawCurve(x + 85,y + 231 + 40,x + 65,y + 238 + 40,x + 65,y + 244 + 40,x + 74,y + 249 + 40,1);
         UtilityFunction.drawCurve(x + 138,y + 242 + 40,x + 137,y + 258 + 40,x + 143,y + 271 + 40,x + 152,y + 279 + 40,1);
         UtilityFunction.drawCurve(x + 145,y + 254 + 40,x + 146,y + 259 + 40,x + 149,y + 263 + 40,x + 153,y + 264 + 40,1);
+    }
+
+    public void drawWin(Graphics2D g2,int x,int y){
+        //head
+        UtilityFunction.drawCurve(x + 65,y + 101 + 40,x + 43,y + 80 + 40,x + 43,y + 50 + 40,x + 65,y + 31 + 40,1);
+        g2.drawLine(x + 72,y + 108,x + 72,y + 101);
+        g2.drawLine(x + 72,y + 101,x + 65,y + 101);
+        UtilityFunction.drawCurve(x + 65,y + 31 + 40,x + 88,y + 16 + 40,x + 130,y + 16 + 40,x + 139,y + 60 + 40,1);
+        UtilityFunction.drawCurve(x + 111,y + 25 + 40,x + 122,y + 19 + 40,x + 133,y + 24 + 40,x + 126,y + 36 + 40,1);
+        UtilityFunction.drawCurve(x + 126,y + 36 + 40,x + 111,y + 52 + 40,x + 112,y + 63 + 40,x + 139,y + 60 + 40,1);
+        g2.drawLine(x + 131,y + 60,x + 131,y + 91);
+        UtilityFunction.drawCurve(x + 128,y + 27 + 40,x + 141,y + 39 + 40,x + 151,y + 55 + 40,x + 150,y + 74 + 40,1);
+        UtilityFunction.drawCurve(x + 150,y + 74 + 40,x + 138,y + 66 + 40,x + 137,y + 66 + 40,x + 131,y + 69 + 40,1);
+        UtilityFunction.drawCurve(x + 131,y + 74 + 40,x + 141,y + 79 + 40,x + 145,y + 79 + 40,x + 150,y + 74 + 40,1);
+        UtilityFunction.drawCurve(x + 131,y + 91 + 40,x + 131,y + 100 + 40,x + 128,y + 107 + 40,x + 118,y + 107 + 40,1);
+        g2.drawLine(x + 118,y + 107,x + 118,y + 111);
+
+        //body
+        UtilityFunction.drawCurve(x + 65,y + 112 + 40,x + 87,y + 99 + 40,x + 100,y + 99 + 40,x + 125,y + 116 +40,1);
+        g2.drawLine(x + 65,y + 112,x + 72,y + 115);
+        g2.drawLine(x + 72,y + 115,x + 120,y + 115);
+        UtilityFunction.drawCurve(x + 120,y + 115 + 40,x + 140,y + 117 + 40,x + 152,y + 121 + 40,x + 158,y + 125 + 40,1);
+        UtilityFunction.drawCurve(x + 158,y + 125 + 40,x + 182,y + 145 + 40,x + 187,y + 160 + 40,x + 190,y + 200 + 40,1);
+        UtilityFunction.drawCurve(x + 158,y + 125 + 40,x + 155,y + 146 + 40,x + 155,y + 180 + 40,x + 160,y + 200 + 40,1);
+        UtilityFunction.drawCurve(x + 68,y + 112 + 40,x + 22,y + 123 + 40,x + 20,y + 130 + 40,x + 12,y + 154 + 40,1);
+        UtilityFunction.drawCurve(x + 29,y + 127 + 40,x + 24,y + 153 + 40,x + 24,y + 173 + 40,x + 30,y + 200 + 40,1);
+        UtilityFunction.drawCurve(x + 28,y + 135 + 40,x + 65,y + 125 + 40,x + 119,y + 123 + 40,x + 158,y + 132 + 40,1);
+        UtilityFunction.drawCurve(x + 12,y + 154 + 40,x + 10,y + 183 + 40,x + 11,y + 195 + 40,x + 15,y + 200 + 40,1);
+        g2.drawLine(x + 45,y + 200,x + 45,y + 157);
+        g2.drawLine(x + 45,y + 157,x + 136,y + 157);
+        g2.drawLine(x + 136,y + 157,x + 136,y + 200);
+        g2.drawLine(x + 15,y + 200,x + 190,y + 200);
     }
 }
