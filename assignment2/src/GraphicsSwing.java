@@ -218,7 +218,7 @@ public class GraphicsSwing extends JPanel implements Runnable{
 
         UtilityFunction.drawCurve(x + 140,y + 102,x + 131,y + 117,x + 131,y + 133,x + 145,y + 189,1);
         UtilityFunction.drawCurve(x + 197,y + 94,x + 214,y + 97,x + 214,y + 112,x + 145,y + 189,1);
-        UtilityFunction.drawLine(x + 157,y + 125,x + 136,y + 143);
+        UtilityFunction.drawLine(x + 157,y + 125,x + 134,y + 143);
         UtilityFunction.drawLine(x + 159,y + 126,x + 177,y + 151);
 
         // necktie
@@ -226,18 +226,18 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.drawLine(x + 147,y + 154,x + 161,y + 156);
         UtilityFunction.drawLine(x + 161,y + 156,x + 172,y + 145);
 
-        UtilityFunction.drawLine(x + 164,y + 132,x + 145,y + 142);
+        UtilityFunction.drawLine(x + 164,y + 132,x + 142,y + 142);
         UtilityFunction.drawLine(x + 145,y + 145,x + 166,y + 135);
-        UtilityFunction.drawLine(x + 167,y + 138,x + 147,y + 149);
+        UtilityFunction.drawLine(x + 167,y + 138,x + 145,y + 149);
         UtilityFunction.drawLine(x + 147,y + 152,x + 170,y + 141);
 
         UtilityFunction.drawLine(x + 149,y + 154,x + 139,y + 165);
         UtilityFunction.drawLine(x + 160,y + 156,x + 162,y + 168);
 
-        UtilityFunction.drawLine(x + 158,y + 156,x + 140,y + 167);
-        UtilityFunction.drawLine(x + 161,y + 160,x + 141,y + 170);
-        UtilityFunction.drawLine(x + 162,y + 164,x + 143,y + 177);
-        UtilityFunction.drawLine(x + 162,y + 168,x + 144,y + 179);
+        UtilityFunction.drawLine(x + 158,y + 156,x + 139,y + 167);
+        UtilityFunction.drawLine(x + 161,y + 160,x + 140,y + 170);
+        UtilityFunction.drawLine(x + 162,y + 164,x + 142,y + 177);
+        UtilityFunction.drawLine(x + 162,y + 168,x + 142,y + 179);
 
         //body part2
         UtilityFunction.drawLine(x + 145,y + 189,x + 140,y + 202);
@@ -264,10 +264,10 @@ public class GraphicsSwing extends JPanel implements Runnable{
         g2.drawOval(x + 109,y + 171,4,4);
 
         //body part3
-        UtilityFunction.drawLine(x + 148,y + 187,x + 191,y + 164);
-        UtilityFunction.drawLine(x + 205,y + 96,x + 216,y + 100);
+        // UtilityFunction.drawLine(x + 148,y + 187,x + 191,y + 164);
+        // UtilityFunction.drawLine(x + 205,y + 96,x + 216,y + 100);
         UtilityFunction.drawCurve(x + 140,y + 101,x + 136,y + 102,x + 135,y + 104,x + 133,y + 108,1);
-        UtilityFunction.drawLine(x + 118,y + 142,x + 133,y + 108);
+        UtilityFunction.drawLine(x + 118,y + 142,x + 133,y + 106);
         UtilityFunction.drawLine(x + 118,y + 142,x + 123,y + 142);
         UtilityFunction.drawLine(x + 123,y + 142,x + 119,y + 154);
         UtilityFunction.drawLine(x + 119,y + 154,x + 145,y + 189);
@@ -278,13 +278,13 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.drawCurve(x + 74,y + 249,x + 80,y + 278,x + 85,y + 283,x + 91,y + 281,1);
         UtilityFunction.drawCurve(x + 91,y + 281,x + 131,y + 288,x + 110,y + 282,x + 144,y + 300,1);
         UtilityFunction.drawLine(x + 144,y + 300,x + 225,y + 300);
-        UtilityFunction.drawLine(x + 225,y + 300,x + 243,y + 285);
+        UtilityFunction.drawLine(x + 225,y + 300,x + 243,y + 283);
         // g2.drawLine(x + 243,y + 285,x + 243,y + 300);
         UtilityFunction.drawCurve(x + 140,y + 101,x + 131,y + 103,x + 127,y + 112,x + 123,y + 113,1);
         UtilityFunction.drawCurve(x + 114,y + 118,x + 108,y + 123,x + 98,y + 128,x + 85,y + 129,1);
         UtilityFunction.drawCurve(x + 85,y + 129,x + 65,y + 133,x + 55,y + 150,x + 49,y + 181,1);
         UtilityFunction.drawCurve(x + 49,y + 181,x + 39,y + 208,x + 30,y + 215,x + 27,y + 235,1);
-        UtilityFunction.drawLine(x + 27,y + 236,x + 27,y + 268);
+        UtilityFunction.drawLine(x + 27,y + 235,x + 27,y + 268);
         UtilityFunction.drawCurve(x + 27,y + 268,x + 30,y + 283,x + 35,y + 285,x + 94,y + 293,1);
         UtilityFunction.drawLine(x + 94,y + 293,x + 132,y + 293);
         UtilityFunction.drawLine(x + 76,y + 139,x + 83,y + 199);
