@@ -102,8 +102,9 @@ public class GraphicsSwing extends JPanel implements Runnable{
         // }
     
         // drawDreamDoctor(g2, 100,100);
-        // drawWin(g2,100,100);
-        // drawScaledDreamDoctor(g2, 100, 100, 2, 2);
+        drawDreamDoctor(g2, 100,100);
+        //drawWin(g2,100,100);
+        drawScaledDreamDoctor(g2, 100, 100, 2, 2);
         drawSingTeeKid(g2, 255,100);
         g.drawImage(buffer, 0,0,null);
     }
@@ -325,29 +326,66 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.drawCurve(x + 138,y + 242,x + 137,y + 258,x + 143,y + 271,x + 152,y + 279,1);
         UtilityFunction.drawCurve(x + 145,y + 254,x + 146,y + 259,x + 149,y + 263,x + 153,y + 264,1);
 
-
-
-
-
+        
+        //ผม
+        buffer = UtilityFunction.Floodfill(buffer ,x + 346,y +179,Color.WHITE,new Color(0x4d2b22));
+        //หน้า
+        buffer = UtilityFunction.Floodfill(buffer ,x + 409,y +179,Color.WHITE,new Color(0xffd5c9));
+        //ตา
+        buffer = UtilityFunction.Floodfill(buffer ,x + 390,y +190,Color.WHITE,new Color(0x212826));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 460,y +190,Color.WHITE,new Color(0x212826));
+        //หู
+        buffer = UtilityFunction.Floodfill(buffer ,x + 509,y +195,Color.WHITE,new Color(0xffd5c9));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 343,y +200,Color.WHITE,new Color(0xffd5c9));
+        //คอ
+        buffer = UtilityFunction.Floodfill(buffer ,x + 428,y +340,Color.WHITE,new Color(0xffd5c9));
+        //ปกคอ
+        buffer = UtilityFunction.Floodfill(buffer ,x + 464,y +352,Color.WHITE,new Color(0x62b6fb));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 387,y +352,Color.WHITE,new Color(0x62b6fb));
+        //เสื้อซับใน
+        buffer = UtilityFunction.Floodfill(buffer ,x + 384,y +407,Color.WHITE,new Color(0x62b6fb));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 433,y +414,Color.WHITE,new Color(0x62b6fb));
+        //เน็คไท
+        buffer = UtilityFunction.Floodfill(buffer ,x + 405,y +371,Color.WHITE,new Color(0xa00e2e));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 411,y +386,Color.WHITE,new Color(0xa00e2e));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 421,y +404,Color.WHITE,new Color(0xa00e2e));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 396,y +421,Color.WHITE,new Color(0xa00e2e));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 394,y +442,Color.WHITE,new Color(0xa00e2e));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 396,y +460,Color.WHITE,new Color(0xa00e2e));
+        
+        //เสื้อ
+        buffer = UtilityFunction.Floodfill(buffer ,x + 285,y +459,Color.WHITE,new Color(0xf3f3f3));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 466,y +420,Color.WHITE,new Color(0xf3f3f3));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 357,y +392,Color.WHITE,new Color(0xf3f3f3));
+        
+        //ที่ตรวจ c2c3c5
+        buffer = UtilityFunction.Floodfill(buffer ,x + 515,y +384,Color.WHITE,new Color(0xf3f3f3));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 501,y +279,Color.WHITE,new Color(0xf3f3f3));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 337,y +331,Color.WHITE,new Color(0xf3f3f3));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 328,y +445,Color.WHITE,new Color(0xf3f3f3));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 466,y +516,Color.WHITE,new Color(0xf3f3f3));
+        
+        UtilityFunction.plot(x+143, y+42, Color.WHITE, 1);
+        UtilityFunction.plot(x+180, y+41, Color.WHITE, 1);
     }
-
+    
     public void drawScaledDreamDoctor(Graphics2D g2, int x, int y, double scaleX, double scaleY) {
         // กำหนดขนาดและตำแหน่งเริ่มต้น
         AffineTransform transform = new AffineTransform();
         transform.translate(x, y); // ย้ายไปที่ตำแหน่ง x, y
         transform.scale(scaleX, scaleY); // ขยายตามขนาด scaleX, scaleY
-    
+        
         // ใช้การเข้ารหัสที่กำหนดไว้
         g2.transform(transform);
-    
+        
         // เรียกใช้ฟังก์ชันเดิมที่วาด Doctor
         drawDreamDoctor(g2, 0, 0); // วาดที่ตำแหน่ง (0, 0) เนื่องจากมีการเคลื่อนที่จากการย้ายและขยาย
-    
+        
         // เรียกใช้การตั้งค่าการเข้ารหัสเพื่อยกเลิกการเปลี่ยนแปลงขนาดและตำแหน่ง
         g2.setTransform(new AffineTransform());
-
+        
     }
-
+    
     public void drawWin(Graphics2D g2,int x,int y){
         //head
         UtilityFunction.drawCurve(x + 65,y + 101,x + 43,y + 80,x + 43,y + 50,x + 65,y + 31,1);
