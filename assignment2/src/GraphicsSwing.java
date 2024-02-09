@@ -25,22 +25,22 @@ public class GraphicsSwing extends JPanel implements Runnable{
     double circleWidth = 350;
 
     @Override public void run(){
-        long lastTime = System.currentTimeMillis();
-        long startTime = lastTime;
-        while(true){
-            long currentTime = System.currentTimeMillis();
-            long elapsedTime = currentTime - lastTime;
+        // long lastTime = System.currentTimeMillis();
+        // long startTime = lastTime;
+        // while(true){
+        //     long currentTime = System.currentTimeMillis();
+        //     long elapsedTime = currentTime - lastTime;
 
-            //Update
-            if (currentTime>=500+startTime) {
-                status1 = true;
-            }if (currentTime>=1000+startTime) {
-                status2 = true;
-            }if (currentTime>=1500+startTime) {
-                status3 = true;
-            }if ((currentTime-startTime)%300 == 0 ) {
-                statusEye = (statusEye) ? false : true;
-            }
+        //     //Update
+        //     if (currentTime>=500+startTime) {
+        //         status1 = true;
+        //     }if (currentTime>=1000+startTime) {
+        //         status2 = true;
+        //     }if (currentTime>=1500+startTime) {
+        //         status3 = true;
+        //     }if ((currentTime-startTime)%300 == 0 ) {
+        //         statusEye = (statusEye) ? false : true;
+        //     }
         //     // ขยายฝัน
         //     double speed = elapsedTime / 1000.0;
         //     if((circleX > -200 || circleY > -100) && status3){
@@ -58,11 +58,11 @@ public class GraphicsSwing extends JPanel implements Runnable{
         //         System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
         //     }
         //     // ความฝันที่อยากเป็น
-            // Display
-            repaint();
+        //     // Display
+        //     repaint();
 
-            lastTime = currentTime;
-        }
+        //     lastTime = currentTime;
+        // }
     }
 
     public void paintComponent(Graphics g) {
@@ -90,8 +90,22 @@ public class GraphicsSwing extends JPanel implements Runnable{
         drawDreamDoctor(g2, 100,100);
         // drawWin(g2,100,100);
         // drawScaledDreamDoctor(g2, 100, 100, 2, 2);
-
+        drawSingTeeKid(g2, 200,200,0);
         g.drawImage(buffer, 0,0,null);
+    }
+
+    public void drawSingTeeKid(Graphics2D g2,int x,int y,int status){
+        Font font = new Font("Arial", Font.BOLD, 24); // Font name, style, size
+        //UtilityFunction.dr
+        // Set the font
+        g2.setFont(font);
+
+        // Draw a string with the specified font
+        switch (status) {
+            case 0:
+            g2.drawString("สิ่ง", x, y);
+                break;
+        }
     }
 
     public void drawBaby(Graphics2D g2,int x,int y){
@@ -213,8 +227,8 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.drawLine(x + 197,y + 69,x + 197,y + 102);
 
         //body part1
-        UtilityFunction.drawLine(x + 140,y + 107,x + 157,y + 125);
-        UtilityFunction.drawLine(x + 159,y + 126,x + 197,y + 100);
+        UtilityFunction.drawLine(x + 140,y + 107,x + 158,y + 125);
+        UtilityFunction.drawLine(x + 158,y + 125,x + 197,y + 100);
 
         UtilityFunction.drawCurve(x + 140,y + 102,x + 131,y + 117,x + 131,y + 133,x + 145,y + 189,1);
         UtilityFunction.drawCurve(x + 197,y + 94,x + 214,y + 97,x + 214,y + 112,x + 145,y + 189,1);
@@ -224,7 +238,7 @@ public class GraphicsSwing extends JPanel implements Runnable{
         // necktie
         UtilityFunction.drawLine(x + 142,y + 138,x + 147,y + 154);
         UtilityFunction.drawLine(x + 147,y + 154,x + 161,y + 156);
-        UtilityFunction.drawLine(x + 161,y + 156,x + 172,y + 145);
+        UtilityFunction.drawLine(x + 161,y + 156,x + 174,y + 145);
 
         UtilityFunction.drawLine(x + 164,y + 132,x + 142,y + 142);
         UtilityFunction.drawLine(x + 145,y + 145,x + 166,y + 135);
@@ -264,8 +278,8 @@ public class GraphicsSwing extends JPanel implements Runnable{
         g2.drawOval(x + 109,y + 171,4,4);
 
         //body part3
-        // UtilityFunction.drawLine(x + 148,y + 187,x + 191,y + 164);
-        // UtilityFunction.drawLine(x + 205,y + 96,x + 216,y + 100);
+        UtilityFunction.drawLine(x + 148,y + 187,x + 191,y + 164);
+        UtilityFunction.drawLine(x + 205,y + 96,x + 216,y + 100);
         UtilityFunction.drawCurve(x + 140,y + 101,x + 136,y + 102,x + 135,y + 104,x + 133,y + 108,1);
         UtilityFunction.drawLine(x + 118,y + 142,x + 133,y + 106);
         UtilityFunction.drawLine(x + 118,y + 142,x + 123,y + 142);
