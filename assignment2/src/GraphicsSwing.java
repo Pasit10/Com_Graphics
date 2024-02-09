@@ -25,22 +25,22 @@ public class GraphicsSwing extends JPanel implements Runnable{
     double circleWidth = 350;
 
     @Override public void run(){
-        // long lastTime = System.currentTimeMillis();
-        // long startTime = lastTime;
-        // while(true){
-        //     long currentTime = System.currentTimeMillis();
-        //     long elapsedTime = currentTime - lastTime;
+        long lastTime = System.currentTimeMillis();
+        long startTime = lastTime;
+        while(true){
+            long currentTime = System.currentTimeMillis();
+            long elapsedTime = currentTime - lastTime;
 
-        //     //Update
-        //     if (currentTime>=500+startTime) {
-        //         status1 = true;
-        //     }if (currentTime>=1000+startTime) {
-        //         status2 = true;
-        //     }if (currentTime>=1500+startTime) {
-        //         status3 = true;
-        //     }if ((currentTime-startTime)%300 == 0 ) {
-        //         statusEye = (statusEye) ? false : true;
-        //     }
+            //Update
+            if (currentTime>=500+startTime) {
+                status1 = true;
+            }if (currentTime>=1000+startTime) {
+                status2 = true;
+            }if (currentTime>=1500+startTime) {
+                status3 = true;
+            }if ((currentTime-startTime)%300 == 0 ) {
+                statusEye = (statusEye) ? false : true;
+            }
         //     // ขยายฝัน
         //     double speed = elapsedTime / 1000.0;
         //     if((circleX > -200 || circleY > -100) && status3){
@@ -58,11 +58,11 @@ public class GraphicsSwing extends JPanel implements Runnable{
         //         System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
         //     }
         //     // ความฝันที่อยากเป็น
-        //     // Display
-        //     repaint();
+            // Display
+            repaint();
 
-        //     lastTime = currentTime;
-        // }
+            lastTime = currentTime;
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -74,19 +74,18 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.setupUtilityFunction(g2);
         drawBaby(g2,(int)babyX,(int)babyY);
 
-        //UtilityFunction.plot(50,50,Color.black,5);
-        // // drawMine(g2, 170,20);
-        // if (status1) {
-        //     drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
-        // }if (status2) {
-        //     drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
-        // }if (status3) {
-        //     drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth, (int)circleHeight);
-        // }if(statusEye){
-        //     drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
-        // }if (!statusEye) {
-        //     drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
-        // }
+        // drawMine(g2, 170,20);
+        if (status1) {
+            drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
+        }if (status2) {
+            drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
+        }if (status3) {
+            drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth, (int)circleHeight);
+        }if(statusEye){
+            drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
+        }if (!statusEye) {
+            drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
+        }
     
         // drawDreamDoctor(g2, 100,100);
         // drawWin(g2,100,100);
@@ -127,19 +126,35 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.drawCurve(x + 7,y + 116,x ,y + 122, x + 4,y + 130,x + 15,y + 131,1);
         UtilityFunction.drawCurve(x + 170,y + 78,x + 180,y + 80,x + 178,y + 90,x + 171,y + 94,1);
 
-        buffer = UtilityFunction.Floodfill(buffer ,x + 30,y + 30,Color.WHITE,Color.GREEN);
-    }
+        //ลงสีหน้า
+        buffer = UtilityFunction.Floodfill(buffer ,x + 30,y + 30,Color.WHITE,new Color(0xfddac6));
 
+        //ลงสีผ้าอ้อม
+        buffer = UtilityFunction.Floodfill(buffer ,x + 35,y + 180,Color.WHITE,new Color(0x9ecfed));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 160,y + 150,Color.WHITE,new Color(0x9ecfed));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 100,y + 250,Color.WHITE,new Color(0x9ecfed));
+
+        //ลงสีแก้ม
+        buffer = UtilityFunction.Floodfill(buffer ,x + 65,y + 125,Color.WHITE,new Color(0xf6a5b6));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 135,y + 105,Color.WHITE,new Color(0xf6a5b6));
+
+        //ลงสีหู
+        buffer = UtilityFunction.Floodfill(buffer ,x + 5,y + 120,Color.WHITE,new Color(0xfddac6));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 173,y + 80,Color.WHITE,new Color(0xfddac6));
+    }
+    
     public void drawOpenEyeBaby(Graphics2D g2,int x,int y){
         g2.drawOval(x + 60,y + 94,20,20);
-        g2.drawOval(x + 70,y + 98,4,4);
+        g2.drawOval(x + 70,y + 98,6,6);
         g2.drawOval(x + 110,y + 82,20,20);
-        g2.drawOval(x + 120,y + 86,4,4);
+        g2.drawOval(x + 120,y + 86,6,6);
+        buffer = UtilityFunction.Floodfill(buffer ,x + 65,y + 105,new Color(0xfddac6),new Color(0x3a3a3a));
+        buffer = UtilityFunction.Floodfill(buffer ,x + 125,y + 85,new Color(0xfddac6),new Color(0x3a3a3a));
     }
 
     public void drawCloseEyeBaby(Graphics2D g2,int x,int y){
-        UtilityFunction.drawCurve(x + 135, y + 120, x + 145, y + 124, x + 115, y + 134, x + 105, y + 130, 1);
-        UtilityFunction.drawCurve(x + 85, y + 135, x + 95, y + 139, x + 65, y + 149, x + 55, y + 145, 1);
+        UtilityFunction.drawCurve(x + 135, y + 80, x + 145, y + 84, x + 115, y + 94, x + 105, y + 90, 1);
+        UtilityFunction.drawCurve(x + 85, y + 95, x + 95, y + 99, x + 65, y + 109, x + 55, y + 105, 1);
     }
 
     public void drawsmallcircle(Graphics2D g2,int x,int y){
