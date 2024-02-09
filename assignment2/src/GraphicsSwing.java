@@ -11,11 +11,22 @@ public class GraphicsSwing extends JPanel implements Runnable{
     boolean statusSing = false;
     boolean statusTee = false;
     boolean statusKid = false;
+    boolean statusPen = false;
 
     boolean status1 = false;
     boolean status2 = false;
     boolean status3 = false;
     boolean statusEye = false;
+
+    boolean startbaby = false;
+    boolean startdoctor = false;
+
+    boolean statusI = false;
+    boolean statusWant = false;
+    boolean statusTo = false;
+    boolean statusBe = false;
+    boolean statusA = false;
+    boolean statusDoctor = false;
 
     double babyX = 5,babyY = 270;
 
@@ -42,37 +53,62 @@ public class GraphicsSwing extends JPanel implements Runnable{
                 statusTee = true;
             }if (currentTime >= 1500 + startTime && currentTime <= 2000 + startTime) {
                 statusKid = true;
-            }if (currentTime >= 2000 + startTime) {
+            }if (currentTime == 2000 + startTime) {
                 statusSing = false;
                 statusTee = false;
                 statusKid = false;
+                startbaby = true;
             }
-            // if (currentTime>=500+startTime) {
-            //     status1 = true;
-            // }if (currentTime>=1000+startTime) {
-            //     status2 = true;
-            // }if (currentTime>=1500+startTime) {
-            //     status3 = true;
-            // }if ((currentTime-startTime)%300 == 0 ) {
-            //     statusEye = (statusEye) ? false : true;
-            // }
-            // // ขยายฝัน
-            // double speed = elapsedTime / 1000.0;
-            // if((circleX > -200 || circleY > -100) && status3){
-            //     circleWidth += 300 * speed;
-            //     circleHeight += 300 * speed;
-            //     circleX -= 180 * speed;
-            //     circleY -= 100 * speed;
-            //     System.out.println(circleX + " " + circleY + " this circle");
-            // }
-            // //ขยับเด็ก
-            // if(status3 && midcircleY < getHeight()){
-            //     babyY += 230 * speed;
-            //     smallcircleY += 230 * speed;
-            //     midcircleY += 230 * speed;
-            //     System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
-            // }
+            if (currentTime>=2500+startTime) {
+                status1 = true;
+            }if (currentTime>=3000+startTime) {
+                status2 = true;
+            }if (currentTime>=3500+startTime) {
+                status3 = true;
+            }if ((currentTime-startTime)%300 == 0 ) {
+                statusEye = (statusEye) ? false : true;
+            }
+            // ขยายฝัน
+            double speed = elapsedTime / 1000.0;
+            if((circleX > -200 || circleY > -100) && status3){
+                circleWidth += 300 * speed;
+                circleHeight += 300 * speed;
+                circleX -= 180 * speed;
+                circleY -= 100 * speed;
+                System.out.println(circleX + " " + circleY + " this circle");
+            }
+            //ขยับเด็ก
+            if(status3 && midcircleY < getHeight()){
+                babyY += 230 * speed;
+                smallcircleY += 230 * speed;
+                midcircleY += 230 * speed;
+                System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
+            }
+            //หมอ
+            if (currentTime >=6000+startTime && currentTime <= 9000 + startTime) {
+                startdoctor = true; 
+                statusI = true;
+            }if (currentTime >=6500+startTime && currentTime <= 9000 + startTime) {
+                statusWant = true;
+            }if (currentTime >=7000+startTime && currentTime <= 9000 + startTime) {
+                statusTo = true;
+            }if (currentTime >=7500+startTime && currentTime <= 9000 + startTime) {
+                statusBe = true;
+            }if (currentTime >=8000+startTime && currentTime <= 9000 + startTime) {
+                statusA = true;
+            }if (currentTime >=8500+startTime && currentTime <= 9000 + startTime) {
+                statusDoctor = true;
+            }
             // ความฝันที่อยากเป็น
+            if (currentTime >=9000+startTime) {
+                status3 = false;
+                startdoctor = false;
+                statusSing = true;
+            }if (currentTime >=9500+startTime) {
+                statusTee = true;
+            }if (currentTime >=10000+startTime) {
+                statusPen = true;
+            }
             // Display
             repaint();
 
@@ -87,25 +123,26 @@ public class GraphicsSwing extends JPanel implements Runnable{
         g2.fillRect(0,0,getWidth(),getHeight());
 
         UtilityFunction.setupUtilityFunction(g2);
-        // drawBaby(g2,(int)babyX,(int)babyY);
-
-        // if (status1) {
-        //     drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
-        // }if (status2) {
-        //     drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
-        // }if (status3) {
-        //     drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth, (int)circleHeight);
-        // }if(statusEye){
-        //     drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
-        // }if (!statusEye) {
-        //     drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
-        // }
-    
-        // drawDreamDoctor(g2, 100,100);
-        drawDreamDoctor(g2, 100,100);
-        //drawWin(g2,100,100);
-        drawScaledDreamDoctor(g2, 100, 100, 2, 2);
+        if (startbaby) {
+            drawBaby(g2,(int)babyX,(int)babyY);
+            if (status1) {
+                drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
+            }if (status2) {
+                drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
+            }if (status3) {
+                drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth, (int)circleHeight);
+            }if(statusEye){
+                drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
+            }if (!statusEye) {
+                drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
+            }
+        }if (startdoctor) {
+            drawIWannaBeADoctor(g2, 10, 130);
+        }
         drawSingTeeKid(g2, 255,100);
+        drawSingTeePen(g2, 255, 100);
+    
+        // drawWin(g2,100,100);
         g.drawImage(buffer, 0,0,null);
     }
 
@@ -124,6 +161,44 @@ public class GraphicsSwing extends JPanel implements Runnable{
             g2.drawString("Kid", x, y + 400);
         }
 
+    }
+
+    public void drawSingTeePen(Graphics2D g2,int x,int y){
+        Font font = new Font("Arial", Font.BOLD, 48); // Font name, style, size
+        UtilityFunction.drawLine(0,0,1,0,1,Color.BLACK);
+        // Set the font
+        g2.setFont(font);
+        if(statusSing){
+            g2.drawString("Sing", x, y);
+        }
+        if(statusTee){
+            g2.drawString("Tee", x, y + 200);
+        }
+        if(statusPen){
+            g2.drawString("Pen", x, y + 400);
+        }
+
+    }
+
+    public void drawIWannaBeADoctor(Graphics2D g2,int x,int y){
+        Font font = new Font("Arial", Font.BOLD, 36); // Font name, style, size
+        UtilityFunction.drawLine(0,0,1,0,1,Color.BLACK);
+        // Set the font
+        g2.setFont(font);
+        if(statusI) {
+            g2.drawString(" I", x, y);
+        }if(statusWant){
+            g2.drawString(" Want", x, y+50);
+        }if (statusTo) { 
+            g2.drawString(" To", x, y+100);
+        }if (statusBe) {
+            g2.drawString(" Be", x, y+150);
+        }if (statusA) {
+            g2.drawString(" A", x, y+200);
+        }if (statusDoctor) {
+            g2.drawString(" Doctor", x, y+250);
+        }
+        drawScaledDreamDoctor(g2, 100, 100, 2, 2);
     }
 
     public void drawBaby(Graphics2D g2,int x,int y){
@@ -358,7 +433,7 @@ public class GraphicsSwing extends JPanel implements Runnable{
         buffer = UtilityFunction.Floodfill(buffer ,x + 466,y +420,Color.WHITE,new Color(0xf3f3f3));
         buffer = UtilityFunction.Floodfill(buffer ,x + 357,y +392,Color.WHITE,new Color(0xf3f3f3));
         
-        //ที่ตรวจ c2c3c5
+        //ที่ตรวจ
         buffer = UtilityFunction.Floodfill(buffer ,x + 515,y +384,Color.WHITE,new Color(0xf3f3f3));
         buffer = UtilityFunction.Floodfill(buffer ,x + 501,y +279,Color.WHITE,new Color(0xf3f3f3));
         buffer = UtilityFunction.Floodfill(buffer ,x + 337,y +331,Color.WHITE,new Color(0xf3f3f3));
