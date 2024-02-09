@@ -3,17 +3,15 @@ package assignment2.src;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.*;
+import java.util.Queue;
 
 public final class UtilityFunction {
     private static Graphics g;
-    private static BufferedImage buffer = new BufferedImage(601, 601, BufferedImage.TYPE_INT_ARGB);
-    private static Graphics2D g2 = buffer.createGraphics();
     private static ArrayList<Integer> fireworkRGBColor = new ArrayList<>();
     // set Graphics in this class not null
-    public static void setupUtilityFunction(Graphics graphics){
-        g2.setColor(Color.WHITE);
-        g2.fillRect(0, 0, 600,600);
+    public static void setupUtilityFunction(Graphics2D graphics){
         g = graphics;
+        g.fillRect(0, 0, 600,600);
     }
     // set FireWork Color use in FloodFill
     public static void setFireWorkRGBColor(Color[] allColors){
@@ -61,6 +59,7 @@ public final class UtilityFunction {
             D += 2 * dy;
         }
     }
+
     // default color (black) for drawCurve method
     public static void drawCurve(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int size){
         drawCurve(x1, y1, x2, y2, x3, y3, x4, y4, size, Color.BLACK);
@@ -142,68 +141,68 @@ public final class UtilityFunction {
     }
 
     // FloodFill
-    public static void Floodfill(int x,int y,Color target_color,Color replacement_color){
+    public static BufferedImage Floodfill(BufferedImage m,int x,int y,Color target_color,Color replacement_color){
         Queue<Point> q = new LinkedList<>();
         q.add(new Point(x, y));
-        buffer.setRGB(x, y, replacement_color.getRGB());
+        m.setRGB(x, y, replacement_color.getRGB());
         while(!q.isEmpty()){
             Point p = q.poll();
             // w
-            if(p.y - 1 >= 0 && buffer.getRGB(p.x , p.y - 1) == target_color.getRGB()){
-                buffer.setRGB(p.x, p.y - 1, replacement_color.getRGB());
+            if(p.y - 1 >= 0 && m.getRGB(p.x , p.y - 1) == target_color.getRGB()){
+                m.setRGB(p.x, p.y - 1, replacement_color.getRGB());
                 q.add(new Point(p.x, p.y - 1));
             }
             // e
-            if(p.y + 1 <= 600 && buffer.getRGB(p.x , p.y + 1) == target_color.getRGB()){
-                buffer.setRGB(p.x, p.y + 1, replacement_color.getRGB());
+            if(p.y + 1 <= 600 && m.getRGB(p.x , p.y + 1) == target_color.getRGB()){
+                m.setRGB(p.x, p.y + 1, replacement_color.getRGB());
                 q.add(new Point(p.x, p.y + 1));
             }
             // n
-            if(p.x - 1 >= 0 && buffer.getRGB(p.x - 1, p.y) == target_color.getRGB()){
-                buffer.setRGB(p.x - 1,p.y, replacement_color.getRGB());
+            if(p.x - 1 >= 0 && m.getRGB(p.x - 1, p.y) == target_color.getRGB()){
+                m.setRGB(p.x - 1,p.y, replacement_color.getRGB());
                 q.add(new Point(p.x - 1, p.y));
             }
             // s
-            if(p.x + 1 <= 600 && buffer.getRGB(p.x + 1, p.y) == target_color.getRGB()){
-                buffer.setRGB(p.x + 1,p.y, replacement_color.getRGB());
+            if(p.x + 1 <= 600 && m.getRGB(p.x + 1, p.y) == target_color.getRGB()){
+                m.setRGB(p.x + 1,p.y, replacement_color.getRGB());
                 q.add(new Point(p.x + 1, p.y));
             }
         }
-        g.drawImage(buffer, 0,0,null);
+        return m;
     }
     // Floodfill use only unknown background color
     // use border_color to exit loop
-    public static void FloodfillUpgrade(int x,int y,Color border_color,Color replacement_color){
+    public static BufferedImage FloodfillUpgrade(BufferedImage m,int x,int y,Color border_color,Color replacement_color){
         Queue<Point> q = new LinkedList<>();
         q.add(new Point(x, y));
-        buffer.setRGB(x, y, replacement_color.getRGB());
+        m.setRGB(x, y, replacement_color.getRGB());
         while(!q.isEmpty()){
             Point current = q.poll();
             // w
-            if(current.y - 1 >= 0 && buffer.getRGB(current.x , current.y - 1) != border_color.getRGB() && buffer.getRGB(current.x , current.y - 1) != replacement_color.getRGB()){
-                buffer.setRGB(current.x, current.y - 1, replacement_color.getRGB());
+            if(current.y - 1 >= 0 && m.getRGB(current.x , current.y - 1) != border_color.getRGB() && m.getRGB(current.x , current.y - 1) != replacement_color.getRGB()){
+                m.setRGB(current.x, current.y - 1, replacement_color.getRGB());
                 q.add(new Point(current.x, current.y - 1));
             }
             // e
-            if(current.y + 1 <= 600 && buffer.getRGB(current.x , current.y + 1) != border_color.getRGB() && buffer.getRGB(current.x , current.y + 1) != replacement_color.getRGB()){
-                buffer.setRGB(current.x, current.y + 1, replacement_color.getRGB());
+            if(current.y + 1 <= 600 && m.getRGB(current.x , current.y + 1) != border_color.getRGB() && m.getRGB(current.x , current.y + 1) != replacement_color.getRGB()){
+                m.setRGB(current.x, current.y + 1, replacement_color.getRGB());
                 q.add(new Point(current.x, current.y + 1));
             }
             // n
-            if(current.x - 1 >= 0 && buffer.getRGB(current.x - 1, current.y) != border_color.getRGB() && buffer.getRGB(current.x - 1 , current.y) != replacement_color.getRGB()){
-                buffer.setRGB(current.x - 1,current.y, replacement_color.getRGB());
+            if(current.x - 1 >= 0 && m.getRGB(current.x - 1, current.y) != border_color.getRGB() && m.getRGB(current.x - 1 , current.y) != replacement_color.getRGB()){
+                m.setRGB(current.x - 1,current.y, replacement_color.getRGB());
                 q.add(new Point(current.x - 1, current.y));
             }
             // s
-            if(current.x + 1 <= 600 && buffer.getRGB(current.x + 1, current.y) != border_color.getRGB() && buffer.getRGB(current.x + 1 , current.y) != replacement_color.getRGB()){
-                buffer.setRGB(current.x + 1,current.y, replacement_color.getRGB());
+            if(current.x + 1 <= 600 && m.getRGB(current.x + 1, current.y) != border_color.getRGB() && m.getRGB(current.x + 1 , current.y) != replacement_color.getRGB()){
+                m.setRGB(current.x + 1,current.y, replacement_color.getRGB());
                 q.add(new Point(current.x + 1, current.y));
             }
         }
-        g.drawImage(buffer, 0,0,null);
+        return m;
     }
     // floodfill แต่ไล่สีในแนวตั้ง
-    public static void floodFillGradient(int xStart, int yStart, int xEnd, int yEnd,Color startColor, Color endColor, Color target) {
+    public static BufferedImage floodFillGradient(BufferedImage m ,int xStart, int yStart, int xEnd, int yEnd,Color startColor, Color endColor, Color target) {
         Queue<Point> q = new LinkedList<>();
 
         float ratio = (float) (yStart - yStart) / (yEnd - yStart - 1);
@@ -212,7 +211,7 @@ public final class UtilityFunction {
         Color lineColor1 = interpolateColor(startColor, endColor, ratio);
         Color lineColor2 = interpolateColor(startColor, endColor, ratio);
 
-        if (buffer.getRGB(xStart, yStart) != target.getRGB()) {
+        if (m.getRGB(xStart, yStart) != target.getRGB()) {
             plot(xStart, yStart,lineColor, 1);
             q.add(new Point(xStart, yStart));
         }
@@ -232,42 +231,42 @@ public final class UtilityFunction {
             lineColor2 = interpolateColor(startColor, endColor, ratio);
 
             // s
-            if (p.y + 1 < 600 && (buffer.getRGB(p.x, p.y + 1) != target.getRGB()) &&  (!fireworkRGBColor.contains(buffer.getRGB(p.x, p.y + 1)))) {
-                if (buffer.getRGB(p.x, p.y + 1) != lineColor2.getRGB()) {
+            if (p.y + 1 < 600 && (m.getRGB(p.x, p.y + 1) != target.getRGB()) &&  (!fireworkRGBColor.contains(m.getRGB(p.x, p.y + 1)))) {
+                if (m.getRGB(p.x, p.y + 1) != lineColor2.getRGB()) {
                     //plot(p.x, p.y + 1,lineColor2, 1);
-                    buffer.setRGB(p.x,p.y + 1,lineColor2.getRGB());
+                    m.setRGB(p.x,p.y + 1,lineColor2.getRGB());
                     q.add(new Point(p.x, p.y + 1));
                 }
             }
             // n
-            if (p.y - 1 > 0 && (buffer.getRGB(p.x, p.y - 1) != target.getRGB()) && (!fireworkRGBColor.contains(buffer.getRGB(p.x, p.y - 1)))) {
-                if (buffer.getRGB(p.x, p.y - 1) != lineColor1.getRGB()) {
+            if (p.y - 1 > 0 && (m.getRGB(p.x, p.y - 1) != target.getRGB()) && (!fireworkRGBColor.contains(m.getRGB(p.x, p.y - 1)))) {
+                if (m.getRGB(p.x, p.y - 1) != lineColor1.getRGB()) {
                     //plot(p.x, p.y - 1,lineColor1, 1);
-                    buffer.setRGB(p.x,p.y - 1,lineColor1.getRGB());
+                    m.setRGB(p.x,p.y - 1,lineColor1.getRGB());
                     q.add(new Point(p.x, p.y - 1));
                 }
             }
             // e
-            if (p.x + 1 < 600 && (buffer.getRGB(p.x + 1, p.y) != target.getRGB()) && (!fireworkRGBColor.contains(buffer.getRGB(p.x + 1, p.y)))) {
-                if (buffer.getRGB(p.x + 1, p.y) != lineColor.getRGB()) {
+            if (p.x + 1 < 600 && (m.getRGB(p.x + 1, p.y) != target.getRGB()) && (!fireworkRGBColor.contains(m.getRGB(p.x + 1, p.y)))) {
+                if (m.getRGB(p.x + 1, p.y) != lineColor.getRGB()) {
                     //plot(p.x + 1, p.y,lineColor,1);
-                    buffer.setRGB(p.x + 1,p.y,lineColor.getRGB());
+                    m.setRGB(p.x + 1,p.y,lineColor.getRGB());
                     q.add(new Point(p.x + 1, p.y));
                 }
             }
             // w
-            if (p.x - 1 > 0 && (buffer.getRGB(p.x - 1, p.y) != target.getRGB()) && (!fireworkRGBColor.contains(buffer.getRGB(p.x - 1, p.y)))) {
-                if (buffer.getRGB(p.x - 1, p.y) != lineColor.getRGB()) {
+            if (p.x - 1 > 0 && (m.getRGB(p.x - 1, p.y) != target.getRGB()) && (!fireworkRGBColor.contains(m.getRGB(p.x - 1, p.y)))) {
+                if (m.getRGB(p.x - 1, p.y) != lineColor.getRGB()) {
                     //plot(p.x - 1, p.y, lineColor,1);
-                    buffer.setRGB(p.x - 1,p.y,lineColor.getRGB());
+                    m.setRGB(p.x - 1,p.y,lineColor.getRGB());
                     q.add(new Point(p.x - 1, p.y));
                 }
             }
         }
-        g.drawImage(buffer, 0,0,null);
+        return m;
     }
      // floodfill แต่ไล่สีในแนวนอน
-    public static void floodFillGradienthorizontal(int xStart, int yStart, int xEnd, int yEnd, Color startColor, Color endColor, Color target) {
+    public static BufferedImage floodFillGradienthorizontal(BufferedImage m,int xStart, int yStart, int xEnd, int yEnd, Color startColor, Color endColor, Color target) {
         Queue<Point> q = new LinkedList<>();
 
         float ratio = (float) (xStart - xStart) / (xEnd - xStart - 1);
@@ -276,7 +275,7 @@ public final class UtilityFunction {
         Color lineColor1 = interpolateColor(startColor, endColor, ratio);
         Color lineColor2 = interpolateColor(startColor, endColor, ratio);
 
-        if (buffer.getRGB(xStart, yStart) != target.getRGB()) {
+        if (m.getRGB(xStart, yStart) != target.getRGB()) {
             plot(xStart, yStart,lineColor, 1);
             q.add(new Point(xStart, yStart));
         }
@@ -296,42 +295,42 @@ public final class UtilityFunction {
             lineColor2 = interpolateColor(startColor, endColor, ratio);
 
             // s
-            if (p.y + 1 < 600 && (buffer.getRGB(p.x, p.y + 1) != target.getRGB())) {
-                if (buffer.getRGB(p.x, p.y + 1) != lineColor.getRGB()) {
+            if (p.y + 1 < 600 && (m.getRGB(p.x, p.y + 1) != target.getRGB())) {
+                if (m.getRGB(p.x, p.y + 1) != lineColor.getRGB()) {
                     //plot(p.x, p.y + 1,lineColor2, 1);
-                    buffer.setRGB(p.x,p.y + 1,lineColor.getRGB());
+                    m.setRGB(p.x,p.y + 1,lineColor.getRGB());
                     q.add(new Point(p.x, p.y + 1));
                 }
             }
             // n
-            if (p.y - 1 > 0 && (buffer.getRGB(p.x, p.y - 1) != target.getRGB())) {
-                if (buffer.getRGB(p.x, p.y - 1) != lineColor.getRGB()) {
+            if (p.y - 1 > 0 && (m.getRGB(p.x, p.y - 1) != target.getRGB())) {
+                if (m.getRGB(p.x, p.y - 1) != lineColor.getRGB()) {
                     //plot(p.x, p.y - 1,lineColor1, 1);
-                    buffer.setRGB(p.x,p.y - 1,lineColor.getRGB());
+                    m.setRGB(p.x,p.y - 1,lineColor.getRGB());
                     q.add(new Point(p.x, p.y - 1));
                 }
             }
             // e
-            if (p.x + 1 < 600 && (buffer.getRGB(p.x + 1, p.y) != target.getRGB())) {
-                if (buffer.getRGB(p.x + 1, p.y) != lineColor2.getRGB()) {
+            if (p.x + 1 < 600 && (m.getRGB(p.x + 1, p.y) != target.getRGB())) {
+                if (m.getRGB(p.x + 1, p.y) != lineColor2.getRGB()) {
                     //plot(p.x + 1, p.y,lineColor,1);
-                    buffer.setRGB(p.x + 1,p.y,lineColor2.getRGB());
+                    m.setRGB(p.x + 1,p.y,lineColor2.getRGB());
                     q.add(new Point(p.x + 1, p.y));
                 }
             }
             // w
-            if (p.x - 1 > 0 && (buffer.getRGB(p.x - 1, p.y) != target.getRGB())) {
-                if (buffer.getRGB(p.x - 1, p.y) != lineColor1.getRGB()) {
+            if (p.x - 1 > 0 && (m.getRGB(p.x - 1, p.y) != target.getRGB())) {
+                if (m.getRGB(p.x - 1, p.y) != lineColor1.getRGB()) {
                     //plot(p.x - 1, p.y, lineColor,1);
-                    buffer.setRGB(p.x - 1,p.y,lineColor1.getRGB());
+                    m.setRGB(p.x - 1,p.y,lineColor1.getRGB());
                     q.add(new Point(p.x - 1, p.y));
                 }
             }
         }
-        g.drawImage(buffer, 0,0,null);
+        return m;
     }
 
-
+    // เลือกสีที่จะอยู่ระหว่่าง startColor กับ endColors
     private static Color interpolateColor(Color startColor, Color endColor, float ratio) {
         int red = Math.max(0, Math.min(255, (int) (startColor.getRed() * (1 - ratio) +
                         endColor.getRed() * ratio)));
@@ -342,15 +341,9 @@ public final class UtilityFunction {
         return new Color(red, green, blue);
     }
 
-    private static class Point{
-        int x,y;
-        Point(int x,int y){this.x = x;this.y = y;}
-    }
-
     // plot dot(vertex) at (x,y)
-    private static void plot(int x,int y,Color c,int size){
-        Graphics2D g2d = (Graphics2D)g;
-        g2d.setColor(c);
-        g2d.fillRect(x, y, size,size);
+    public static void plot(int x,int y,Color c,int size){
+        g.setColor(c);
+        g.fillRect(x, y, size,size);
     }
 }

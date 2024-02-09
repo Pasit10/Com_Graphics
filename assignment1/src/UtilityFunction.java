@@ -331,7 +331,7 @@ public final class UtilityFunction {
         g.drawImage(buffer, 0,0,null);
     }
 
-
+    // เลือกสีที่จะอยู่ระหว่่าง startColor กับ endColors
     private static Color interpolateColor(Color startColor, Color endColor, float ratio) {
         int red = Math.max(0, Math.min(255, (int) (startColor.getRed() * (1 - ratio) +
                         endColor.getRed() * ratio)));
@@ -349,8 +349,7 @@ public final class UtilityFunction {
 
     // plot dot(vertex) at (x,y)
     private static void plot(int x,int y,Color c,int size){
-        Graphics2D g2d = (Graphics2D)g;
-        g2d.setColor(c);
-        g2d.fillRect(x, y, size,size);
+        g2.setColor(c);
+        g2.fillRect(x, y, size,size);
     }
 }

@@ -2,10 +2,12 @@ package assignment2.src;
 
 import javax.swing.*;
 import java.awt.*;
-import assignment2.src.UtilityFunction;
 import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 
 public class GraphicsSwing extends JPanel implements Runnable{
+    BufferedImage buffer = new BufferedImage(601,601,BufferedImage.TYPE_INT_ARGB);
+
     boolean status1 = false;
     boolean status2 = false;
     boolean status3 = false;
@@ -64,13 +66,15 @@ public class GraphicsSwing extends JPanel implements Runnable{
     }
 
     public void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D)g;
+        Graphics2D g2 = buffer.createGraphics();
         //clear background
         g2.setColor(Color.WHITE);
         g2.fillRect(0,0,getWidth(),getHeight());
 
-        UtilityFunction.setupUtilityFunction(g);
+        UtilityFunction.setupUtilityFunction(g2);
         drawBaby(g2,(int)babyX,(int)babyY);
+
+        //UtilityFunction.plot(50,50,Color.black,5);
         // // drawMine(g2, 170,20);
         // if (status1) {
         //     drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
@@ -86,6 +90,8 @@ public class GraphicsSwing extends JPanel implements Runnable{
     
         // drawDreamDoctor(g2, 100,100);
         // drawWin(g2,100,100);
+
+        g.drawImage(buffer, 0,0,null);
     }
 
     public void drawBaby(Graphics2D g2,int x,int y){
@@ -99,7 +105,6 @@ public class GraphicsSwing extends JPanel implements Runnable{
 
         //head
         g2.drawOval(x,y,171,167);
-        UtilityFunction.Floodfill(x, y, Color.WHITE, Color.GRAY);
 
         //แก้ม
         // Rotate ovals by -20 degrees
@@ -121,6 +126,8 @@ public class GraphicsSwing extends JPanel implements Runnable{
         //หู
         UtilityFunction.drawCurve(x + 7,y + 116,x ,y + 122, x + 4,y + 130,x + 15,y + 131,1);
         UtilityFunction.drawCurve(x + 170,y + 78,x + 180,y + 80,x + 178,y + 90,x + 171,y + 94,1);
+
+        buffer = UtilityFunction.Floodfill(buffer ,x + 30,y + 30,Color.WHITE,Color.GREEN);
     }
 
     public void drawOpenEyeBaby(Graphics2D g2,int x,int y){
