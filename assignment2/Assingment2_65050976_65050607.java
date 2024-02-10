@@ -17,7 +17,7 @@ public class Assingment2_65050976_65050607 {
         f.setVisible(true);
         f.add(gs);
         Thread t = new Thread(gs);
-        //t.start();
+        // t.start();
     }
 }
 
@@ -177,7 +177,7 @@ class GraphicsSwing extends JPanel implements Runnable {
         g2.fillRect(0, 0, getWidth(), getHeight());
         // setup UtitlityFunction
         UtilityFunction.setupUtilityFunction(g2);   
-        // // วาด baby
+        // วาด baby
         // if (startbaby) {
              drawBaby(g2,(int)babyX,(int)babyY);
         // if (status1) {
@@ -191,11 +191,11 @@ class GraphicsSwing extends JPanel implements Runnable {
         // }if (!statusEye) {
         //     drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
         // }
-        // // วาด Doctor
+        // วาด Doctor
         // }if (startdoctor) {
         //     drawIWannaBeADoctor(g2, 10, 130);
         // }
-        // // แสดง text สิ่งที่คิด กับ สิ่งที่เป็น
+        // แสดง text สิ่งที่คิด กับ สิ่งที่เป็น
         // drawSingTeeKid(g2, 255,100);
         // drawSingTeePen(g2, 255, 100);
 
@@ -277,7 +277,6 @@ class GraphicsSwing extends JPanel implements Runnable {
         UtilityFunction.drawLine(x + 132, y + 237, x + 95, y + 277);
 
         // head
-        //g2.drawOval(x, y, 171, 167);
         UtilityFunction.drawmiddleElipse(x + 85,y + 83,85,83,1);
         // แก้ม
         // Rotate ovals by -20 degrees
@@ -287,8 +286,8 @@ class GraphicsSwing extends JPanel implements Runnable {
         AffineTransform rotationTransform = AffineTransform.getRotateInstance(rotationAngle, x, y);
         g2.setTransform(rotationTransform);
         // Draw rotated ovals
-        g2.drawOval(x + 24, y + 135, 13, 6);
-        g2.drawOval(x + 94, y + 136, 13, 6);
+        UtilityFunction.drawmiddleElipse(x + 30,y + 138,6,3,1);
+        UtilityFunction.drawmiddleElipse(x + 100,y + 139,6,3,1);
 
         // Restore the original transform
         g2.setTransform(originalTransform);
@@ -297,8 +296,8 @@ class GraphicsSwing extends JPanel implements Runnable {
         UtilityFunction.drawCurve(x + 95, y + 124, x + 105, y + 126, x + 107, y + 122, x + 106, y + 119, 1);
 
         // หู
-        UtilityFunction.drawCurve(x + 7, y + 116, x, y + 122, x + 4, y + 130, x + 15, y + 131, 1);
-        UtilityFunction.drawCurve(x + 170, y + 78, x + 180, y + 80, x + 178, y + 90, x + 171, y + 94, 1);
+        UtilityFunction.drawCurve(x + 7, y + 116, x, y + 122, x + 4, y + 130, x + 17, y + 131, 1);
+        UtilityFunction.drawCurve(x + 170, y + 78, x + 180, y + 80, x + 178, y + 90, x + 169, y + 94, 1);
 
         // ลงสีหน้า
         buffer = UtilityFunction.Floodfill(buffer, x + 30, y + 30, Color.WHITE, new Color(0xfddac6));
@@ -317,11 +316,11 @@ class GraphicsSwing extends JPanel implements Runnable {
         buffer = UtilityFunction.Floodfill(buffer, x + 173, y + 80, Color.WHITE, new Color(0xfddac6));
     }
 
-    public void drawOpenEyeBaby(Graphics2D g2, int x, int y) {
-        g2.drawOval(x + 60, y + 94, 20, 20);
-        g2.drawOval(x + 70, y + 98, 6, 6);
-        g2.drawOval(x + 110, y + 82, 20, 20);
-        g2.drawOval(x + 120, y + 86, 6, 6);
+    public void drawOpenEyeBaby(Graphics2D g2, int x, int y) {      
+        UtilityFunction.drawCircle(x+70, y+104, 10, 1);
+        UtilityFunction.drawCircle(x+73, y+101, 3, 1);
+        UtilityFunction.drawCircle(x+120, y+92, 10, 1);
+        UtilityFunction.drawCircle(x+123, y+89, 3, 1);
         buffer = UtilityFunction.Floodfill(buffer, x + 65, y + 105, new Color(0xfddac6), new Color(0x3a3a3a));
         buffer = UtilityFunction.Floodfill(buffer, x + 125, y + 85, new Color(0xfddac6), new Color(0x3a3a3a));
     }
@@ -332,15 +331,15 @@ class GraphicsSwing extends JPanel implements Runnable {
     }
 
     public void drawsmallcircle(Graphics2D g2, int x, int y) {
-        g2.drawOval(x - 20, y + 240, 20, 10);
+        UtilityFunction.drawmiddleElipse(x - 10,y + 245,10,5,1);
     }
 
     public void drawmidcircle(Graphics2D g2, int x, int y) {
-        g2.drawOval(x, y + 200, 40, 20);
+        UtilityFunction.drawmiddleElipse(x+20,y + 210,20,10,1);
     }
 
     public void drawlargecircle(Graphics2D g2, int x, int y, int width, int height) {
-        g2.drawOval(x, y, width, height);
+        UtilityFunction.drawmiddleElipse(x + (width/2),y + (height/2),width/2,height/2,1);
     }
 
     public void drawDreamDoctor(Graphics2D g2, int x, int y) {
@@ -415,7 +414,7 @@ class GraphicsSwing extends JPanel implements Runnable {
         // body part2
         UtilityFunction.drawLine(x + 145, y + 189, x + 140, y + 202);
         UtilityFunction.drawLine(x + 140, y + 202, x + 140, y + 223);
-        g2.drawOval(x + 134, y + 190, 6, 6);
+        UtilityFunction.drawCircle(x+137, y+193, 3, 1);
 
         // Unknonw
         UtilityFunction.drawCurve(x + 197, y + 90, x + 223, y + 90, x + 223, y + 115, x + 206, y + 138, 1);
@@ -433,8 +432,8 @@ class GraphicsSwing extends JPanel implements Runnable {
 
         UtilityFunction.drawCurve(x + 140, y + 97, x + 124, y + 104, x + 114, y + 110, x + 115, y + 169, 1);
         UtilityFunction.drawCurve(x + 140, y + 94, x + 119, y + 98, x + 113, y + 113, x + 108, y + 169, 1);
-        g2.drawOval(x + 106, y + 168, 10, 10);
-        g2.drawOval(x + 109, y + 171, 4, 4);
+        UtilityFunction.drawCircle(x+111, y+173, 5, 1);
+        UtilityFunction.drawCircle(x+111, y+173, 2, 1);
 
         // body part3
         UtilityFunction.drawLine(x + 148, y + 187, x + 191, y + 164);
@@ -680,8 +679,8 @@ class GraphicsSwing extends JPanel implements Runnable {
 
         // wheel
         UtilityFunction.drawPolyline(x + 82, y + 151, x + 60, y + 178, x + 63, y + 182, x + 85, y + 152);
-        UtilityFunction.drawCircle(x + 62, y + 78, 10, 1);
-        UtilityFunction.drawCircle(x + 61, y + 79, 27, 1);
+        UtilityFunction.drawCircle(x + 62, y + 178, 10, 1);
+        UtilityFunction.drawCircle(x + 61, y + 179, 27, 1);
 
         UtilityFunction.drawCurve(x + 262,y + 166,x + 280,y + 216,x + 207,y + 216,x + 212,y + 178,1);
 
@@ -828,7 +827,6 @@ final class UtilityFunction {
         int x = radius;
         int y = 0;
         int radiusError = 1 - x;
-        centerY += 100;
         while (x >= y) {
             plot(centerX + x, centerY - y,c,size);
             plot(centerX - x, centerY - y,c,size);
