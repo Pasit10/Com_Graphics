@@ -528,10 +528,28 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.drawCurve(x + 124,y + 86,x + 110,y + 124,x + 110,y + 130,x + 122,y + 160,1);
         UtilityFunction.drawCurve(x + 48,y + 143,x + 68,y + 146,x + 94,y + 152,x + 91,y + 164,1);
         UtilityFunction.drawCurve(x + 91,y + 164,x + 91,y + 169,x + 95,y + 173,x + 106,y + 174,1);
+        UtilityFunction.drawLine(x + 120,y + 155,x + 156,y + 155);
+        UtilityFunction.drawLine(x + 106,y + 174,x + 162,y + 174);
+        UtilityFunction.drawCurve(x + 162,y + 174,x + 161,y + 180,x + 164,y + 181,x + 211,y + 185,1);
+        UtilityFunction.drawPolyline(x + 112,y + 174,x + 127,y + 170,x + 201,y + 170);
+        UtilityFunction.drawCurve(x + 201,y + 169,x + 206,y + 180,x + 215,y + 180,x + 230,y + 176,1);
+        UtilityFunction.drawLine(x + 230,y + 176,x + 244,y + 176);
+        UtilityFunction.drawPolyline(x + 201,y + 169,x + 229,y + 170,x + 236,y + 166);
+        UtilityFunction.drawLine(x + 215,y + 166,x + 263,y + 166);
+        UtilityFunction.drawCurve(x + 244,y + 176,x + 251,y + 176,x + 253,y + 170,x + 248,y + 166,1);
+        UtilityFunction.drawCurve(x + 156,y + 155,x + 169,y + 144,x + 148,y + 121,x + 165,y + 110,1);
+        UtilityFunction.drawLine(x + 165,y + 110,x + 241,y + 110);
+        UtilityFunction.drawCurve(x + 167,y + 110,x + 158,y + 103,x + 158,y + 96,x + 170,y + 91,1);
+        UtilityFunction.drawPolyline(x + 170,y + 91,x + 241,y + 91,x + 247,y + 92,x + 247,y + 99,x + 241,y + 111);
+        UtilityFunction.drawCurve(x + 241,y + 110,x + 241,y + 115,x + 244,y + 119,x + 268,y + 125,1);
+        UtilityFunction.drawCurve(x + 268,y + 125,x + 276,y + 134,x + 279,y + 145,x + 280,y + 161,1);
+        UtilityFunction.drawCurve(x + 279,y + 161,x + 277,y + 167,x + 274,y + 166,x + 263,y + 166,1);
 
         // wheel
         UtilityFunction.drawPolyline(x + 82,y + 151,x + 60,y + 178,x + 63,y + 182,x + 85,y + 152);
         UtilityFunction.drawCircle(x + 62,y + 78, 10,1);
         UtilityFunction.drawCircle(x + 61,y + 79, 27,1);
-    }
+
+        UtilityFunction.drawCurve(x + 262,y + 166,x + 280,y + 216,x + 207,y + 216,x + 212,y + 178,1);
+   }
 }
