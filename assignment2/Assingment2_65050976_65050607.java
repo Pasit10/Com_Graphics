@@ -1,11 +1,28 @@
-package assignment2.src;
+package assignment2;
 
+import javax.swing.JFrame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.util.*;
 
-public class GraphicsSwing extends JPanel implements Runnable {
+public class Assingment2_65050976_65050607 {
+    public static void main(String[] args){
+        JFrame f = new JFrame();
+        GraphicsSwing gs = new GraphicsSwing();
+        f.setSize(600, 600);
+        f.setTitle("Assingment2_65050976_65050607");
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true);
+        f.add(gs);
+        Thread t = new Thread(gs);
+        t.start();
+    }
+}
+
+
+class GraphicsSwing extends JPanel implements Runnable {
     BufferedImage buffer = new BufferedImage(2000, 2000, BufferedImage.TYPE_INT_ARGB);
 
     // แสดง text สิ่งที่คิด กับ สิ่งที่เป็น
@@ -261,7 +278,8 @@ public class GraphicsSwing extends JPanel implements Runnable {
 
         // head
         g2.drawOval(x, y, 171, 167);
-
+        //UtilityFunction.drawCircle(x + 100, y + 100,85,85);
+        
         // แก้ม
         // Rotate ovals by -20 degrees
         AffineTransform originalTransform = g2.getTransform(); // Save the original transform
@@ -707,5 +725,406 @@ public class GraphicsSwing extends JPanel implements Runnable {
         // เรียกใช้การตั้งค่าการเข้ารหัสเพื่อยกเลิกการเปลี่ยนแปลงขนาดและตำแหน่ง
         g2.setTransform(new AffineTransform());
 
+    }
+}
+
+final class UtilityFunction {
+    private static Graphics g;
+    private static ArrayList<Integer> fireworkRGBColor = new ArrayList<>();
+    // set Graphics in this class not null
+    public static void setupUtilityFunction(Graphics2D graphics){
+        g = graphics;
+        g.fillRect(0, 0, 600,600);
+    }
+    // set FireWork Color use in FloodFill
+    public static void setFireWorkRGBColor(Color[] allColors){
+        for(Color color : allColors){
+            fireworkRGBColor.add(color.getRGB());
+        }
+    }
+    // default coler (black) for drawLine method
+    public static void drawLine(int x1,int y1,int x2,int y2,int size){
+        drawLine(x1, y1, x2, y2,size,Color.BLACK);
+    }
+
+    //
+    public static void drawLine(int x1,int y1,int x2,int y2){
+        drawLine(x1, y1, x2, y2,1,Color.BLACK);
+    }
+
+    // drawLine Use Bresenham Algorithm
+    public static void drawLine(int x1,int y1,int x2,int y2,int size,Color c){
+        double dx = Math.abs(x2 - x1);
+        double dy = Math.abs(y2 - y1);
+        int sx = (x1 < x2) ? 1 : -1;
+        int sy = (y1 < y2) ? 1 : -1;
+        boolean isSwap = false;
+        if(dy > dx){
+            double temp = dx;
+            dx = dy;
+            dy = temp;
+            isSwap = true;
+        }
+        double D = 2 * dy - dx;
+        int x = x1;
+        int y = y1;
+        for(int i = 1;i <= dx;i++){
+            plot(x, y, c, size);
+            if(D >= 0){
+                if(isSwap) x += sx;
+                else y += sy;
+
+                D -= 2 * dx;
+            }
+            if(isSwap) y += sy;
+            else x += sx;
+
+            D += 2 * dy;
+        }
+    }
+
+    // default color (black) for drawCurve method
+    public static void drawCurve(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int size){
+        drawCurve(x1, y1, x2, y2, x3, y3, x4, y4, size, Color.BLACK);
+    }
+    // drawCurve Use BezierCurve Algorithm
+    public static void drawCurve(int x1,int y1,int x2,int y2,int x3,int y3,int x4,int y4,int size,Color c){
+        for(double t = 0;t <= 1;t += 0.001){
+            int x = (int)(Math.pow(1 - t,3)*x1 + 3*t*Math.pow(1 - t,2)*x2 + 3*t*t*(1 - t)*x3 + Math.pow(t, 3)*x4);
+            int y = (int)(Math.pow(1 - t,3)*y1 + 3*t*Math.pow(1 - t,2)*y2 + 3*t*t*(1 - t)*y3 + Math.pow(t, 3)*y4);
+            plot(x, y,c,size);
+        }
+    }
+    // default color (black) for drawSquare method
+    public static void drawSquare(int size,int ...xy){
+        drawSquare(Color.BLACK,size,xy);
+    }
+    // drawSquare use drawLine Method implementation
+    // xy Array of point {(x,y),(x1,y1),(x2,y2),...(xn,yn)}
+    public static void drawSquare(Color c,int size,int ...xy){
+        if(xy.length % 2 == 1) return; // x and y are not equal.
+        for(int i = 0;i < xy.length - 3;i+=2){
+            drawLine(xy[i], xy[i + 1], xy[i + 2], xy[i + 3], size, c);
+        }
+        drawLine(xy[xy.length - 2], xy[xy.length - 1],xy[0],xy[1], size, c);
+    }
+    // default color(black) and size = 1 for drawPolyline
+    public static void drawPolyline(int ...xy){
+        drawPolyline(Color.BLACK,1, xy);
+    }
+    // drawPolyline use drawLine Method implementation 
+    public static void drawPolyline(Color c,int size,int ...xy){
+        if(xy.length % 2 == 1) return; // x and y are not equal.
+        for(int i = 0;i < xy.length - 3;i+=2){
+            drawLine(xy[i], xy[i + 1], xy[i + 2], xy[i + 3], size, c);
+        }
+    }
+    // draw Cicle use default colot (black)
+    public static void drawCircle(int centerX,int centerY,int radius,int size){
+        drawCircle(centerX, centerY, radius,size,Color.black);
+    }
+    // midpoint circle algorithm
+    // draw Cicle (use Chat-Gpt version)
+    public static void drawCircle(int centerX, int centerY, int radius,int size,Color c) {
+        int x = radius;
+        int y = 0;
+        int radiusError = 1 - x;
+        centerY += 100;
+        while (x >= y) {
+            plot(centerX + x, centerY - y,c,size);
+            plot(centerX - x, centerY - y,c,size);
+            plot(centerX + x, centerY + y,c,size);
+            plot(centerX - x, centerY + y,c,size);
+            plot(centerX + y, centerY - x,c,size);
+            plot(centerX - y, centerY - x,c,size);
+            plot(centerX + y, centerY + x,c,size);
+            plot(centerX - y, centerY + x,c,size);
+
+            y++;
+
+            if (radiusError < 0) {
+                radiusError += 2 * y + 1;
+            } else {
+                x--;
+                radiusError += 2 * (y - x) + 1;
+            }
+        }
+    }
+    // draw Cicle only 6 Octants use in moon shadow
+    public static void drawHalfCircle(int centerX, int centerY, int radius,int size,Color c) {
+        int x = radius;
+        int y = 0;
+        int radiusError = 1 - x;
+
+        while (x >= y) {
+            plot(centerX + x, centerY - y,c,size);
+            plot(centerX - x, centerY - y,c,size);
+            plot(centerX + x, centerY + y,c,size);
+            plot(centerX - x, centerY + y,c,size);
+            plot(centerX + y, centerY + x,c,size);
+            plot(centerX - y, centerY + x,c,size);
+
+            y++;
+
+            if (radiusError < 0) {
+                radiusError += 2 * y + 1;
+            } else {
+                x--;
+                radiusError += 2 * (y - x) + 1;
+            }
+        }
+    }
+
+    // midpoint ellipses algorithm
+    public void middleElipse(int xc,int yc,int a,int b,int size,Color c){
+        int a2 = a*a , b2 = b*b;
+        int twoA2 = 2*a2, twoB2 = 2 * b2;
+
+        // REGION 1
+        int x = 0;
+        int y = b;
+        int D = (int)Math.round(b2 - a2*b + a2/4);
+        int Dx = 0, Dy = twoA2 * y;
+        while(Dx <= Dy){
+            plot(x + xc,y + yc,c,size);
+            plot(x + xc,-y + yc,c,size);
+            plot(-x + xc,-y +yc,c,size);
+            plot(-x + xc,y + yc,c,size);
+            x++;
+            Dx += twoB2;
+            D += Dx + b2;
+            if(D >= 0){
+                y--;
+                Dy -= twoA2;
+                D -= Dy;
+            }
+        }
+        //REDION 2
+        x = a;
+        y = 0;
+        D = (int)Math.round(a2 - b2*a + b2/4);
+        Dx = twoB2*x;
+        Dy = 0;
+        while(Dx >= Dy){
+            plot(x + xc,y + yc,c,size);
+            plot(x + xc,-y + yc,c,size);
+            plot(-x + xc,-y +yc,c,size);
+            plot(-x + xc,y + yc,c,size);
+            y++;
+            Dy += twoA2;
+            D += Dy + a2;
+            if(D >= 0){
+                x--;
+                Dx -= twoB2;
+                D -= Dx;
+            }
+        }
+    }
+
+    // FloodFill
+    public static BufferedImage Floodfill(BufferedImage m,int x,int y,Color target_color,Color replacement_color){
+        Queue<Point> q = new LinkedList<>();
+        q.add(new Point(x, y));
+        m.setRGB(x, y, replacement_color.getRGB());
+        while(!q.isEmpty()){
+            Point p = q.poll();
+            // w
+            if(p.y - 1 >= 0 && m.getRGB(p.x , p.y - 1) == target_color.getRGB()){
+                m.setRGB(p.x, p.y - 1, replacement_color.getRGB());
+                q.add(new Point(p.x, p.y - 1));
+            }
+            // e
+            if(p.y + 1 <= 600 && m.getRGB(p.x , p.y + 1) == target_color.getRGB()){
+                m.setRGB(p.x, p.y + 1, replacement_color.getRGB());
+                q.add(new Point(p.x, p.y + 1));
+            }
+            // n
+            if(p.x - 1 >= 0 && m.getRGB(p.x - 1, p.y) == target_color.getRGB()){
+                m.setRGB(p.x - 1,p.y, replacement_color.getRGB());
+                q.add(new Point(p.x - 1, p.y));
+            }
+            // s
+            if(p.x + 1 <= 600 && m.getRGB(p.x + 1, p.y) == target_color.getRGB()){
+                m.setRGB(p.x + 1,p.y, replacement_color.getRGB());
+                q.add(new Point(p.x + 1, p.y));
+            }
+        }
+        return m;
+    }
+    // Floodfill use only unknown background color
+    // use border_color to exit loop
+    public static BufferedImage FloodfillUpgrade(BufferedImage m,int x,int y,Color border_color,Color replacement_color){
+        Queue<Point> q = new LinkedList<>();
+        q.add(new Point(x, y));
+        m.setRGB(x, y, replacement_color.getRGB());
+        while(!q.isEmpty()){
+            Point current = q.poll();
+            // w
+            if(current.y - 1 >= 0 && m.getRGB(current.x , current.y - 1) != border_color.getRGB() && m.getRGB(current.x , current.y - 1) != replacement_color.getRGB()){
+                m.setRGB(current.x, current.y - 1, replacement_color.getRGB());
+                q.add(new Point(current.x, current.y - 1));
+            }
+            // e
+            if(current.y + 1 <= 600 && m.getRGB(current.x , current.y + 1) != border_color.getRGB() && m.getRGB(current.x , current.y + 1) != replacement_color.getRGB()){
+                m.setRGB(current.x, current.y + 1, replacement_color.getRGB());
+                q.add(new Point(current.x, current.y + 1));
+            }
+            // n
+            if(current.x - 1 >= 0 && m.getRGB(current.x - 1, current.y) != border_color.getRGB() && m.getRGB(current.x - 1 , current.y) != replacement_color.getRGB()){
+                m.setRGB(current.x - 1,current.y, replacement_color.getRGB());
+                q.add(new Point(current.x - 1, current.y));
+            }
+            // s
+            if(current.x + 1 <= 600 && m.getRGB(current.x + 1, current.y) != border_color.getRGB() && m.getRGB(current.x + 1 , current.y) != replacement_color.getRGB()){
+                m.setRGB(current.x + 1,current.y, replacement_color.getRGB());
+                q.add(new Point(current.x + 1, current.y));
+            }
+        }
+        return m;
+    }
+    // floodfill แต่ไล่สีในแนวตั้ง
+    public static BufferedImage floodFillGradient(BufferedImage m ,int xStart, int yStart, int xEnd, int yEnd,Color startColor, Color endColor, Color target) {
+        Queue<Point> q = new LinkedList<>();
+
+        float ratio = (float) (yStart - yStart) / (yEnd - yStart - 1);
+
+        Color lineColor = interpolateColor(startColor, endColor, ratio);
+        Color lineColor1 = interpolateColor(startColor, endColor, ratio);
+        Color lineColor2 = interpolateColor(startColor, endColor, ratio);
+
+        if (m.getRGB(xStart, yStart) != target.getRGB()) {
+            plot(xStart, yStart,lineColor, 1);
+            q.add(new Point(xStart, yStart));
+        }
+
+        while (!q.isEmpty()) {
+            Point p = q.poll();
+
+            ratio = (float) (p.y - yStart) / (yEnd - yStart - 1);
+            lineColor = interpolateColor(startColor, endColor, ratio);
+
+            // y-1
+            ratio = (float) (p.y - yStart - 1) / (yEnd - yStart - 1);
+            lineColor1 = interpolateColor(startColor, endColor, ratio);
+
+            // y+1
+            ratio = (float) (p.y - yStart + 1) / (yEnd - yStart - 1);
+            lineColor2 = interpolateColor(startColor, endColor, ratio);
+
+            // s
+            if (p.y + 1 < 600 && (m.getRGB(p.x, p.y + 1) != target.getRGB()) &&  (!fireworkRGBColor.contains(m.getRGB(p.x, p.y + 1)))) {
+                if (m.getRGB(p.x, p.y + 1) != lineColor2.getRGB()) {
+                    //plot(p.x, p.y + 1,lineColor2, 1);
+                    m.setRGB(p.x,p.y + 1,lineColor2.getRGB());
+                    q.add(new Point(p.x, p.y + 1));
+                }
+            }
+            // n
+            if (p.y - 1 > 0 && (m.getRGB(p.x, p.y - 1) != target.getRGB()) && (!fireworkRGBColor.contains(m.getRGB(p.x, p.y - 1)))) {
+                if (m.getRGB(p.x, p.y - 1) != lineColor1.getRGB()) {
+                    //plot(p.x, p.y - 1,lineColor1, 1);
+                    m.setRGB(p.x,p.y - 1,lineColor1.getRGB());
+                    q.add(new Point(p.x, p.y - 1));
+                }
+            }
+            // e
+            if (p.x + 1 < 600 && (m.getRGB(p.x + 1, p.y) != target.getRGB()) && (!fireworkRGBColor.contains(m.getRGB(p.x + 1, p.y)))) {
+                if (m.getRGB(p.x + 1, p.y) != lineColor.getRGB()) {
+                    //plot(p.x + 1, p.y,lineColor,1);
+                    m.setRGB(p.x + 1,p.y,lineColor.getRGB());
+                    q.add(new Point(p.x + 1, p.y));
+                }
+            }
+            // w
+            if (p.x - 1 > 0 && (m.getRGB(p.x - 1, p.y) != target.getRGB()) && (!fireworkRGBColor.contains(m.getRGB(p.x - 1, p.y)))) {
+                if (m.getRGB(p.x - 1, p.y) != lineColor.getRGB()) {
+                    //plot(p.x - 1, p.y, lineColor,1);
+                    m.setRGB(p.x - 1,p.y,lineColor.getRGB());
+                    q.add(new Point(p.x - 1, p.y));
+                }
+            }
+        }
+        return m;
+    }
+     // floodfill แต่ไล่สีในแนวนอน
+    public static BufferedImage floodFillGradienthorizontal(BufferedImage m,int xStart, int yStart, int xEnd, int yEnd, Color startColor, Color endColor, Color target) {
+        Queue<Point> q = new LinkedList<>();
+
+        float ratio = (float) (xStart - xStart) / (xEnd - xStart - 1);
+
+        Color lineColor = interpolateColor(startColor, endColor, ratio);
+        Color lineColor1 = interpolateColor(startColor, endColor, ratio);
+        Color lineColor2 = interpolateColor(startColor, endColor, ratio);
+
+        if (m.getRGB(xStart, yStart) != target.getRGB()) {
+            plot(xStart, yStart,lineColor, 1);
+            q.add(new Point(xStart, yStart));
+        }
+
+        while (!q.isEmpty()) {
+            Point p = q.poll();
+
+            ratio = (float) (p.x - xStart) / (xEnd - xStart - 1);
+            lineColor = interpolateColor(startColor, endColor, ratio);
+
+            // x-1
+            ratio = (float) (p.x - xStart - 1) / (xEnd - xStart - 1);
+            lineColor1 = interpolateColor(startColor, endColor, ratio);
+
+            // x+1
+            ratio = (float) (p.x - xStart + 1) / (xEnd - xStart - 1);
+            lineColor2 = interpolateColor(startColor, endColor, ratio);
+
+            // s
+            if (p.y + 1 < 600 && (m.getRGB(p.x, p.y + 1) != target.getRGB())) {
+                if (m.getRGB(p.x, p.y + 1) != lineColor.getRGB()) {
+                    //plot(p.x, p.y + 1,lineColor2, 1);
+                    m.setRGB(p.x,p.y + 1,lineColor.getRGB());
+                    q.add(new Point(p.x, p.y + 1));
+                }
+            }
+            // n
+            if (p.y - 1 > 0 && (m.getRGB(p.x, p.y - 1) != target.getRGB())) {
+                if (m.getRGB(p.x, p.y - 1) != lineColor.getRGB()) {
+                    //plot(p.x, p.y - 1,lineColor1, 1);
+                    m.setRGB(p.x,p.y - 1,lineColor.getRGB());
+                    q.add(new Point(p.x, p.y - 1));
+                }
+            }
+            // e
+            if (p.x + 1 < 600 && (m.getRGB(p.x + 1, p.y) != target.getRGB())) {
+                if (m.getRGB(p.x + 1, p.y) != lineColor2.getRGB()) {
+                    //plot(p.x + 1, p.y,lineColor,1);
+                    m.setRGB(p.x + 1,p.y,lineColor2.getRGB());
+                    q.add(new Point(p.x + 1, p.y));
+                }
+            }
+            // w
+            if (p.x - 1 > 0 && (m.getRGB(p.x - 1, p.y) != target.getRGB())) {
+                if (m.getRGB(p.x - 1, p.y) != lineColor1.getRGB()) {
+                    //plot(p.x - 1, p.y, lineColor,1);
+                    m.setRGB(p.x - 1,p.y,lineColor1.getRGB());
+                    q.add(new Point(p.x - 1, p.y));
+                }
+            }
+        }
+        return m;
+    }
+
+    // เลือกสีที่จะอยู่ระหว่่าง startColor กับ endColors
+    private static Color interpolateColor(Color startColor, Color endColor, float ratio) {
+        int red = Math.max(0, Math.min(255, (int) (startColor.getRed() * (1 - ratio) +
+                        endColor.getRed() * ratio)));
+        int green = Math.max(0, Math.min(255, (int) (startColor.getGreen() * (1 - ratio) +
+                        endColor.getGreen() * ratio)));
+        int blue = Math.max(0, Math.min(255, (int) (startColor.getBlue() * (1 - ratio) +
+                        endColor.getBlue() * ratio)));
+        return new Color(red, green, blue);
+    }
+
+    // plot dot(vertex) at (x,y)
+    public static void plot(int x,int y,Color c,int size){
+        g.setColor(c);
+        g.fillRect(x, y, size,size);
     }
 }
