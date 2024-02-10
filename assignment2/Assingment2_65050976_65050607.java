@@ -17,7 +17,7 @@ public class Assingment2_65050976_65050607 {
         f.setVisible(true);
         f.add(gs);
         Thread t = new Thread(gs);
-        // t.start();
+        t.start();
     }
 }
 
@@ -178,33 +178,33 @@ class GraphicsSwing extends JPanel implements Runnable {
         // setup UtitlityFunction
         UtilityFunction.setupUtilityFunction(g2);   
         // วาด baby
-        // if (startbaby) {
+        if (startbaby) {
              drawBaby(g2,(int)babyX,(int)babyY);
-        // if (status1) {
-        //     drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
-        // }if (status2) {
-        //     drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
-        // }if (status3) {
-        //     drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth,(int)circleHeight);
-        // }if(statusEye){
-        //     drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
-        // }if (!statusEye) {
-        //     drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
-        // }
-        // วาด Doctor
-        // }if (startdoctor) {
-        //     drawIWannaBeADoctor(g2, 10, 130);
-        // }
-        // แสดง text สิ่งที่คิด กับ สิ่งที่เป็น
-        // drawSingTeeKid(g2, 255,100);
-        // drawSingTeePen(g2, 255, 100);
+        if (status1) {
+            drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
+        }if (status2) {
+            drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
+        }if (status3) {
+            drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth,(int)circleHeight);
+        }if(statusEye){
+            drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
+        }if (!statusEye) {
+            drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
+        }
+        //วาด Doctor
+        }if (startdoctor) {
+            drawIWannaBeADoctor(g2, 10, 130);
+        }
+        //แสดง text สิ่งที่คิด กับ สิ่งที่เป็น
+        drawSingTeeKid(g2, 255,100);
+        drawSingTeePen(g2, 255, 100);
 
-        // // วาดวิน
-        // if(startwin){
-        //     drawScaledWin(g2, 0, 265, 1.5, 1.5);
-        //     drawScaledMotorcycle(g2, 220, 210, 1.3, 1.3);
-        //     drawBackground(g2);
-        // }
+        // วาดวิน
+        if(startwin){
+            drawScaledWin(g2, 0, 265, 1.5, 1.5);
+            drawScaledMotorcycle(g2, 220, 210, 1.3, 1.3);
+            drawBackground(g2);
+        }
         g.drawImage(buffer, 0, 0, null);
     }
 
@@ -278,19 +278,6 @@ class GraphicsSwing extends JPanel implements Runnable {
 
         // head
         UtilityFunction.drawmiddleElipse(x + 85,y + 83,85,83,1);
-        // แก้ม
-        // Rotate ovals by -20 degrees
-        AffineTransform originalTransform = g2.getTransform(); // Save the original transform
-
-        double rotationAngle = Math.toRadians(-15); // Convert degrees to radians
-        AffineTransform rotationTransform = AffineTransform.getRotateInstance(rotationAngle, x, y);
-        g2.setTransform(rotationTransform);
-        // Draw rotated ovals
-        UtilityFunction.drawmiddleElipse(x + 30,y + 138,6,3,1);
-        UtilityFunction.drawmiddleElipse(x + 100,y + 139,6,3,1);
-
-        // Restore the original transform
-        g2.setTransform(originalTransform);
 
         // mouth
         UtilityFunction.drawCurve(x + 95, y + 124, x + 105, y + 126, x + 107, y + 122, x + 106, y + 119, 1);
@@ -306,10 +293,6 @@ class GraphicsSwing extends JPanel implements Runnable {
         buffer = UtilityFunction.Floodfill(buffer, x + 35, y + 180, Color.WHITE, new Color(0x9ecfed));
         buffer = UtilityFunction.Floodfill(buffer, x + 160, y + 150, Color.WHITE, new Color(0x9ecfed));
         buffer = UtilityFunction.Floodfill(buffer, x + 100, y + 250, Color.WHITE, new Color(0x9ecfed));
-
-        // ลงสีแก้ม
-        buffer = UtilityFunction.Floodfill(buffer, x + 65, y + 125, Color.WHITE, new Color(0xf6a5b6));
-        buffer = UtilityFunction.Floodfill(buffer, x + 135, y + 105, Color.WHITE, new Color(0xf6a5b6));
 
         // ลงสีหู
         buffer = UtilityFunction.Floodfill(buffer, x + 5, y + 120, Color.WHITE, new Color(0xfddac6));
