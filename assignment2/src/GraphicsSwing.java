@@ -41,80 +41,80 @@ public class GraphicsSwing extends JPanel implements Runnable {
 
     @Override
     public void run() {
-        // long lastTime = System.currentTimeMillis();
-        // long startTime = lastTime;
-        // while(true){
-        // long currentTime = System.currentTimeMillis();
-        // long elapsedTime = currentTime - lastTime;
+        long lastTime = System.currentTimeMillis();
+        long startTime = lastTime;
+        while(true){
+        long currentTime = System.currentTimeMillis();
+        long elapsedTime = currentTime - lastTime;
 
-        // // //Update
-        // if (currentTime >= 500 + startTime && currentTime <= 2000 + startTime) {
-        // statusSing = true;
-        // }if (currentTime >= 1000 + startTime && currentTime <= 2000 + startTime) {
-        // statusTee = true;
-        // }if (currentTime >= 1500 + startTime && currentTime <= 2000 + startTime) {
-        // statusKid = true;
-        // }if (currentTime == 2000 + startTime) {
-        // statusSing = false;
-        // statusTee = false;
-        // statusKid = false;
-        // startbaby = true;
-        // }
-        // if (currentTime>=2500+startTime) {
-        // status1 = true;
-        // }if (currentTime>=3000+startTime) {
-        // status2 = true;
-        // }if (currentTime>=3500+startTime) {
-        // status3 = true;
-        // }if ((currentTime-startTime)%300 == 0 ) {
-        // statusEye = (statusEye) ? false : true;
-        // }
-        // // ขยายฝัน
-        // double speed = elapsedTime / 1000.0;
-        // if((circleX > -200 || circleY > -100) && status3){
-        // circleWidth += 300 * speed;
-        // circleHeight += 300 * speed;
-        // circleX -= 180 * speed;
-        // circleY -= 100 * speed;
-        // System.out.println(circleX + " " + circleY + " this circle");
-        // }
-        // //ขยับเด็ก
-        // if(status3 && midcircleY < getHeight()){
-        // babyY += 230 * speed;
-        // smallcircleY += 230 * speed;
-        // midcircleY += 230 * speed;
-        // System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
-        // }
-        // //หมอ
-        // if (currentTime >=6000+startTime && currentTime <= 9000 + startTime) {
-        // startdoctor = true;
-        // statusI = true;
-        // }if (currentTime >=6500+startTime && currentTime <= 9000 + startTime) {
-        // statusWant = true;
-        // }if (currentTime >=7000+startTime && currentTime <= 9000 + startTime) {
-        // statusTo = true;
-        // }if (currentTime >=7500+startTime && currentTime <= 9000 + startTime) {
-        // statusBe = true;
-        // }if (currentTime >=8000+startTime && currentTime <= 9000 + startTime) {
-        // statusA = true;
-        // }if (currentTime >=8500+startTime && currentTime <= 9000 + startTime) {
-        // statusDoctor = true;
-        // }
-        // // ความฝันที่อยากเป็น
-        // if (currentTime >=9000+startTime) {
-        // status3 = false;
-        // startdoctor = false;
-        // statusSing = true;
-        // }if (currentTime >=9500+startTime) {
-        // statusTee = true;
-        // }if (currentTime >=10000+startTime) {
-        // statusPen = true;
-        // }
-        // // Display
-        // repaint();
+        // //Update
+        if (currentTime >= 500 + startTime && currentTime <= 2000 + startTime) {
+        statusSing = true;
+        }if (currentTime >= 1000 + startTime && currentTime <= 2000 + startTime) {
+        statusTee = true;
+        }if (currentTime >= 1500 + startTime && currentTime <= 2000 + startTime) {
+        statusKid = true;
+        }if (currentTime == 2000 + startTime) {
+        statusSing = false;
+        statusTee = false;
+        statusKid = false;
+        startbaby = true;
+        }
+        if (currentTime>=2500+startTime) {
+        status1 = true;
+        }if (currentTime>=3000+startTime) {
+        status2 = true;
+        }if (currentTime>=3500+startTime) {
+        status3 = true;
+        }if ((currentTime-startTime)%300 == 0 ) {
+        statusEye = (statusEye) ? false : true;
+        }
+        // ขยายฝัน
+        double speed = elapsedTime / 1000.0;
+        if((circleX > -200 || circleY > -100) && status3){
+        circleWidth += 300 * speed;
+        circleHeight += 300 * speed;
+        circleX -= 180 * speed;
+        circleY -= 100 * speed;
+        System.out.println(circleX + " " + circleY + " this circle");
+        }
+        //ขยับเด็ก
+        if(status3 && midcircleY < getHeight()){
+        babyY += 230 * speed;
+        smallcircleY += 230 * speed;
+        midcircleY += 230 * speed;
+        System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
+        }
+        //หมอ
+        if (currentTime >=6000+startTime && currentTime <= 9000 + startTime) {
+        startdoctor = true;
+        statusI = true;
+        }if (currentTime >=6500+startTime && currentTime <= 9000 + startTime) {
+        statusWant = true;
+        }if (currentTime >=7000+startTime && currentTime <= 9000 + startTime) {
+        statusTo = true;
+        }if (currentTime >=7500+startTime && currentTime <= 9000 + startTime) {
+        statusBe = true;
+        }if (currentTime >=8000+startTime && currentTime <= 9000 + startTime) {
+        statusA = true;
+        }if (currentTime >=8500+startTime && currentTime <= 9000 + startTime) {
+        statusDoctor = true;
+        }
+        // ความฝันที่อยากเป็น
+        if (currentTime >=9000+startTime) {
+        status3 = false;
+        startdoctor = false;
+        statusSing = true;
+        }if (currentTime >=9500+startTime) {
+        statusTee = true;
+        }if (currentTime >=10000+startTime) {
+        statusPen = true;
+        }
+        // Display
+        repaint();
 
-        // lastTime = currentTime;
-        // }
+        lastTime = currentTime;
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -145,11 +145,12 @@ public class GraphicsSwing extends JPanel implements Runnable {
         // drawSingTeePen(g2, 255, 100);
 
         drawScaledWin(g2, 0, 265, 1.5, 1.5);
-        drawBackground();
-
+        
         // drawCloud(g2, 100,100);
         // drawBird(g2, 300,300);
         // drawMotorcycle(g2, 100, 100);
+        drawScaledMotorcycle(g2, 220, 210, 1.3, 1.3);
+        drawBackground(g2);
         g.drawImage(buffer, 0, 0, null);
     }
 
@@ -167,7 +168,6 @@ public class GraphicsSwing extends JPanel implements Runnable {
         if (statusKid) {
             g2.drawString("Kid", x, y + 400);
         }
-
     }
 
     public void drawSingTeePen(Graphics2D g2, int x, int y) {
@@ -518,9 +518,9 @@ public class GraphicsSwing extends JPanel implements Runnable {
 
     }
 
-    public void drawBackground() {
+    public void drawBackground(Graphics2D g2) {
         UtilityFunction.drawLine(0, 100, 600, 100);
-        UtilityFunction.drawLine(0, 150, 600, 150);
+        UtilityFunction.drawLine(0, 170, 600, 170);
         UtilityFunction.drawLine(0, 480, 23, 480);
         UtilityFunction.drawLine(0, 530, 18, 530);
         UtilityFunction.drawLine(263, 480, 600, 480);
@@ -532,23 +532,29 @@ public class GraphicsSwing extends JPanel implements Runnable {
         //นก
         drawBird(170, 5);
         drawBird(300, 10);
-        //สีท้องฟ้า
-        UtilityFunction.floodFillGradient(buffer, 0, 0, 600, 104, new Color(0xFFC719), new Color(0xBF033B), Color.BLACK);
 
+        //motorcycle Shop Text
+        Font font = new Font("Arial", Font.BOLD, 36);
+        g2.setFont(font);
+        g2.drawString("Motorcycle Shop",150,145);
+
+        //สีท้องฟ้า
+        UtilityFunction.floodFillGradient(buffer, 0, 0, 600, 104, new Color(0x0651c1), new Color(0xa9c3ff), Color.BLACK);
+        
         //สีก้อนเมฆ
         UtilityFunction.floodFillGradient(buffer, 75,  31, 79, 85, new Color(0xCCFFFF), new Color(0xCCFFFF), Color.BLACK);
         UtilityFunction.floodFillGradient(buffer, 476,  31, 478, 85, new Color(0xCCFFFF), new Color(0xCCFFFF), Color.BLACK);
-        //กรอบบนของร้าน
-        UtilityFunction.floodFillGradient(buffer, 0, 104, 600, 120, new Color(0xF6C8B6), new Color(0xF5E3CB), Color.BLACK);
-
         //ภายในร้าน
-        UtilityFunction.floodFillGradient(buffer, 0, 154, 600, 483, new Color(0xffeb3b), new Color(0xffecb3), Color.BLACK);
-
+        UtilityFunction.floodFillGradient(buffer, 0, 171, 600, 480, new Color(0xFFFF99), new Color(0xFFFFCC), Color.BLACK);
+        
         //กรอบล่างของร้านที่เยอะ
         UtilityFunction.floodFillGradient(buffer, 314, 486, 600, 534, new Color(0xF6C8B6), new Color(0xF5E3CB), Color.BLACK);
-
+        
         //กรอบล่างของร้านที่น้อย
         UtilityFunction.floodFillGradient(buffer, 0, 484, 0, 534, new Color(0xF6C8B6), new Color(0xF5E3CB), Color.BLACK);
+        
+        //พื้นถนน
+        buffer = UtilityFunction.Floodfill(buffer, 7, 545, Color.WHITE, new Color(0xA9A9A9));
     }
 
     public void drawScaledWin(Graphics2D g2, int x, int y, double scaleX, double scaleY) {
@@ -623,5 +629,45 @@ public class GraphicsSwing extends JPanel implements Runnable {
         UtilityFunction.drawCircle(x + 61, y + 79, 27, 1);
 
         UtilityFunction.drawCurve(x + 262,y + 166,x + 280,y + 216,x + 207,y + 216,x + 212,y + 178,1);
+
+        //ลงสีมอไซ
+        buffer = UtilityFunction.Floodfill(buffer, x + 354, y + 342, Color.WHITE, new Color(0xd71417));
+
+        //เบาะ
+        buffer = UtilityFunction.Floodfill(buffer, x + 460, y + 342, Color.WHITE, new Color(0x70362d));
+
+        //ไฟ
+        buffer = UtilityFunction.Floodfill(buffer, x + 343, y + 281, Color.WHITE, new Color(0xE9F874));
+
+        //ช่วงล่าง
+        buffer = UtilityFunction.Floodfill(buffer, x + 459, y + 440, Color.WHITE, new Color(0x701418));
+        buffer = UtilityFunction.Floodfill(buffer, x + 510, y + 436, Color.WHITE, new Color(0x666362));
+
+        //โช๊ค
+        buffer = UtilityFunction.Floodfill(buffer, x + 325, y + 412, Color.WHITE, new Color(0x3c3939));
+        buffer = UtilityFunction.Floodfill(buffer, x + 315, y + 426, Color.WHITE, new Color(0x3c3939));
+        buffer = UtilityFunction.Floodfill(buffer, x + 305, y + 439, Color.WHITE, new Color(0x3c3939));
+
+        //ล้อ
+        buffer = UtilityFunction.Floodfill(buffer, x + 275, y + 444, Color.WHITE, new Color(0x221714));
+        buffer = UtilityFunction.Floodfill(buffer, x + 524, y + 454, Color.WHITE, new Color(0x221714));
+        buffer = UtilityFunction.Floodfill(buffer, x + 295, y + 439, Color.WHITE, new Color(0xd0c5c9));
    }
+
+   public void drawScaledMotorcycle(Graphics2D g2, int x, int y, double scaleX, double scaleY) {
+    // กำหนดขนาดและตำแหน่งเริ่มต้น
+    AffineTransform transform = new AffineTransform();
+    transform.translate(x, y); // ย้ายไปที่ตำแหน่ง x, y
+    transform.scale(scaleX, scaleY); // ขยายตามขนาด scaleX, scaleY
+
+    // ใช้การเข้ารหัสที่กำหนดไว้
+    g2.transform(transform);
+
+    // เรียกใช้ฟังก์ชันเดิมที่วาด Doctor
+    drawMotorcycle(g2, 0, 0); // วาดที่ตำแหน่ง (0, 0) เนื่องจากมีการเคลื่อนที่จากการย้ายและขยาย
+
+    // เรียกใช้การตั้งค่าการเข้ารหัสเพื่อยกเลิกการเปลี่ยนแปลงขนาดและตำแหน่ง
+    g2.setTransform(new AffineTransform());
+
+}
 }
