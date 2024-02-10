@@ -144,8 +144,9 @@ public class GraphicsSwing extends JPanel implements Runnable{
     
         // drawWin(g2,100,100);
 
-        drawCloud(g2, 100,100);
-        drawBird(g2, 300,300);
+        // drawCloud(g2, 100,100);
+        // drawBird(g2, 300,300);
+        drawMotorcycle(g2, 100,100);
         g.drawImage(buffer, 0,0,null);
     }
 
@@ -510,5 +511,27 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.drawCurve(x + 24,y + 26,x + 32,y + 12,x + 39,y + 12,x + 45,y + 25,1);
         UtilityFunction.drawLine(x + 24,y + 18,x + 24,y + 39);
         UtilityFunction.drawLine(x + 20,y + 39,x + 29,y + 39);
+    }
+
+    public void drawMotorcycle(Graphics2D g2,int x,int y){
+        UtilityFunction.drawPolyline(x + 106,y + 69,x + 103,y + 70,x + 92,y + 70,x + 91,y + 67);
+        UtilityFunction.drawCurve(x + 91,y + 67,x + 86,y+ 63,x + 86,y + 53,x + 91,y + 46,1);
+        UtilityFunction.drawCurve(x + 95,y + 46,x + 103,y + 52,x + 103,y + 63,x + 91,y + 67,1);
+        UtilityFunction.drawPolyline(x + 91,y + 46,x + 112,y + 46,x + 126,y + 60,x + 130,y + 60,
+                                    x + 130,y + 59,x + 133,y + 59,x + 134,y + 62,x + 142,y + 62,
+                                    x + 142,y + 67,x + 139,y + 67);
+        UtilityFunction.drawCurve(x + 139,y + 67,x + 135,y + 63,x + 130,y + 63,x + 119,y + 70,1);
+        UtilityFunction.drawCurve(x + 106,y + 69,x + 93,y + 84,x + 83,y +113,x + 70,y + 118,1);
+        UtilityFunction.drawPolyline(x + 70,y + 118,x + 70,y + 125,x + 73,y + 125,x + 73,y + 127,x + 70,y+ 128,x + 58,y + 128);
+        UtilityFunction.drawCurve(x + 58,y + 128,x + 36,y + 130,x + 36,y + 146,x + 48,y + 143,1);
+        UtilityFunction.drawPolyline(x + 119,y + 70,x + 119,y + 73,x + 124,y + 77,x + 124,y + 86);
+        UtilityFunction.drawCurve(x + 124,y + 86,x + 110,y + 124,x + 110,y + 130,x + 122,y + 160,1);
+        UtilityFunction.drawCurve(x + 48,y + 143,x + 68,y + 146,x + 94,y + 152,x + 91,y + 164,1);
+        UtilityFunction.drawCurve(x + 91,y + 164,x + 91,y + 169,x + 95,y + 173,x + 106,y + 174,1);
+
+        // wheel
+        UtilityFunction.drawPolyline(x + 82,y + 151,x + 60,y + 178,x + 63,y + 182,x + 85,y + 152);
+        UtilityFunction.drawCircle(x + 62,y + 78, 10,1);
+        UtilityFunction.drawCircle(x + 61,y + 79, 27,1);
     }
 }

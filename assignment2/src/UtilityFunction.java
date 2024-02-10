@@ -85,6 +85,17 @@ public final class UtilityFunction {
         }
         drawLine(xy[xy.length - 2], xy[xy.length - 1],xy[0],xy[1], size, c);
     }
+    // default color(black) and size = 1 for drawPolyline
+    public static void drawPolyline(int ...xy){
+        drawPolyline(Color.BLACK,1, xy);
+    }
+    // drawPolyline use drawLine Method implementation 
+    public static void drawPolyline(Color c,int size,int ...xy){
+        if(xy.length % 2 == 1) return; // x and y are not equal.
+        for(int i = 0;i < xy.length - 3;i+=2){
+            drawLine(xy[i], xy[i + 1], xy[i + 2], xy[i + 3], size, c);
+        }
+    }
     // draw Cicle use default colot (black)
     public static void drawCircle(int centerX,int centerY,int radius,int size){
         drawCircle(centerX, centerY, radius,size,Color.black);
@@ -94,7 +105,7 @@ public final class UtilityFunction {
         int x = radius;
         int y = 0;
         int radiusError = 1 - x;
-
+        centerY += 100;
         while (x >= y) {
             plot(centerX + x, centerY - y,c,size);
             plot(centerX - x, centerY - y,c,size);
