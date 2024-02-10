@@ -40,80 +40,80 @@ public class GraphicsSwing extends JPanel implements Runnable{
     double circleWidth = 350;
 
     @Override public void run(){
-        long lastTime = System.currentTimeMillis();
-        long startTime = lastTime;
-        while(true){
-            long currentTime = System.currentTimeMillis();
-            long elapsedTime = currentTime - lastTime;
+        // long lastTime = System.currentTimeMillis();
+        // long startTime = lastTime;
+        // while(true){
+        //     long currentTime = System.currentTimeMillis();
+        //     long elapsedTime = currentTime - lastTime;
 
-            // //Update
-            if (currentTime >= 500 + startTime && currentTime <= 2000 + startTime) {
-                statusSing = true;
-            }if (currentTime >= 1000 + startTime && currentTime <= 2000 + startTime) {
-                statusTee = true;
-            }if (currentTime >= 1500 + startTime && currentTime <= 2000 + startTime) {
-                statusKid = true;
-            }if (currentTime == 2000 + startTime) {
-                statusSing = false;
-                statusTee = false;
-                statusKid = false;
-                startbaby = true;
-            }
-            if (currentTime>=2500+startTime) {
-                status1 = true;
-            }if (currentTime>=3000+startTime) {
-                status2 = true;
-            }if (currentTime>=3500+startTime) {
-                status3 = true;
-            }if ((currentTime-startTime)%300 == 0 ) {
-                statusEye = (statusEye) ? false : true;
-            }
-            // ขยายฝัน
-            double speed = elapsedTime / 1000.0;
-            if((circleX > -200 || circleY > -100) && status3){
-                circleWidth += 300 * speed;
-                circleHeight += 300 * speed;
-                circleX -= 180 * speed;
-                circleY -= 100 * speed;
-                System.out.println(circleX + " " + circleY + " this circle");
-            }
-            //ขยับเด็ก
-            if(status3 && midcircleY < getHeight()){
-                babyY += 230 * speed;
-                smallcircleY += 230 * speed;
-                midcircleY += 230 * speed;
-                System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
-            }
-            //หมอ
-            if (currentTime >=6000+startTime && currentTime <= 9000 + startTime) {
-                startdoctor = true; 
-                statusI = true;
-            }if (currentTime >=6500+startTime && currentTime <= 9000 + startTime) {
-                statusWant = true;
-            }if (currentTime >=7000+startTime && currentTime <= 9000 + startTime) {
-                statusTo = true;
-            }if (currentTime >=7500+startTime && currentTime <= 9000 + startTime) {
-                statusBe = true;
-            }if (currentTime >=8000+startTime && currentTime <= 9000 + startTime) {
-                statusA = true;
-            }if (currentTime >=8500+startTime && currentTime <= 9000 + startTime) {
-                statusDoctor = true;
-            }
-            // ความฝันที่อยากเป็น
-            if (currentTime >=9000+startTime) {
-                status3 = false;
-                startdoctor = false;
-                statusSing = true;
-            }if (currentTime >=9500+startTime) {
-                statusTee = true;
-            }if (currentTime >=10000+startTime) {
-                statusPen = true;
-            }
-            // Display
-            repaint();
+        //     // //Update
+        //     if (currentTime >= 500 + startTime && currentTime <= 2000 + startTime) {
+        //         statusSing = true;
+        //     }if (currentTime >= 1000 + startTime && currentTime <= 2000 + startTime) {
+        //         statusTee = true;
+        //     }if (currentTime >= 1500 + startTime && currentTime <= 2000 + startTime) {
+        //         statusKid = true;
+        //     }if (currentTime == 2000 + startTime) {
+        //         statusSing = false;
+        //         statusTee = false;
+        //         statusKid = false;
+        //         startbaby = true;
+        //     }
+        //     if (currentTime>=2500+startTime) {
+        //         status1 = true;
+        //     }if (currentTime>=3000+startTime) {
+        //         status2 = true;
+        //     }if (currentTime>=3500+startTime) {
+        //         status3 = true;
+        //     }if ((currentTime-startTime)%300 == 0 ) {
+        //         statusEye = (statusEye) ? false : true;
+        //     }
+        //     // ขยายฝัน
+        //     double speed = elapsedTime / 1000.0;
+        //     if((circleX > -200 || circleY > -100) && status3){
+        //         circleWidth += 300 * speed;
+        //         circleHeight += 300 * speed;
+        //         circleX -= 180 * speed;
+        //         circleY -= 100 * speed;
+        //         System.out.println(circleX + " " + circleY + " this circle");
+        //     }
+        //     //ขยับเด็ก
+        //     if(status3 && midcircleY < getHeight()){
+        //         babyY += 230 * speed;
+        //         smallcircleY += 230 * speed;
+        //         midcircleY += 230 * speed;
+        //         System.out.println(babyY + " " + smallcircleY + " " + midcircleY);
+        //     }
+        //     //หมอ
+        //     if (currentTime >=6000+startTime && currentTime <= 9000 + startTime) {
+        //         startdoctor = true; 
+        //         statusI = true;
+        //     }if (currentTime >=6500+startTime && currentTime <= 9000 + startTime) {
+        //         statusWant = true;
+        //     }if (currentTime >=7000+startTime && currentTime <= 9000 + startTime) {
+        //         statusTo = true;
+        //     }if (currentTime >=7500+startTime && currentTime <= 9000 + startTime) {
+        //         statusBe = true;
+        //     }if (currentTime >=8000+startTime && currentTime <= 9000 + startTime) {
+        //         statusA = true;
+        //     }if (currentTime >=8500+startTime && currentTime <= 9000 + startTime) {
+        //         statusDoctor = true;
+        //     }
+        //     // ความฝันที่อยากเป็น
+        //     if (currentTime >=9000+startTime) {
+        //         status3 = false;
+        //         startdoctor = false;
+        //         statusSing = true;
+        //     }if (currentTime >=9500+startTime) {
+        //         statusTee = true;
+        //     }if (currentTime >=10000+startTime) {
+        //         statusPen = true;
+        //     }
+        //     // Display
+        //     repaint();
 
-            lastTime = currentTime;
-        }
+        //     lastTime = currentTime;
+        // }
     }
 
     public void paintComponent(Graphics g) {
@@ -123,26 +123,29 @@ public class GraphicsSwing extends JPanel implements Runnable{
         g2.fillRect(0,0,getWidth(),getHeight());
 
         UtilityFunction.setupUtilityFunction(g2);
-        if (startbaby) {
-            drawBaby(g2,(int)babyX,(int)babyY);
-            if (status1) {
-                drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
-            }if (status2) {
-                drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
-            }if (status3) {
-                drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth, (int)circleHeight);
-            }if(statusEye){
-                drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
-            }if (!statusEye) {
-                drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
-            }
-        }if (startdoctor) {
-            drawIWannaBeADoctor(g2, 10, 130);
-        }
-        drawSingTeeKid(g2, 255,100);
-        drawSingTeePen(g2, 255, 100);
+        // if (startbaby) {
+        //     drawBaby(g2,(int)babyX,(int)babyY);
+        //     if (status1) {
+        //         drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
+        //     }if (status2) {
+        //         drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
+        //     }if (status3) {
+        //         drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth, (int)circleHeight);
+        //     }if(statusEye){
+        //         drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
+        //     }if (!statusEye) {
+        //         drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
+        //     }
+        // }if (startdoctor) {
+        //     drawIWannaBeADoctor(g2, 10, 130);
+        // }
+        // drawSingTeeKid(g2, 255,100);
+        // drawSingTeePen(g2, 255, 100);
     
         // drawWin(g2,100,100);
+
+        drawCloud(g2, 100,100);
+        drawBird(g2, 300,300);
         g.drawImage(buffer, 0,0,null);
     }
 
@@ -491,5 +494,21 @@ public class GraphicsSwing extends JPanel implements Runnable{
         UtilityFunction.drawLine(x + 45,y + 157,x + 136,y + 157);
         UtilityFunction.drawLine(x + 136,y + 157,x + 136,y + 200);
         UtilityFunction.drawLine(x + 15,y + 200,x + 190,y + 200);
+    }
+
+    public void drawCloud(Graphics2D g2,int x,int y){
+        UtilityFunction.drawCurve(x + 43,y + 61,x + 26,y + 58,x + 26,y + 40,x + 55,y + 34,1);
+        UtilityFunction.drawCurve(x + 55,y + 34,x + 71,y + 19,x + 75,y + 19,x + 87,y + 30,1);
+        UtilityFunction.drawCurve(x + 87,y + 30,x + 104,y + 22,x + 109,y + 22,x + 127,y + 37,1);
+        UtilityFunction.drawCurve(x + 127,y + 37,x + 142,y + 36,x + 148,y + 48,x + 133,y + 60,1);
+        UtilityFunction.drawCurve(x + 133,y + 60,x + 119,y + 80,x + 105,y + 80,x + 91,y + 71,1);
+        UtilityFunction.drawCurve(x + 91,y + 71,x + 83,y + 81,x + 65,y + 79,x + 43,y + 61,1);
+    }
+
+    public void drawBird(Graphics2D g2,int x,int y){
+        UtilityFunction.drawCurve(x + 5,y + 25,x + 10,y + 12,x + 18,y + 12,x + 24,y + 26,1);
+        UtilityFunction.drawCurve(x + 24,y + 26,x + 32,y + 12,x + 39,y + 12,x + 45,y + 25,1);
+        UtilityFunction.drawLine(x + 24,y + 18,x + 24,y + 39);
+        UtilityFunction.drawLine(x + 20,y + 39,x + 29,y + 39);
     }
 }
