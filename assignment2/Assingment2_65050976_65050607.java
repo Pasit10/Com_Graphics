@@ -17,7 +17,7 @@ public class Assingment2_65050976_65050607 {
         f.setVisible(true);
         f.add(gs);
         Thread t = new Thread(gs);
-        t.start();
+        //t.start();
     }
 }
 
@@ -177,34 +177,34 @@ class GraphicsSwing extends JPanel implements Runnable {
         g2.fillRect(0, 0, getWidth(), getHeight());
         // setup UtitlityFunction
         UtilityFunction.setupUtilityFunction(g2);   
-        // วาด baby
-        if (startbaby) {
-            drawBaby(g2,(int)babyX,(int)babyY);
-        if (status1) {
-            drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
-        }if (status2) {
-            drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
-        }if (status3) {
-            drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth,(int)circleHeight);
-        }if(statusEye){
-            drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
-        }if (!statusEye) {
-            drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
-        }
-        // วาด Doctor
-        }if (startdoctor) {
-            drawIWannaBeADoctor(g2, 10, 130);
-        }
-        // แสดง text สิ่งที่คิด กับ สิ่งที่เป็น
-        drawSingTeeKid(g2, 255,100);
-        drawSingTeePen(g2, 255, 100);
+        // // วาด baby
+        // if (startbaby) {
+             drawBaby(g2,(int)babyX,(int)babyY);
+        // if (status1) {
+        //     drawsmallcircle(g2, (int)smallcircleX, (int)smallcircleY);
+        // }if (status2) {
+        //     drawmidcircle(g2, (int)midcircleX, (int)midcircleY);
+        // }if (status3) {
+        //     drawlargecircle(g2,(int) circleX, (int)circleY, (int)circleWidth,(int)circleHeight);
+        // }if(statusEye){
+        //     drawOpenEyeBaby(g2,(int)babyX,(int)babyY);
+        // }if (!statusEye) {
+        //     drawCloseEyeBaby(g2,(int)babyX,(int)babyY);
+        // }
+        // // วาด Doctor
+        // }if (startdoctor) {
+        //     drawIWannaBeADoctor(g2, 10, 130);
+        // }
+        // // แสดง text สิ่งที่คิด กับ สิ่งที่เป็น
+        // drawSingTeeKid(g2, 255,100);
+        // drawSingTeePen(g2, 255, 100);
 
-        // วาดวิน
-        if(startwin){
-            drawScaledWin(g2, 0, 265, 1.5, 1.5);
-            drawScaledMotorcycle(g2, 220, 210, 1.3, 1.3);
-            drawBackground(g2);
-        }
+        // // วาดวิน
+        // if(startwin){
+        //     drawScaledWin(g2, 0, 265, 1.5, 1.5);
+        //     drawScaledMotorcycle(g2, 220, 210, 1.3, 1.3);
+        //     drawBackground(g2);
+        // }
         g.drawImage(buffer, 0, 0, null);
     }
 
@@ -277,9 +277,8 @@ class GraphicsSwing extends JPanel implements Runnable {
         UtilityFunction.drawLine(x + 132, y + 237, x + 95, y + 277);
 
         // head
-        g2.drawOval(x, y, 171, 167);
-        //UtilityFunction.drawCircle(x + 100, y + 100,85,85);
-        
+        //g2.drawOval(x, y, 171, 167);
+        UtilityFunction.drawmiddleElipse(x + 85,y + 83,85,83,1);
         // แก้ม
         // Rotate ovals by -20 degrees
         AffineTransform originalTransform = g2.getTransform(); // Save the original transform
@@ -874,9 +873,12 @@ final class UtilityFunction {
             }
         }
     }
+    public static void drawmiddleElipse(int xc,int yc,int a,int b,int size){
+        drawmiddleElipse(xc,yc,a,b,size,Color.black);
+    }
 
     // midpoint ellipses algorithm
-    public void middleElipse(int xc,int yc,int a,int b,int size,Color c){
+    public static void drawmiddleElipse(int xc,int yc,int a,int b,int size,Color c){
         int a2 = a*a , b2 = b*b;
         int twoA2 = 2*a2, twoB2 = 2 * b2;
 
