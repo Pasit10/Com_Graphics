@@ -7,12 +7,12 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.*;
 
-public class Assingment2_65050976_65050607 {
+public class Assingment2_65050607_65050976 {
     public static void main(String[] args){
         JFrame f = new JFrame();
         GraphicsSwing gs = new GraphicsSwing();
         f.setSize(600, 600);
-        f.setTitle("Assingment2_65050976_65050607");
+        f.setTitle("Assingment2_65050607_65050976");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
         f.add(gs);
