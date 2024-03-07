@@ -1,0 +1,256 @@
+# Blender 4.0.2 MTL File: 'livingroom.blend'
+# www.blender.org
+
+newmtl Books
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/pasitmalarat/Downloads/Textures/BookTextures/BukovskiTextures.jpg
+
+newmtl Books2
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/pasitmalarat/Downloads/Textures/BookTextures/HungerGames.jpg
+
+newmtl Concrete
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ns -s 2 2 2 /Users/pasitmalarat/Downloads/Textures/Rough Concrete Wall_xe0jdes/Roughness_4K__xe0jdes.jpg
+
+newmtl Curtains
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 0.940000
+illum 9
+
+newmtl Curtains1
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 0.970000
+illum 9
+
+newmtl Fabric
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd fabric_108_basecolor-2K.jpg
+map_Ns fabric_108_roughness-2K.jpg
+map_refl fabric_108_metallic-2K.jpg
+
+newmtl Glass
+Ns 360.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Glass.001
+Ns 360.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Linen_upholstery_fabric_dark_grey
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd linen-upholstery-fabric-diffuse.jpg
+map_Ns linen-upholstery-fabric-roughness.jpg
+map_refl linen-upholstery-fabric-metallic.jpg
+map_Bump -bm 0.500000 linen-upholstery-fabric-normal.jpg
+
+newmtl Material.005
+Ns 19.855368
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+
+newmtl Metal
+Ns 393.471069
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Picture1
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/pasitmalarat/Downloads/Textures/05c649a0b87048eb2a03dcf1322a7473-transformed.jpeg
+
+newmtl Picture2
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/pasitmalarat/Downloads/Textures/07ceac283aec601ed544a6ff4ee3ca97-transformed.jpeg
+
+newmtl Soft_Black_Fabric
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ns 2K-fabric_60_roughness.jpg
+map_Bump -bm 0.500000 2K-fabric_60_normal.jpg
+
+newmtl WallStoveBlack
+Ns 575.747314
+Ka 1.000000 1.000000 1.000000
+Kd 0.057801 0.057801 0.057801
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl carpet
+Ns 4.648767
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd -s 2 2 2 /Users/pasitmalarat/Downloads/Textures/modern-abstract-art-texture-fashionable-modern-carpet-background_167913-772 (1).jpg
+
+newmtl floor
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl lajsna
+Ns 0.000000
+Ka 0.787402 0.787402 0.787402
+Kd 0.517331 0.517331 0.517331
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl rgb_lights
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.763464 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 2.000000 1.918733 1.518216
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl walls_and_roof
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Ns -s 2 2 2 /Users/pasitmalarat/Downloads/Textures/Stucco Facade_wfnhfaq/Roughness_4K__wfnhfaq.jpg
+
+newmtl window_frame
+Ns 0.000000
+Ka 0.787402 0.787402 0.787402
+Kd 0.027210 0.027210 0.027210
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl window_frame2
+Ns 916.218079
+Ka 1.000000 1.000000 1.000000
+Kd 0.054968 0.054968 0.054968
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl wood_cabinet
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd -s 36.3 4 14.5 /Users/pasitmalarat/Downloads/Textures/Wooden Planks_vjisagn/Albedo_2K__vjisagn.jpg
+
+newmtl wood_cabinet.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl wood_cabinet.002
+Ns 464.876038
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
