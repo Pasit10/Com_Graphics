@@ -37,44 +37,46 @@ static const char *vShader = "Shaders/shader.vert";
 // Fragment Shader
 static const char *fShader = "Shaders/shader.frag";
 
-void CreateTriangle()
-{
-    GLfloat vertices[] =
-    {
-        //pos                   //TexCoord
-        -1.0f, -1.0f, 0.0f,     0.0f, 0.0f,
-        0.0, -1.0f, 1.0f,       0.5f, 0.0f,
-        1.0f, -1.0f, 0.0f,      1.0f, 0.0f,
-        0.0f, 1.0f, 0.0f,       0.5f, 1.0f
-    };
-
-    unsigned int indices[] =
-        {
-            0, 3, 1,
-            1, 3, 2,
-            2, 3, 0,
-            0, 1, 2,
-        };
-
-    Mesh *obj1 = new Mesh();
-    obj1->CreateMesh(vertices, indices, 20, 12);
-    for (int i = 0; i < 10; i++)
-    {
-        meshList.push_back(obj1);
-    }
-}
-
 void CreateOBJ()
 {
-    Mesh *obj = new Mesh();
-    bool loaded = obj->CreateMeshFromOBJ("Models/livingroom.obj");
-    if (loaded)
+    std::vector<std::string> filePaths;
+    filePaths.push_back("Models/button1.obj");
+    filePaths.push_back("Models/button2.obj");
+    filePaths.push_back("Models/cabinets.obj");
+    filePaths.push_back("Models/chair.obj");
+    filePaths.push_back("Models/chick.obj");
+    filePaths.push_back("Models/floor.obj");
+    filePaths.push_back("Models/frigde_handles.obj");
+    filePaths.push_back("Models/glassframe.obj");
+    filePaths.push_back("Models/glass.obj");
+    filePaths.push_back("Models/glassowen.obj");
+    filePaths.push_back("Models/light.obj");
+    filePaths.push_back("Models/mug.obj");
+    filePaths.push_back("Models/owen.obj");
+    filePaths.push_back("Models/picture.obj");
+    filePaths.push_back("Models/pot1_White.obj");
+    filePaths.push_back("Models/pot2_black.obj");
+    filePaths.push_back("Models/roof.obj");
+    filePaths.push_back("Models/table1.obj");
+    filePaths.push_back("Models/table2.obj");
+    filePaths.push_back("Models/tray.obj");
+    filePaths.push_back("Models/wall.obj");
+
+    std::cout << "file range " << filePaths.size() << std::endl;
+
+
+    for (const auto& filePath : filePaths)
     {
-        meshList.push_back(obj);
-    }
-    else
-    {
-        std::cout<<"Failed to load model"<<std::endl;
+        Mesh* obj = new Mesh();
+        bool loaded_obj =  obj->CreateMeshFromOBJ(filePath.c_str());
+        if (loaded_obj)
+        {
+            meshList.push_back(obj); // Assuming meshList is declared elsewhere
+        }
+        else
+        {
+            std::cout<<"Failed to load model"<<std::endl;
+        }
     }
 }
 
@@ -88,6 +90,61 @@ void CreateShaders()
     shaderList.push_back(shader1);
 }
 
+std::vector<unsigned int> CreateTexture()
+{
+    std::vector<std::string> filePaths;
+    filePaths.push_back("Textures/button1.jpg");
+    filePaths.push_back("Textures/button2.jpg");
+    filePaths.push_back("Textures/Cabinets.jpg");
+    filePaths.push_back("Textures/chair.jpg");
+    filePaths.push_back("Textures/chick.jpg");
+    filePaths.push_back("Textures/floor.jpg");
+    filePaths.push_back("Textures/Frigde_Handls.jpg");
+    filePaths.push_back("Textures/glassframe.jpg");
+    filePaths.push_back("Textures/glass.jpg");
+    filePaths.push_back("Textures/glassowen.jpg");
+    filePaths.push_back("Textures/light_on_top.jpg");
+    filePaths.push_back("Textures/mug.jpg");
+    filePaths.push_back("Textures/Picture.jpg");
+    filePaths.push_back("Textures/pot_black.jpg");
+    filePaths.push_back("Textures/pot_White.jpg");
+    filePaths.push_back("Textures/roof.jpg");
+    filePaths.push_back("Textures/table1.jpg");
+    filePaths.push_back("Textures/table2.jpg");
+    filePaths.push_back("Textures/tray.jpg");
+    filePaths.push_back("Textures/wall.jpg");
+
+    std::cout << "file range " << filePaths.size() << std::endl;
+
+    std::vector<unsigned int> textures(filePaths.size());
+    glGenTextures(textures.size(), textures.data());
+
+
+    for (size_t i = 0; i < filePaths.size(); ++i) {
+        glBindTexture(GL_TEXTURE_2D, textures[i]);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        int width, height, nrChannels;
+        std::string filename = filePaths[i];
+        unsigned char *data = stbi_load(filename.c_str(), &width, &height, &nrChannels, 0);
+        if (data)
+        {
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+            glGenerateMipmap(GL_TEXTURE_2D);
+        }
+        else
+        {
+            std::cout << "Failed to load texture " << filename << std::endl;
+        }
+        stbi_image_free(data);
+    }
+
+    return textures;
+}
+
 void checkMouse(){
     double xPos, yPos;
 
@@ -98,7 +155,7 @@ void checkMouse(){
 
     float xoffset = xPos - lastX;
     float yoffset = lastY - yPos;
-    
+
     lastX = xPos;
     lastY = yPos;
 
@@ -134,32 +191,15 @@ int main()
     glm::vec3 cameraRight = glm::normalize(glm::cross(cameraDirection, up));
     glm::vec3 cameraUp = glm::normalize(glm::cross(cameraRight, cameraDirection));
 
-    unsigned int texture;
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    int width, height, nrChannels;
-    unsigned char *data = stbi_load("Textures/test.png", &width, &height, &nrChannels, 0);
-    if (data)
-    {
-        //bind image with texture
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE,data);
-        glGenerateMipmap(GL_TEXTURE_2D);
-    }
-    else
-    {
-        std::cout<<"Failed to load texture"<<std::endl;
-    }
-    stbi_image_free(data);
+
+    std::vector<unsigned int> texture = CreateTexture();
 
     // Loop until window closed
     float deltaTime, lastFrame;
     while (!mainWindow.getShouldClose())
     {
+        // camera
         float currentFrame = static_cast<float>(glfwGetTime());
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
@@ -218,29 +258,52 @@ int main()
         uniformProjection = shaderList[0]->GetUniformLocation("projection");
         uniformView = shaderList[0]->GetUniformLocation("view");
 
-        //Object
+        /*
+            Object 0 cabinets
+            Object 1 chair
+            Object 2 chick
+            Object 3 floor
+            Object 4 frigde_handle
+            Object 5 glassframe
+            Object 6 glass
+            Object 7 light
+            Object 8 light_on_top
+            Object 9 livingroom
+            Object 10 mug
+            Object 11 owen
+            Object 12 picture
+            Object 13 pot1_while
+            Object 14 pot2_black
+            Object 15 roof
+            Object 16 table1
+            Object 17 table2
+            Object 18 tray
+            Object 19 wall
 
-        glm::mat4 model (1.0f);
+            20 Object
+        */
+        // all object
+        int n_object = 20;
+        int n_object_by_texture = texture.size();
+        for(int i = 0;i < n_object_by_texture;i++){
+            glm::mat4 model (1.0f);
 
-        // model = glm::translate(model, glm::vec3(0,0,-2));
-        // model = glm::scale(model, glm::vec3(2,2,2));
-        // model = glm::rotate(model, glm::radians(45.0f), glm::vec3(0,1,0));
-        
-        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-        glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(view));
-        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+            glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+            glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(view));
+            glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
 
-        //light
-        glUniform3fv(shaderList[0]->GetUniformLocation("lightColour"), 1, (GLfloat *)&lightColour);
-        glUniform3fv(shaderList[0]->GetUniformLocation("lightPos"), 1, (GLfloat *)&lightPos);
-        glUniform3fv(shaderList[0]->GetUniformLocation("viewPos"), 1, (GLfloat *)&cameraPos);
-        
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texture);
-        meshList[0]->RenderMesh();
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, texture[i]);
 
-        glUseProgram(0);
+            //light
+            glUniform3fv(shaderList[0]->GetUniformLocation("lightColour"), 1, (GLfloat *)&lightColour);
+            glUniform3fv(shaderList[0]->GetUniformLocation("lightPos"), 1, (GLfloat *)&lightPos);
+            glUniform3fv(shaderList[0]->GetUniformLocation("viewPos"), 1, (GLfloat *)&cameraPos);
+            meshList[i]->RenderMesh();
+        }
+
         // end draw
+        glUseProgram(0);
 
         mainWindow.swapBuffers();
     }
